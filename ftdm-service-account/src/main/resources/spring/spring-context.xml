@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.0.xsd
+         http://code.alibabatech.com/schema/dubbo
+         http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+           http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<bean lazy-init="false" id="springcontextholder" class="com.sunyard.sunfintech.core.util.SpringContextHolder"></bean>
+
+	<!-- 引入属性配置文件 -->
+	<bean class="com.sunyard.sunfintech.core.util.PropertiesUtil">
+		<property name="locations">
+			<list>
+				<value>classpath:config/jdbc.properties</value>
+				<value>classpath:config/system.properties</value>
+			</list>
+		</property>
+		<property name="properties">
+			<props>
+				<!-- dubbo个性化配置(服务名,端口) -->
+				<prop key="dubbo.application.name">ftdm-service-account</prop>
+				<prop key="dubbo.protocol.port">18081</prop>
+			</props>
+		</property>
+		<property name="decryptProperties">
+			<array>
+				<!-- 需要解密的配置 -->
+				<value>db.reader.password</value>
+				<value>db.writer.password</value>
+			</array>
+		</property>
+	</bean>
+	<!-- 扫描注解 -->
+	<context:component-scan base-package="com.sunyard.sunfintech">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<import resource="classpath*:spring/dubbo.xml" />
+	<import resource="classpath*:spring/redis.xml"/>
+	<import resource="classpath*:spring/mybatis.xml"/>
+	<import resource="classpath*:spring/data-source.xml"/>
+	<import resource="classpath*:spring/rabbitmq-config.xml"/>
+	<!--<import resource="classpath*:spring/active-mq-queue.xml"/>-->
+
+</beans>

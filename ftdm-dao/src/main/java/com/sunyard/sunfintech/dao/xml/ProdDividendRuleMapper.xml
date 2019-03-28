@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ProdDividendRuleMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ProdDividendRule">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="payout_plat_no" jdbcType="VARCHAR" property="payout_plat_no" />
+    <result column="payout_plat_account" jdbcType="VARCHAR" property="payout_plat_account" />
+    <result column="payout_ratio" jdbcType="DECIMAL" property="payout_ratio" />
+    <result column="payout_amt" jdbcType="DECIMAL" property="payout_amt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, prod_id, plat_no, payout_plat_no, payout_plat_account, payout_ratio, payout_amt
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdDividendRuleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from prod_dividend_rule
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from prod_dividend_rule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from prod_dividend_rule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdDividendRuleExample">
+    delete from prod_dividend_rule
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ProdDividendRule">
+    insert into prod_dividend_rule (id, prod_id, plat_no, 
+      payout_plat_no, payout_plat_account, payout_ratio, 
+      payout_amt)
+    values (#{id,jdbcType=INTEGER}, #{prod_id,jdbcType=VARCHAR}, #{plat_no,jdbcType=VARCHAR}, 
+      #{payout_plat_no,jdbcType=VARCHAR}, #{payout_plat_account,jdbcType=VARCHAR}, #{payout_ratio,jdbcType=DECIMAL}, 
+      #{payout_amt,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdDividendRule">
+    insert into prod_dividend_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="prod_id != null">
+        prod_id,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="payout_plat_no != null">
+        payout_plat_no,
+      </if>
+      <if test="payout_plat_account != null">
+        payout_plat_account,
+      </if>
+      <if test="payout_ratio != null">
+        payout_ratio,
+      </if>
+      <if test="payout_amt != null">
+        payout_amt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="prod_id != null">
+        #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="payout_plat_no != null">
+        #{payout_plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="payout_plat_account != null">
+        #{payout_plat_account,jdbcType=VARCHAR},
+      </if>
+      <if test="payout_ratio != null">
+        #{payout_ratio,jdbcType=DECIMAL},
+      </if>
+      <if test="payout_amt != null">
+        #{payout_amt,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdDividendRuleExample" resultType="java.lang.Integer">
+    select count(*) from prod_dividend_rule
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update prod_dividend_rule
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.prod_id != null">
+        prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payout_plat_no != null">
+        payout_plat_no = #{record.payout_plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payout_plat_account != null">
+        payout_plat_account = #{record.payout_plat_account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payout_ratio != null">
+        payout_ratio = #{record.payout_ratio,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payout_amt != null">
+        payout_amt = #{record.payout_amt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update prod_dividend_rule
+    set id = #{record.id,jdbcType=INTEGER},
+      prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      payout_plat_no = #{record.payout_plat_no,jdbcType=VARCHAR},
+      payout_plat_account = #{record.payout_plat_account,jdbcType=VARCHAR},
+      payout_ratio = #{record.payout_ratio,jdbcType=DECIMAL},
+      payout_amt = #{record.payout_amt,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdDividendRule">
+    update prod_dividend_rule
+    <set>
+      <if test="prod_id != null">
+        prod_id = #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="payout_plat_no != null">
+        payout_plat_no = #{payout_plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="payout_plat_account != null">
+        payout_plat_account = #{payout_plat_account,jdbcType=VARCHAR},
+      </if>
+      <if test="payout_ratio != null">
+        payout_ratio = #{payout_ratio,jdbcType=DECIMAL},
+      </if>
+      <if test="payout_amt != null">
+        payout_amt = #{payout_amt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ProdDividendRule">
+    update prod_dividend_rule
+    set prod_id = #{prod_id,jdbcType=VARCHAR},
+      plat_no = #{plat_no,jdbcType=VARCHAR},
+      payout_plat_no = #{payout_plat_no,jdbcType=VARCHAR},
+      payout_plat_account = #{payout_plat_account,jdbcType=VARCHAR},
+      payout_ratio = #{payout_ratio,jdbcType=DECIMAL},
+      payout_amt = #{payout_amt,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

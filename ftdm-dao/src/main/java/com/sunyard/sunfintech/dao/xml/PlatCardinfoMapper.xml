@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.PlatCardinfoMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.PlatCardinfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mall_no" jdbcType="VARCHAR" property="mall_no" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="card_type" jdbcType="VARCHAR" property="card_type" />
+    <result column="card_no" jdbcType="VARCHAR" property="card_no" />
+    <result column="card_name" jdbcType="VARCHAR" property="card_name" />
+    <result column="dedust_no" jdbcType="VARCHAR" property="dedust_no" />
+    <result column="pay_no" jdbcType="VARCHAR" property="pay_no" />
+    <result column="real_time_balance" jdbcType="DECIMAL" property="real_time_balance" />
+    <result column="today_amt" jdbcType="DECIMAL" property="today_amt" />
+    <result column="yesterday_amt" jdbcType="DECIMAL" property="yesterday_amt" />
+    <result column="query_date" jdbcType="TIMESTAMP" property="query_date" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, mall_no, plat_no, card_type, card_no, card_name, dedust_no, pay_no, real_time_balance, 
+    today_amt, yesterday_amt, query_date, enabled, remark, create_by, create_time, update_by, 
+    update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.PlatCardinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from plat_cardinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from plat_cardinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from plat_cardinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.PlatCardinfoExample">
+    delete from plat_cardinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.PlatCardinfo">
+    insert into plat_cardinfo (id, mall_no, plat_no, 
+      card_type, card_no, card_name, 
+      dedust_no, pay_no, real_time_balance, 
+      today_amt, yesterday_amt, query_date, 
+      enabled, remark, create_by, 
+      create_time, update_by, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{mall_no,jdbcType=VARCHAR}, #{plat_no,jdbcType=VARCHAR}, 
+      #{card_type,jdbcType=VARCHAR}, #{card_no,jdbcType=VARCHAR}, #{card_name,jdbcType=VARCHAR}, 
+      #{dedust_no,jdbcType=VARCHAR}, #{pay_no,jdbcType=VARCHAR}, #{real_time_balance,jdbcType=DECIMAL}, 
+      #{today_amt,jdbcType=DECIMAL}, #{yesterday_amt,jdbcType=DECIMAL}, #{query_date,jdbcType=TIMESTAMP}, 
+      #{enabled,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.PlatCardinfo">
+    insert into plat_cardinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mall_no != null">
+        mall_no,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="card_type != null">
+        card_type,
+      </if>
+      <if test="card_no != null">
+        card_no,
+      </if>
+      <if test="card_name != null">
+        card_name,
+      </if>
+      <if test="dedust_no != null">
+        dedust_no,
+      </if>
+      <if test="pay_no != null">
+        pay_no,
+      </if>
+      <if test="real_time_balance != null">
+        real_time_balance,
+      </if>
+      <if test="today_amt != null">
+        today_amt,
+      </if>
+      <if test="yesterday_amt != null">
+        yesterday_amt,
+      </if>
+      <if test="query_date != null">
+        query_date,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mall_no != null">
+        #{mall_no,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="card_type != null">
+        #{card_type,jdbcType=VARCHAR},
+      </if>
+      <if test="card_no != null">
+        #{card_no,jdbcType=VARCHAR},
+      </if>
+      <if test="card_name != null">
+        #{card_name,jdbcType=VARCHAR},
+      </if>
+      <if test="dedust_no != null">
+        #{dedust_no,jdbcType=VARCHAR},
+      </if>
+      <if test="pay_no != null">
+        #{pay_no,jdbcType=VARCHAR},
+      </if>
+      <if test="real_time_balance != null">
+        #{real_time_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="today_amt != null">
+        #{today_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="yesterday_amt != null">
+        #{yesterday_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="query_date != null">
+        #{query_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.PlatCardinfoExample" resultType="java.lang.Integer">
+    select count(*) from plat_cardinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update plat_cardinfo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.mall_no != null">
+        mall_no = #{record.mall_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.card_type != null">
+        card_type = #{record.card_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.card_no != null">
+        card_no = #{record.card_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.card_name != null">
+        card_name = #{record.card_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dedust_no != null">
+        dedust_no = #{record.dedust_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pay_no != null">
+        pay_no = #{record.pay_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.real_time_balance != null">
+        real_time_balance = #{record.real_time_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.today_amt != null">
+        today_amt = #{record.today_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.yesterday_amt != null">
+        yesterday_amt = #{record.yesterday_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.query_date != null">
+        query_date = #{record.query_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_by != null">
+        create_by = #{record.create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_time != null">
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_by != null">
+        update_by = #{record.update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.update_time != null">
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update plat_cardinfo
+    set id = #{record.id,jdbcType=INTEGER},
+      mall_no = #{record.mall_no,jdbcType=VARCHAR},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      card_type = #{record.card_type,jdbcType=VARCHAR},
+      card_no = #{record.card_no,jdbcType=VARCHAR},
+      card_name = #{record.card_name,jdbcType=VARCHAR},
+      dedust_no = #{record.dedust_no,jdbcType=VARCHAR},
+      pay_no = #{record.pay_no,jdbcType=VARCHAR},
+      real_time_balance = #{record.real_time_balance,jdbcType=DECIMAL},
+      today_amt = #{record.today_amt,jdbcType=DECIMAL},
+      yesterday_amt = #{record.yesterday_amt,jdbcType=DECIMAL},
+      query_date = #{record.query_date,jdbcType=TIMESTAMP},
+      enabled = #{record.enabled,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_by = #{record.create_by,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_by = #{record.update_by,jdbcType=VARCHAR},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.PlatCardinfo">
+    update plat_cardinfo
+    <set>
+      <if test="mall_no != null">
+        mall_no = #{mall_no,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="card_type != null">
+        card_type = #{card_type,jdbcType=VARCHAR},
+      </if>
+      <if test="card_no != null">
+        card_no = #{card_no,jdbcType=VARCHAR},
+      </if>
+      <if test="card_name != null">
+        card_name = #{card_name,jdbcType=VARCHAR},
+      </if>
+      <if test="dedust_no != null">
+        dedust_no = #{dedust_no,jdbcType=VARCHAR},
+      </if>
+      <if test="pay_no != null">
+        pay_no = #{pay_no,jdbcType=VARCHAR},
+      </if>
+      <if test="real_time_balance != null">
+        real_time_balance = #{real_time_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="today_amt != null">
+        today_amt = #{today_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="yesterday_amt != null">
+        yesterday_amt = #{yesterday_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="query_date != null">
+        query_date = #{query_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        create_by = #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.PlatCardinfo">
+    update plat_cardinfo
+    set mall_no = #{mall_no,jdbcType=VARCHAR},
+      plat_no = #{plat_no,jdbcType=VARCHAR},
+      card_type = #{card_type,jdbcType=VARCHAR},
+      card_no = #{card_no,jdbcType=VARCHAR},
+      card_name = #{card_name,jdbcType=VARCHAR},
+      dedust_no = #{dedust_no,jdbcType=VARCHAR},
+      pay_no = #{pay_no,jdbcType=VARCHAR},
+      real_time_balance = #{real_time_balance,jdbcType=DECIMAL},
+      today_amt = #{today_amt,jdbcType=DECIMAL},
+      yesterday_amt = #{yesterday_amt,jdbcType=DECIMAL},
+      query_date = #{query_date,jdbcType=TIMESTAMP},
+      enabled = #{enabled,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

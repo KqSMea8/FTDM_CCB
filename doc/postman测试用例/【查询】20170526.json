@@ -1,0 +1,277 @@
+{
+	"id": "0475a6e5-9dc3-c143-542a-c19af6d602d4",
+	"name": "查询",
+	"description": "",
+	"order": [
+		"43f9fc9b-7915-c428-e15c-feaaa297fd60",
+		"f70f5f18-8153-1285-1c26-79d48fc4adc3",
+		"5d2ed594-72bd-d05a-c574-c56ec59761b0"
+	],
+	"folders": [],
+	"timestamp": 1495802798395,
+	"owner": "2080929",
+	"public": false,
+	"requests": [
+		{
+			"id": "43f9fc9b-7915-c428-e15c-feaaa297fd60",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/order_status",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0475a6e5-9dc3-c143-542a-c19af6d602d4",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170526",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "182729",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "BOB-FENGJR-C-20170509",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "BOB-FENGJR-ZS-C-20170509",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "lqWQ9HsG9Os%2F2jpHUdOU%2BbMoopSHK6RBcXz%2FhnWa4lspnMD6DlalpkxdQoXqn6VK3o8A7r4P5TyI%0D%0AUXp8y5j%2FcmTBfnJ%2BFc6PJuj8K4rSH94%2F64%2Byrh3fmYqjYtrXDjscKsviutJwY4yOhLxDjQfWp8Ou%0D%0AXR3r9eM49McD2KBB9iI%3D",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "orderNo1495708049590",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "query_order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "订单状态查询",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495805364249,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "5d2ed594-72bd-d05a-c574-c56ec59761b0",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/charge_status",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0475a6e5-9dc3-c143-542a-c19af6d602d4",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170526",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "182729",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "BOB-FENGJR-C-20170509",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "BOB-FENGJR-ZS-C-20170509",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "lqWQ9HsG9Os%2F2jpHUdOU%2BbMoopSHK6RBcXz%2FhnWa4lspnMD6DlalpkxdQoXqn6VK3o8A7r4P5TyI%0D%0AUXp8y5j%2FcmTBfnJ%2BFc6PJuj8K4rSH94%2F64%2Byrh3fmYqjYtrXDjscKsviutJwY4yOhLxDjQfWp8Ou%0D%0AXR3r9eM49McD2KBB9iI%3D",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "orderNo1495708049590",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "退票补单查询",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495805444401,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "f70f5f18-8153-1285-1c26-79d48fc4adc3",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/charge_status",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0475a6e5-9dc3-c143-542a-c19af6d602d4",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170526",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "182729",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "BOB-FENGJR-C-20170509",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "BOB-FENGJR-ZS-C-20170509",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "lqWQ9HsG9Os%2F2jpHUdOU%2BbMoopSHK6RBcXz%2FhnWa4lspnMD6DlalpkxdQoXqn6VK3o8A7r4P5TyI%0D%0AUXp8y5j%2FcmTBfnJ%2BFc6PJuj8K4rSH94%2F64%2Byrh3fmYqjYtrXDjscKsviutJwY4yOhLxDjQfWp8Ou%0D%0AXR3r9eM49McD2KBB9iI%3D",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "orderNo1495708049590",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "original_serial_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "occur_balance",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "充值订单状态查询",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495805420751,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

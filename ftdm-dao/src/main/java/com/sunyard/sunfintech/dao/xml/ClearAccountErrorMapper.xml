@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ClearAccountErrorMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ClearAccountError">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="sub_subject" jdbcType="VARCHAR" property="sub_subject" />
+    <result column="error_fail_times" jdbcType="INTEGER" property="error_fail_times" />
+    <result column="concurrence_fail_times" jdbcType="INTEGER" property="concurrence_fail_times" />
+    <result column="fail_type" jdbcType="CHAR" property="fail_type" />
+    <result column="clear_date" jdbcType="VARCHAR" property="clear_date" />
+    <result column="pay_code" jdbcType="VARCHAR" property="pay_code" />
+    <result column="n_balance" jdbcType="DECIMAL" property="n_balance" />
+    <result column="f_balance" jdbcType="DECIMAL" property="f_balance" />
+    <result column="last_n_balance" jdbcType="DECIMAL" property="last_n_balance" />
+    <result column="last_f_balance" jdbcType="DECIMAL" property="last_f_balance" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, plat_no, platcust, subject, sub_subject, error_fail_times, concurrence_fail_times, 
+    fail_type, clear_date, pay_code, n_balance, f_balance, last_n_balance, last_f_balance, 
+    status, remark, create_by, create_time, update_by, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clear_account_error
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from clear_account_error
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ClearAccountError">
+    insert into clear_account_error (id, plat_no, platcust, 
+      subject, sub_subject, error_fail_times, 
+      concurrence_fail_times, fail_type, clear_date, 
+      pay_code, n_balance, f_balance, 
+      last_n_balance, last_f_balance, status, 
+      remark, create_by, create_time, 
+      update_by, update_time)
+    values (#{id,jdbcType=BIGINT}, #{plat_no,jdbcType=VARCHAR}, #{platcust,jdbcType=VARCHAR}, 
+      #{subject,jdbcType=VARCHAR}, #{sub_subject,jdbcType=VARCHAR}, #{error_fail_times,jdbcType=INTEGER}, 
+      #{concurrence_fail_times,jdbcType=INTEGER}, #{fail_type,jdbcType=CHAR}, #{clear_date,jdbcType=VARCHAR}, 
+      #{pay_code,jdbcType=VARCHAR}, #{n_balance,jdbcType=DECIMAL}, #{f_balance,jdbcType=DECIMAL}, 
+      #{last_n_balance,jdbcType=DECIMAL}, #{last_f_balance,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ClearAccountError">
+    insert into clear_account_error
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="platcust != null">
+        platcust,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="sub_subject != null">
+        sub_subject,
+      </if>
+      <if test="error_fail_times != null">
+        error_fail_times,
+      </if>
+      <if test="concurrence_fail_times != null">
+        concurrence_fail_times,
+      </if>
+      <if test="fail_type != null">
+        fail_type,
+      </if>
+      <if test="clear_date != null">
+        clear_date,
+      </if>
+      <if test="pay_code != null">
+        pay_code,
+      </if>
+      <if test="n_balance != null">
+        n_balance,
+      </if>
+      <if test="f_balance != null">
+        f_balance,
+      </if>
+      <if test="last_n_balance != null">
+        last_n_balance,
+      </if>
+      <if test="last_f_balance != null">
+        last_f_balance,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="sub_subject != null">
+        #{sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="error_fail_times != null">
+        #{error_fail_times,jdbcType=INTEGER},
+      </if>
+      <if test="concurrence_fail_times != null">
+        #{concurrence_fail_times,jdbcType=INTEGER},
+      </if>
+      <if test="fail_type != null">
+        #{fail_type,jdbcType=CHAR},
+      </if>
+      <if test="clear_date != null">
+        #{clear_date,jdbcType=VARCHAR},
+      </if>
+      <if test="pay_code != null">
+        #{pay_code,jdbcType=VARCHAR},
+      </if>
+      <if test="n_balance != null">
+        #{n_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="f_balance != null">
+        #{f_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="last_n_balance != null">
+        #{last_n_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="last_f_balance != null">
+        #{last_f_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.ClearAccountError">
+    update clear_account_error
+    <set>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        platcust = #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="sub_subject != null">
+        sub_subject = #{sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="error_fail_times != null">
+        error_fail_times = #{error_fail_times,jdbcType=INTEGER},
+      </if>
+      <if test="concurrence_fail_times != null">
+        concurrence_fail_times = #{concurrence_fail_times,jdbcType=INTEGER},
+      </if>
+      <if test="fail_type != null">
+        fail_type = #{fail_type,jdbcType=CHAR},
+      </if>
+      <if test="clear_date != null">
+        clear_date = #{clear_date,jdbcType=VARCHAR},
+      </if>
+      <if test="pay_code != null">
+        pay_code = #{pay_code,jdbcType=VARCHAR},
+      </if>
+      <if test="n_balance != null">
+        n_balance = #{n_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="f_balance != null">
+        f_balance = #{f_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="last_n_balance != null">
+        last_n_balance = #{last_n_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="last_f_balance != null">
+        last_f_balance = #{last_f_balance,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        create_by = #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ClearAccountError">
+    update clear_account_error
+    set plat_no = #{plat_no,jdbcType=VARCHAR},
+      platcust = #{platcust,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      sub_subject = #{sub_subject,jdbcType=VARCHAR},
+      error_fail_times = #{error_fail_times,jdbcType=INTEGER},
+      concurrence_fail_times = #{concurrence_fail_times,jdbcType=INTEGER},
+      fail_type = #{fail_type,jdbcType=CHAR},
+      clear_date = #{clear_date,jdbcType=VARCHAR},
+      pay_code = #{pay_code,jdbcType=VARCHAR},
+      n_balance = #{n_balance,jdbcType=DECIMAL},
+      f_balance = #{f_balance,jdbcType=DECIMAL},
+      last_n_balance = #{last_n_balance,jdbcType=DECIMAL},
+      last_f_balance = #{last_f_balance,jdbcType=DECIMAL},
+      status = #{status,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

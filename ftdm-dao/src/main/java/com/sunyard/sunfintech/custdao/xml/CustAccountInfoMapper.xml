@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustAccountInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.AccountInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="mall_platcust" jdbcType="VARCHAR" property="mall_platcust" />
+    <result column="account_type" jdbcType="VARCHAR" property="account_type" />
+    <result column="account_name" jdbcType="VARCHAR" property="account_name" />
+    <result column="t_balance" jdbcType="DECIMAL" property="t_balance" />
+    <result column="n_balance" jdbcType="DECIMAL" property="n_balance" />
+    <result column="f_balance" jdbcType="DECIMAL" property="f_balance" />
+    <result column="yester_balance" jdbcType="DECIMAL" property="yester_balance" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modify_time" />
+    <result column="clear_date" jdbcType="DATE" property="clear_date" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="ext3" jdbcType="VARCHAR" property="ext3" />
+    <result column="ext4" jdbcType="VARCHAR" property="ext4" />
+    <result column="ext5" jdbcType="VARCHAR" property="ext5" />
+  </resultMap>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.AccountInfo">
+    insert into account_info (id, plat_no, platcust, 
+      mall_platcust, account_type, account_name, 
+      t_balance, n_balance, f_balance, 
+      yester_balance, modify_time, clear_date, 
+      status, enabled, remark, 
+      create_by, create_time, update_by, 
+      update_time, ext1, ext2, 
+      ext3, ext4, ext5)
+    values (#{id,jdbcType=INTEGER}, #{plat_no,jdbcType=VARCHAR}, #{platcust,jdbcType=VARCHAR}, 
+      #{mall_platcust,jdbcType=VARCHAR}, #{account_type,jdbcType=VARCHAR}, #{account_name,jdbcType=VARCHAR}, 
+      #{t_balance,jdbcType=DECIMAL}, #{n_balance,jdbcType=DECIMAL}, #{f_balance,jdbcType=DECIMAL}, 
+      #{yester_balance,jdbcType=DECIMAL}, #{modify_time,jdbcType=TIMESTAMP}, #{clear_date,jdbcType=DATE}, 
+      #{status,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, 
+      #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.AccountInfo">
+    update account_info
+    set plat_no = #{plat_no,jdbcType=VARCHAR},
+      platcust = #{platcust,jdbcType=VARCHAR},
+      mall_platcust = #{mall_platcust,jdbcType=VARCHAR},
+      account_type = #{account_type,jdbcType=VARCHAR},
+      account_name = #{account_name,jdbcType=VARCHAR},
+      t_balance = #{t_balance,jdbcType=DECIMAL},
+      n_balance = #{n_balance,jdbcType=DECIMAL},
+      f_balance = #{f_balance,jdbcType=DECIMAL},
+      yester_balance = #{yester_balance,jdbcType=DECIMAL},
+      modify_time = #{modify_time,jdbcType=TIMESTAMP},
+      clear_date = #{clear_date,jdbcType=DATE},
+      status = #{status,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      ext1 = #{ext1,jdbcType=VARCHAR},
+      ext2 = #{ext2,jdbcType=VARCHAR},
+      ext3 = #{ext3,jdbcType=VARCHAR},
+      ext4 = #{ext4,jdbcType=VARCHAR},
+      ext5 = #{ext5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, plat_no, platcust, mall_platcust, account_type, account_name, t_balance, 
+    n_balance, f_balance, yester_balance, modify_time, clear_date, status, enabled, remark, 
+    create_by, create_time, update_by, update_time, ext1, ext2, ext3, ext4, ext5
+    from account_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, plat_no, platcust, mall_platcust, account_type, account_name, t_balance, 
+    n_balance, f_balance, yester_balance, modify_time, clear_date, status, enabled, remark, 
+    create_by, create_time, update_by, update_time, ext1, ext2, ext3, ext4, ext5
+    from account_info
+  </select>
+ 
+</mapper>

@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ProdProductinfoMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ProdProductinfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="prod_name" jdbcType="VARCHAR" property="prod_name" />
+    <result column="prod_type" jdbcType="VARCHAR" property="prod_type" />
+    <result column="total_limit" jdbcType="DECIMAL" property="total_limit" />
+    <result column="remain_limit" jdbcType="DECIMAL" property="remain_limit" />
+    <result column="saled_limit" jdbcType="DECIMAL" property="saled_limit" />
+    <result column="value_type" jdbcType="VARCHAR" property="value_type" />
+    <result column="create_type" jdbcType="VARCHAR" property="create_type" />
+    <result column="payout_type" jdbcType="VARCHAR" property="payout_type" />
+    <result column="sell_date" jdbcType="VARCHAR" property="sell_date" />
+    <result column="value_date" jdbcType="VARCHAR" property="value_date" />
+    <result column="expire_date" jdbcType="VARCHAR" property="expire_date" />
+    <result column="cycle" jdbcType="INTEGER" property="cycle" />
+    <result column="cycle_unit" jdbcType="VARCHAR" property="cycle_unit" />
+    <result column="parti_num" jdbcType="INTEGER" property="parti_num" />
+    <result column="ist_year" jdbcType="DECIMAL" property="ist_year" />
+    <result column="prod_state" jdbcType="VARCHAR" property="prod_state" />
+    <result column="repay_type" jdbcType="VARCHAR" property="repay_type" />
+    <result column="prod_account" jdbcType="VARCHAR" property="prod_account" />
+    <result column="charge_off_auto" jdbcType="VARCHAR" property="charge_off_auto" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="risk_lvl" jdbcType="VARCHAR" property="risk_lvl" />
+    <result column="prod_info" jdbcType="VARCHAR" property="prod_info" />
+    <result column="buyer_num_limit" jdbcType="VARCHAR" property="buyer_num_limit" />
+    <result column="overLimit" jdbcType="VARCHAR" property="overLimit" />
+    <result column="over_total_limit" jdbcType="VARCHAR" property="over_total_limit" />
+    <result column="auto_flg" jdbcType="CHAR" property="auto_flg" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, prod_id, plat_no, prod_name, prod_type, total_limit, remain_limit, saled_limit, 
+    value_type, create_type, payout_type, sell_date, value_date, expire_date, cycle, 
+    cycle_unit, parti_num, ist_year, prod_state, repay_type, prod_account, charge_off_auto, 
+    enabled, remark, create_by, create_time, update_by, update_time, ext1, ext2, risk_lvl, 
+    prod_info, buyer_num_limit, overLimit, over_total_limit, auto_flg
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdProductinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from prod_productinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from prod_productinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from prod_productinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdProductinfoExample">
+    delete from prod_productinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ProdProductinfo">
+    insert into prod_productinfo (id, prod_id, plat_no, 
+      prod_name, prod_type, total_limit, 
+      remain_limit, saled_limit, value_type, 
+      create_type, payout_type, sell_date, 
+      value_date, expire_date, cycle, 
+      cycle_unit, parti_num, ist_year, 
+      prod_state, repay_type, prod_account, 
+      charge_off_auto, enabled, remark, 
+      create_by, create_time, update_by, 
+      update_time, ext1, ext2, 
+      risk_lvl, prod_info, buyer_num_limit, 
+      overLimit, over_total_limit, auto_flg
+      )
+    values (#{id,jdbcType=INTEGER}, #{prod_id,jdbcType=VARCHAR}, #{plat_no,jdbcType=VARCHAR}, 
+      #{prod_name,jdbcType=VARCHAR}, #{prod_type,jdbcType=VARCHAR}, #{total_limit,jdbcType=DECIMAL}, 
+      #{remain_limit,jdbcType=DECIMAL}, #{saled_limit,jdbcType=DECIMAL}, #{value_type,jdbcType=VARCHAR}, 
+      #{create_type,jdbcType=VARCHAR}, #{payout_type,jdbcType=VARCHAR}, #{sell_date,jdbcType=VARCHAR}, 
+      #{value_date,jdbcType=VARCHAR}, #{expire_date,jdbcType=VARCHAR}, #{cycle,jdbcType=INTEGER}, 
+      #{cycle_unit,jdbcType=VARCHAR}, #{parti_num,jdbcType=INTEGER}, #{ist_year,jdbcType=DECIMAL}, 
+      #{prod_state,jdbcType=VARCHAR}, #{repay_type,jdbcType=VARCHAR}, #{prod_account,jdbcType=VARCHAR}, 
+      #{charge_off_auto,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, 
+      #{risk_lvl,jdbcType=VARCHAR}, #{prod_info,jdbcType=VARCHAR}, #{buyer_num_limit,jdbcType=VARCHAR}, 
+      #{overLimit,jdbcType=VARCHAR}, #{over_total_limit,jdbcType=VARCHAR}, #{auto_flg,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdProductinfo">
+    insert into prod_productinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="prod_id != null">
+        prod_id,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="prod_name != null">
+        prod_name,
+      </if>
+      <if test="prod_type != null">
+        prod_type,
+      </if>
+      <if test="total_limit != null">
+        total_limit,
+      </if>
+      <if test="remain_limit != null">
+        remain_limit,
+      </if>
+      <if test="saled_limit != null">
+        saled_limit,
+      </if>
+      <if test="value_type != null">
+        value_type,
+      </if>
+      <if test="create_type != null">
+        create_type,
+      </if>
+      <if test="payout_type != null">
+        payout_type,
+      </if>
+      <if test="sell_date != null">
+        sell_date,
+      </if>
+      <if test="value_date != null">
+        value_date,
+      </if>
+      <if test="expire_date != null">
+        expire_date,
+      </if>
+      <if test="cycle != null">
+        cycle,
+      </if>
+      <if test="cycle_unit != null">
+        cycle_unit,
+      </if>
+      <if test="parti_num != null">
+        parti_num,
+      </if>
+      <if test="ist_year != null">
+        ist_year,
+      </if>
+      <if test="prod_state != null">
+        prod_state,
+      </if>
+      <if test="repay_type != null">
+        repay_type,
+      </if>
+      <if test="prod_account != null">
+        prod_account,
+      </if>
+      <if test="charge_off_auto != null">
+        charge_off_auto,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="ext1 != null">
+        ext1,
+      </if>
+      <if test="ext2 != null">
+        ext2,
+      </if>
+      <if test="risk_lvl != null">
+        risk_lvl,
+      </if>
+      <if test="prod_info != null">
+        prod_info,
+      </if>
+      <if test="buyer_num_limit != null">
+        buyer_num_limit,
+      </if>
+      <if test="overLimit != null">
+        overLimit,
+      </if>
+      <if test="over_total_limit != null">
+        over_total_limit,
+      </if>
+      <if test="auto_flg != null">
+        auto_flg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="prod_id != null">
+        #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_name != null">
+        #{prod_name,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_type != null">
+        #{prod_type,jdbcType=VARCHAR},
+      </if>
+      <if test="total_limit != null">
+        #{total_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="remain_limit != null">
+        #{remain_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="saled_limit != null">
+        #{saled_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="value_type != null">
+        #{value_type,jdbcType=VARCHAR},
+      </if>
+      <if test="create_type != null">
+        #{create_type,jdbcType=VARCHAR},
+      </if>
+      <if test="payout_type != null">
+        #{payout_type,jdbcType=VARCHAR},
+      </if>
+      <if test="sell_date != null">
+        #{sell_date,jdbcType=VARCHAR},
+      </if>
+      <if test="value_date != null">
+        #{value_date,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_date != null">
+        #{expire_date,jdbcType=VARCHAR},
+      </if>
+      <if test="cycle != null">
+        #{cycle,jdbcType=INTEGER},
+      </if>
+      <if test="cycle_unit != null">
+        #{cycle_unit,jdbcType=VARCHAR},
+      </if>
+      <if test="parti_num != null">
+        #{parti_num,jdbcType=INTEGER},
+      </if>
+      <if test="ist_year != null">
+        #{ist_year,jdbcType=DECIMAL},
+      </if>
+      <if test="prod_state != null">
+        #{prod_state,jdbcType=VARCHAR},
+      </if>
+      <if test="repay_type != null">
+        #{repay_type,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_account != null">
+        #{prod_account,jdbcType=VARCHAR},
+      </if>
+      <if test="charge_off_auto != null">
+        #{charge_off_auto,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="risk_lvl != null">
+        #{risk_lvl,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_info != null">
+        #{prod_info,jdbcType=VARCHAR},
+      </if>
+      <if test="buyer_num_limit != null">
+        #{buyer_num_limit,jdbcType=VARCHAR},
+      </if>
+      <if test="overLimit != null">
+        #{overLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="over_total_limit != null">
+        #{over_total_limit,jdbcType=VARCHAR},
+      </if>
+      <if test="auto_flg != null">
+        #{auto_flg,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdProductinfoExample" resultType="java.lang.Integer">
+    select count(*) from prod_productinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update prod_productinfo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.prod_id != null">
+        prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prod_name != null">
+        prod_name = #{record.prod_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prod_type != null">
+        prod_type = #{record.prod_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.total_limit != null">
+        total_limit = #{record.total_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remain_limit != null">
+        remain_limit = #{record.remain_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.saled_limit != null">
+        saled_limit = #{record.saled_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.value_type != null">
+        value_type = #{record.value_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_type != null">
+        create_type = #{record.create_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payout_type != null">
+        payout_type = #{record.payout_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sell_date != null">
+        sell_date = #{record.sell_date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.value_date != null">
+        value_date = #{record.value_date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expire_date != null">
+        expire_date = #{record.expire_date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cycle != null">
+        cycle = #{record.cycle,jdbcType=INTEGER},
+      </if>
+      <if test="record.cycle_unit != null">
+        cycle_unit = #{record.cycle_unit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parti_num != null">
+        parti_num = #{record.parti_num,jdbcType=INTEGER},
+      </if>
+      <if test="record.ist_year != null">
+        ist_year = #{record.ist_year,jdbcType=DECIMAL},
+      </if>
+      <if test="record.prod_state != null">
+        prod_state = #{record.prod_state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repay_type != null">
+        repay_type = #{record.repay_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prod_account != null">
+        prod_account = #{record.prod_account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.charge_off_auto != null">
+        charge_off_auto = #{record.charge_off_auto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_by != null">
+        create_by = #{record.create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_time != null">
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_by != null">
+        update_by = #{record.update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.update_time != null">
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ext1 != null">
+        ext1 = #{record.ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext2 != null">
+        ext2 = #{record.ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.risk_lvl != null">
+        risk_lvl = #{record.risk_lvl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prod_info != null">
+        prod_info = #{record.prod_info,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyer_num_limit != null">
+        buyer_num_limit = #{record.buyer_num_limit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overLimit != null">
+        overLimit = #{record.overLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.over_total_limit != null">
+        over_total_limit = #{record.over_total_limit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auto_flg != null">
+        auto_flg = #{record.auto_flg,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update prod_productinfo
+    set id = #{record.id,jdbcType=INTEGER},
+      prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      prod_name = #{record.prod_name,jdbcType=VARCHAR},
+      prod_type = #{record.prod_type,jdbcType=VARCHAR},
+      total_limit = #{record.total_limit,jdbcType=DECIMAL},
+      remain_limit = #{record.remain_limit,jdbcType=DECIMAL},
+      saled_limit = #{record.saled_limit,jdbcType=DECIMAL},
+      value_type = #{record.value_type,jdbcType=VARCHAR},
+      create_type = #{record.create_type,jdbcType=VARCHAR},
+      payout_type = #{record.payout_type,jdbcType=VARCHAR},
+      sell_date = #{record.sell_date,jdbcType=VARCHAR},
+      value_date = #{record.value_date,jdbcType=VARCHAR},
+      expire_date = #{record.expire_date,jdbcType=VARCHAR},
+      cycle = #{record.cycle,jdbcType=INTEGER},
+      cycle_unit = #{record.cycle_unit,jdbcType=VARCHAR},
+      parti_num = #{record.parti_num,jdbcType=INTEGER},
+      ist_year = #{record.ist_year,jdbcType=DECIMAL},
+      prod_state = #{record.prod_state,jdbcType=VARCHAR},
+      repay_type = #{record.repay_type,jdbcType=VARCHAR},
+      prod_account = #{record.prod_account,jdbcType=VARCHAR},
+      charge_off_auto = #{record.charge_off_auto,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_by = #{record.create_by,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_by = #{record.update_by,jdbcType=VARCHAR},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      ext1 = #{record.ext1,jdbcType=VARCHAR},
+      ext2 = #{record.ext2,jdbcType=VARCHAR},
+      risk_lvl = #{record.risk_lvl,jdbcType=VARCHAR},
+      prod_info = #{record.prod_info,jdbcType=VARCHAR},
+      buyer_num_limit = #{record.buyer_num_limit,jdbcType=VARCHAR},
+      overLimit = #{record.overLimit,jdbcType=VARCHAR},
+      over_total_limit = #{record.over_total_limit,jdbcType=VARCHAR},
+      auto_flg = #{record.auto_flg,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdProductinfo">
+    update prod_productinfo
+    <set>
+      <if test="prod_id != null">
+        prod_id = #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_name != null">
+        prod_name = #{prod_name,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_type != null">
+        prod_type = #{prod_type,jdbcType=VARCHAR},
+      </if>
+      <if test="total_limit != null">
+        total_limit = #{total_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="remain_limit != null">
+        remain_limit = #{remain_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="saled_limit != null">
+        saled_limit = #{saled_limit,jdbcType=DECIMAL},
+      </if>
+      <if test="value_type != null">
+        value_type = #{value_type,jdbcType=VARCHAR},
+      </if>
+      <if test="create_type != null">
+        create_type = #{create_type,jdbcType=VARCHAR},
+      </if>
+      <if test="payout_type != null">
+        payout_type = #{payout_type,jdbcType=VARCHAR},
+      </if>
+      <if test="sell_date != null">
+        sell_date = #{sell_date,jdbcType=VARCHAR},
+      </if>
+      <if test="value_date != null">
+        value_date = #{value_date,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_date != null">
+        expire_date = #{expire_date,jdbcType=VARCHAR},
+      </if>
+      <if test="cycle != null">
+        cycle = #{cycle,jdbcType=INTEGER},
+      </if>
+      <if test="cycle_unit != null">
+        cycle_unit = #{cycle_unit,jdbcType=VARCHAR},
+      </if>
+      <if test="parti_num != null">
+        parti_num = #{parti_num,jdbcType=INTEGER},
+      </if>
+      <if test="ist_year != null">
+        ist_year = #{ist_year,jdbcType=DECIMAL},
+      </if>
+      <if test="prod_state != null">
+        prod_state = #{prod_state,jdbcType=VARCHAR},
+      </if>
+      <if test="repay_type != null">
+        repay_type = #{repay_type,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_account != null">
+        prod_account = #{prod_account,jdbcType=VARCHAR},
+      </if>
+      <if test="charge_off_auto != null">
+        charge_off_auto = #{charge_off_auto,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        create_by = #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ext1 != null">
+        ext1 = #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        ext2 = #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="risk_lvl != null">
+        risk_lvl = #{risk_lvl,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_info != null">
+        prod_info = #{prod_info,jdbcType=VARCHAR},
+      </if>
+      <if test="buyer_num_limit != null">
+        buyer_num_limit = #{buyer_num_limit,jdbcType=VARCHAR},
+      </if>
+      <if test="overLimit != null">
+        overLimit = #{overLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="over_total_limit != null">
+        over_total_limit = #{over_total_limit,jdbcType=VARCHAR},
+      </if>
+      <if test="auto_flg != null">
+        auto_flg = #{auto_flg,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ProdProductinfo">
+    update prod_productinfo
+    set prod_id = #{prod_id,jdbcType=VARCHAR},
+      plat_no = #{plat_no,jdbcType=VARCHAR},
+      prod_name = #{prod_name,jdbcType=VARCHAR},
+      prod_type = #{prod_type,jdbcType=VARCHAR},
+      total_limit = #{total_limit,jdbcType=DECIMAL},
+      remain_limit = #{remain_limit,jdbcType=DECIMAL},
+      saled_limit = #{saled_limit,jdbcType=DECIMAL},
+      value_type = #{value_type,jdbcType=VARCHAR},
+      create_type = #{create_type,jdbcType=VARCHAR},
+      payout_type = #{payout_type,jdbcType=VARCHAR},
+      sell_date = #{sell_date,jdbcType=VARCHAR},
+      value_date = #{value_date,jdbcType=VARCHAR},
+      expire_date = #{expire_date,jdbcType=VARCHAR},
+      cycle = #{cycle,jdbcType=INTEGER},
+      cycle_unit = #{cycle_unit,jdbcType=VARCHAR},
+      parti_num = #{parti_num,jdbcType=INTEGER},
+      ist_year = #{ist_year,jdbcType=DECIMAL},
+      prod_state = #{prod_state,jdbcType=VARCHAR},
+      repay_type = #{repay_type,jdbcType=VARCHAR},
+      prod_account = #{prod_account,jdbcType=VARCHAR},
+      charge_off_auto = #{charge_off_auto,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      ext1 = #{ext1,jdbcType=VARCHAR},
+      ext2 = #{ext2,jdbcType=VARCHAR},
+      risk_lvl = #{risk_lvl,jdbcType=VARCHAR},
+      prod_info = #{prod_info,jdbcType=VARCHAR},
+      buyer_num_limit = #{buyer_num_limit,jdbcType=VARCHAR},
+      overLimit = #{overLimit,jdbcType=VARCHAR},
+      over_total_limit = #{over_total_limit,jdbcType=VARCHAR},
+      auto_flg = #{auto_flg,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustProdShareInallMapper">
+  <insert id="insertMore"  parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty= "id" order= "AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into prod_share_inall(plat_no,prod_id,platcust,cust_no,tot_vol,frozen_vol,vol,ext1,ext2,enabled,remark,create_by,create_time,update_by,update_time)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (
+      #{item.plat_no,jdbcType=VARCHAR},
+      #{item.prod_id,jdbcType=VARCHAR},
+      #{item.platcust,jdbcType=VARCHAR},
+      #{item.cust_no,jdbcType=VARCHAR},
+      #{item.tot_vol,jdbcType=DECIMAL},
+      #{item.frozen_vol,jdbcType=DECIMAL},
+      #{item.vol,jdbcType=DECIMAL},
+      #{item.ext1,jdbcType=VARCHAR},
+      #{item.ext2,jdbcType=VARCHAR},
+      #{item.enabled,jdbcType=CHAR},
+      #{item.remark,jdbcType=VARCHAR},
+      #{item.create_by,jdbcType=VARCHAR},
+      #{item.create_time,jdbcType=TIMESTAMP},
+      #{item.update_by,jdbcType=VARCHAR},
+      #{item.update_time,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+
+  <update id="addInallVol" parameterType="java.util.Map">
+    update prod_share_inall
+    set tot_vol=tot_vol+#{params.vol},vol=vol+#{params.vol},update_time=NOW(),update_by=#{params.update_by}
+    where prod_id = #{params.prod_id} and platcust=#{params.platcust} and plat_no = #{params.plat_no}
+  </update>
+
+  <update id="subtractInallVol" parameterType="java.util.Map">
+    update prod_share_inall
+    set tot_vol=tot_vol-#{params.vol},vol=vol-#{params.vol},update_time=NOW(),update_by=#{params.update_by}
+    where prod_id = #{params.prod_id} and platcust=#{params.platcust} and plat_no=#{params.plat_no} and tot_vol>=#{params.vol}
+  </update>
+
+</mapper>

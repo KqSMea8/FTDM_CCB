@@ -1,0 +1,20 @@
+===========================================
+日期：2017/04/13
+修改人：gang
+//-----------------------------------------
+1、prod_productinfo表增加trans_serial trans_serial2 charge_time fee_amt fee_priority 字段
+2、share_list表增加trans_serial trans_code self_amt coupon_amt experience_amt payout_amt self_priority fee_priority interest字段
+3、share_list减少 share_id
+4、新增标的出账信息表
+5、plat_repaymentlist 表增加trans_serial
+6、borrower_realrepay表增加trans_serial
+7、compensation_repay表增加trans_serial
+8、compensation_info表增加trans_serial
+===========================================
+===========================================
+日期：2017/04/14
+修改人：gang
+//-----------------------------------------
+1、trans_transreq表增加batch_order_no
+2、新增表 产品还款计划信息prod_prodrepay
+===========================================

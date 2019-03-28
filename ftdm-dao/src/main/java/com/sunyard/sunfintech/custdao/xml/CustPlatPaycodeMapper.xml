@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustPlatPaycodeMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.PlatPaycode">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <id column="pay_code" jdbcType="VARCHAR" property="pay_code" />
+    <result column="pay_code_name" jdbcType="VARCHAR" property="pay_code_name" />
+    <result column="payment_plat_no" jdbcType="VARCHAR" property="payment_plat_no" />
+    <result column="channel_id" jdbcType="VARCHAR" property="channel_id" />
+    <result column="ext_2" jdbcType="VARCHAR" property="ext_2" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, plat_no, pay_code, pay_code_name, payment_plat_no, channel_id, ext_2, enabled, 
+    remark, create_by, create_time, update_by, update_time
+  </sql>
+  <select id="getByUnionKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from plat_paycode
+    where 
+      plat_no = #{plat_no}
+      and pay_code = #{pay_code}
+  </select>
+</mapper>

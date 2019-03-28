@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://code.alibabatech.com/schema/dubbo
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 手动使用bean -->
+	<bean lazy-init="false" id="springcontextholder" class="com.sunyard.sunfintech.core.util.SpringContextHolder"></bean>
+
+	<!-- 引入属性配置文件 -->
+	<bean class="com.sunyard.sunfintech.core.util.PropertiesUtil">
+		<property name="locations">
+			<list>
+				<value>classpath:config/system.properties</value>
+				<value>classpath:config/cfg.properties</value>
+			</list>
+		</property>
+		<property name="properties">
+			<props>
+				<!-- dubbo个性化配置(服务名,端口) -->
+				<prop key="dubbo.application.name">ftdm-web-account</prop>
+				<prop key="dubbo.protocol.port">18080</prop>
+				<!-- Web端常用数据缓存时间(秒) -->
+				<prop key="redis.expiration">1800</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 扫描注解 -->
+	<context:component-scan base-package="com.sunyard.sunfintech">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.cache.annotation.EnableCaching" />
+	</context:component-scan>
+
+	<!-- dubbo url示例：url="dubbo://192.168.100.120:18080/"-->
+
+	<!--			18081			-->
+	<dubbo:reference id="accountQueryService" interface="com.sunyard.sunfintech.account.provider.IAccountQueryService" check="false" />
+
+	<!--			18082			-->
+	<dubbo:reference id="productOptionService" interface="com.sunyard.sunfintech.prod.provider.IProductOptionService" check="false" />
+	<dubbo:reference id="productInvestmentService" interface="com.sunyard.sunfintech.prod.provider.IProductInvestmentService" check="false" />
+	<dubbo:reference id="productRefundService" interface="com.sunyard.sunfintech.prod.provider.IProductRefundService" check="false" />
+	<dubbo:reference id="prodSearchService" interface="com.sunyard.sunfintech.prod.provider.IProdSearchService" check="false" />
+
+	<!--			18085			-->
+	<dubbo:reference id="userBindCardService" interface="com.sunyard.sunfintech.user.provider.IUserBindCardService" check="false" />
+	<dubbo:reference id="userBorrowerService" interface="com.sunyard.sunfintech.user.provider.IUserBorrowerService" check="false" />
+	<dubbo:reference id="userAccountService" interface="com.sunyard.sunfintech.user.provider.IUserAccountService" check="false" />
+	<dubbo:reference id="userTransService" interface="com.sunyard.sunfintech.user.provider.IUserTransService" check="false" />
+	<dubbo:reference id="platformOptionService" interface="com.sunyard.sunfintech.user.provider.IPlatformOptionService" check="false" />
+	<dubbo:reference id="platformFeeQueryService" interface="com.sunyard.sunfintech.user.provider.IPlatformFeeQueryService" check="false" />
+	<dubbo:reference id="thirdpartySearchService" interface="com.sunyard.sunfintech.user.provider.IThirdpartySearchService" check="false" />
+	<dubbo:reference id="prodRISearchService" interface="com.sunyard.sunfintech.user.provider.IProdRISearchService" check="false" />
+	<dubbo:reference id="accountSearchService" interface="com.sunyard.sunfintech.user.provider.IAccountSearchService" check="false" />
+	<dubbo:reference id="sysParameterService" interface="com.sunyard.sunfintech.user.provider.IUserSysParameterService" check="false"/>
+	<dubbo:reference id="rwWithdrawOptionService" interface="com.sunyard.sunfintech.user.provider.IRwWithdrawOptionService" check="false"/>
+	<dubbo:reference id="userAuthService" interface="com.sunyard.sunfintech.user.provider.IUserAuthService" check="false"/>
+	<dubbo:reference id="userSearchService" interface="com.sunyard.sunfintech.user.provider.IUserSearchService" check="false"/>
+	<dubbo:reference id="userAccountExtService" interface="com.sunyard.sunfintech.user.provider.IUserAccountExtService" check="false"/>
+
+	<dubbo:reference id="userTransferService" interface="com.sunyard.sunfintech.user.provider.IUserTransferService" check="false"/>
+
+
+	<!--			18084			-->
+	<dubbo:reference id="adapterService" interface="com.sunyard.sunfintech.thirdparty.provider.IAdapterService" check="false" />
+
+	<dubbo:reference id="billcheckService" interface="com.sunyard.sunfintech.billcheck.provider.IBillCheckService" check="false" />
+
+	<dubbo:reference id="clearService" interface="com.sunyard.sunfintech.billcheck.provider.IClearService" check="false" />
+
+
+	<!-- 引入SPRING配置文件 -->
+	<import resource="classpath*:spring/dubbo.xml" />
+	<import resource="classpath*:spring/redis.xml"/>
+	<import resource="classpath*:spring/rabbitmq-config.xml"/>
+	<!--<import resource="classpath*:spring/active-mq-queue.xml.bak"/>-->
+	<import resource="classpath*:spring/quartz.xml" />
+</beans>

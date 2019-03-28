@@ -1,0 +1,490 @@
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+style.css
+*/
+
+@charset 'UTF-8';
+html {
+	color: #000;
+	background: #f3f3f3;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+article,
+aside,
+blockquote,
+body,
+button,
+code,
+dd,
+details,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+input,
+legend,
+li,
+menu,
+nav,
+ol,
+p,
+pre,
+section,
+td,
+textarea,
+th,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+input,
+select,
+textarea {
+	font-size: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,
+img {
+	border: 0;
+}
+
+abbr,
+acronym {
+	border: 0;
+	font-variant: normal;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+	font-style: normal;
+	font-weight: 500;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+caption,
+th {
+	text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-weight: 500;
+}
+
+q:after,
+q:before {
+	content: '';
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+a,
+ins {
+	text-decoration: none;
+}
+
+html {
+	-webkit-tap-highlight-color: transparent;
+}
+
+body,
+html {
+	font-family: sans-serif;
+}
+
+ul,
+li {
+	list-style-type: none;
+}
+
+img {
+	display: block;
+}
+
+@-o-keyframes slideIn {
+	0% {
+		transform:translateY(300px) ;
+	}
+	100% {
+		transform:translateY(0px) ;
+	}
+}
+
+@-webkit-keyframes slideIn {
+	0% {
+		transform:translateY(300px) ;
+	}
+	100% {
+		transform:translateY(0px) ;
+	}
+}
+
+@-moz-keyframes slideIn {
+	0% {
+		transform:translateY(300px) ;
+	}
+	100% {
+		transform:translateY(0px) ;
+	}
+}
+
+@-o-keyframes slideOut {
+	0% {
+		transform:translateY(0px) ;
+	}
+	100% {
+		transform:translateY(300px) ;
+	}
+}
+
+@-moz-keyframes slideOut {
+	0% {
+		transform:translateY(0px) ;
+	}
+	100% {
+		transform:translateY(300px) ;
+	}
+}
+
+@-webkit-keyframes slideOut {
+	0% {
+		transform:translateY(0px) ;
+	}
+	100% {
+		transform:translateY(300px) ;
+	}
+}
+.jslogo {
+    width: 100%;
+    background: #fff;
+    box-sizing: border-box;
+    position: relative;
+}
+.jsBank {
+    height: auto;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+#kb_p_CLOSE>div{
+	height: 45%;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.rowclose>div{
+	height: 55%;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+#kb_p_D>div{
+	height: 40%;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.rowdelet>div {
+	height: 35%;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.row1 {
+	width: 100%;
+	height: 21%;
+	float: left;
+}
+
+.row2 {
+	width: 100%;
+	margin: 0px 5%;
+	height: 21%;
+	float: left;
+}
+
+.row3 {
+	width: 100%;
+	height: 21%;
+	float: left;
+}
+
+.row4{
+	width: 100%;
+	height: 21%;
+	float: left;
+}
+.row5,.row6{
+	width: 100%;
+	height: 21%;
+	float: left;
+}
+.row1pwd {
+	width: 10%;
+	margin: 0;
+	height: 100%;
+	line-height: 1.6em;
+	float: left;
+	text-align: center;
+	font-size: 1.5em;
+	color: #202020;
+}
+
+.row2pwd {
+	width: 10%;
+	margin: 0%;
+	height: 100%;
+	line-height: 1.6em;
+	float: left;
+	text-align: center;
+	font-size: 1.5em;
+	color: #202020;
+}
+
+.row3pwda {
+	width: 13%;
+	margin-right: 2%;
+	height: 100%;
+	line-height: 1.6em;
+	float: left;
+	text-align: center;
+	font-size: 1.3em;
+	color: #202020;
+}
+
+.row3pwdb {
+	width: 10%;
+	margin: 0;
+	height: 100%;
+	line-height: 1.6em;
+	float: left;
+	text-align: center;
+	font-size: 1.5em;
+	color: #202020;
+}
+
+.row3pwdc {
+	width: 13%;
+	margin-left: 2%;
+	height: 100%;
+	line-height: 2.1em;
+	float: left;
+	text-align: center;
+	font-size: 1.3em;
+	color: #202020;
+}
+
+.row3pwdd {
+	width: 14%;
+	margin: 0;
+	height: 100%;
+	line-height: 1.6em;
+	float: left;
+	text-align: center;
+	font-size: 1.5em;
+	color: #202020;
+	background-color: transparent;
+}
+
+.row4pwda {
+	width: 25%;
+	margin: 0;
+	height: 100%;
+	line-height: 2.1em;
+	float: left;
+	text-align: center;
+	font-size: 1.3em;
+	color: #202020;
+	background-color: transparent;
+}
+
+.row4pwdb {
+	width: 50%;
+	margin: 0;
+	height: 100%;
+	line-height: 1.6em;
+	float: left;
+	text-align: center;
+	font-size: 1.5em;
+	color: #202020;
+	background-color: transparent;
+}
+
+.rowalone .fd {
+	line-height: 80px;
+	!important
+}
+
+.rowlonely .fd {
+	line-height: 20px;
+	!important
+}
+
+.pwd {
+	width: 33.3%;
+	margin: 0;
+	height: 100%;
+	line-height: 1.6em;
+	float: left;
+	text-align: center;
+	font-size: 1.5em;
+	color: #202020;
+	background-color: transparent;
+}
+
+.pwdkeyboard {
+	font-size: 16px;
+	position: fixed;
+	width: 100%;
+	z-index: 1001;
+	background: #d2d6db;
+	bottom: 0;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-webkit-touch-callout: none;
+	display: none;
+	float: left;
+	margin-top: 0;
+	height: 213px;
+	-webkit-animation-name: slideIn;
+	-webkit-animation-duration: 0.3s;
+	-moz-animation-name: slideIn;
+	-moz-animation-duration: 0.3s;
+	-o-animation-name: slideIn;
+	-o-animation-duration: 0.3s;
+}
+
+.pwdkeyboardout {
+	font-size: 16px;
+	position: fixed;
+	width: 100%;
+	z-index: 1001;
+	background: #d2d6db;
+	bottom: 0;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	display: none;
+	float: left;
+	margin-top: 0;
+	height: 213px;
+	-webkit-animation-name: slideOut;
+	-webkit-animation-duration: 0.3s;
+	-moz-animation-name: slideOut;
+	-moz-animation-duration: 0.3s;
+	-o-animation-name: slideOut;
+	-o-animation-duration: 0.3s;
+}
+
+.pwdkeyboardout2 {
+	font-size: 16px;
+	position: fixed;
+	width: 100%;
+	z-index: 1001;
+	background: #d2d6db;
+	bottom: -300px;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	display: none;
+	float: left;
+	margin-top: 0;
+	height: 213px;
+}
+/* 兼容iphone X
+ * 或者这么写
+ * @media (device-width: 375px) and (device-height: 812px) and (-webkit-min-device-pixel-ratio : 3){
+ *	#testkbid{
+ *		padding-bottom:constant(safe-area-inset-bottom);
+ *	}
+ * }
+ * 其中constant(safe-area-inset-bottom)可以为具体值如：10px
+ **/
+@supports(bottom:constant(safe-area-inset-bottom)) {
+	#testkbid{
+		padding-bottom: constant(safe-area-inset-bottom);
+	}
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+keyboard.css
+*/
+
+html {
+	width: 100%;
+	height: auto;
+	min-height: 100%;
+}
+
+body {
+	width: 100%;
+	height: auto;
+	min-height: 100%;
+}

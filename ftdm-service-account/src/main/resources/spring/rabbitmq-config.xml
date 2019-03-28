@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 查找最新的schemaLocation 访问 http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/rabbit
+        http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd">
+
+   <!--<rabbit:connection-factory id="connectionFactory"   username="${mq.userName}"-->
+                               <!--password="${mq.password}"  virtual-host="${mq.vhost}"  addresses="${mq.addresses}"  />-->
+
+    <rabbit:connection-factory id="connectionFactory" host="${mq.host}" username="${mq.userName}"
+                               password="${mq.password}" port="${mq.port}" virtual-host="${mq.vhost}"/>
+    <rabbit:admin id="connectAdmin" connection-factory="connectionFactory"/>
+
+    <!-- spring template声明-->
+    <rabbit:template exchange="amqpExchange" id="amqpTemplate"
+                     connection-factory="connectionFactory"/> <!-- message-converter="jsonMessageConverter"-->
+
+
+    <!--生产者 交换机绑定队列-->
+    <rabbit:direct-exchange name="ftdm.account.direct.exchange" durable="true" auto-delete="false">
+        <rabbit:bindings>
+            <rabbit:binding queue="TransTransReqQueue:account" key="TransTransReqQueue:account"/>
+            <rabbit:binding queue="NotifyQueue" key="NotifyQueue"/>
+            <rabbit:binding queue="EaccTransTransReqQueue" key="EaccTransTransReqQueue"/>
+            <rabbit:binding queue="QueryPayStatusQueue" key="QueryPayStatusQueue"/>
+            <rabbit:binding queue="BankReverseQueue" key="BankReverseQueue"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+    <!--转账交换机队列-->
+    <rabbit:direct-exchange name="ftdm.transfer.direct.exchange" durable="true" auto-delete="false">
+        <rabbit:bindings>
+            <rabbit:binding queue="TransferQueue" key="TransferQueue"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <rabbit:topic-exchange name="ftdm.notify.topic.exchange" durable="true" auto-delete="false" >
+        <rabbit:bindings>
+            <rabbit:binding queue="ToUserQueue" pattern="fromAccount.#" />
+            <rabbit:binding queue="ToProdQueue" pattern="fromAccount.#" />
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+    <!-- 消息对象json转换类 -->
+    <!--<bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter"/>-->
+
+    <!-- queue队列 -->
+    <rabbit:queue name="test.queue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransTransReqQueue:account" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="NotifyQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="EaccTransTransReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="BankReverseQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="QueryPayStatusQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="MsgSendReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+
+    <!--模块间通讯队列-->
+    <rabbit:queue name="ToUserQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="ToProdQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!--转账队列-->
+    <rabbit:queue name="TransferQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_ProdInvest" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_ProdTransfer" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_PayFee" durable="true" auto-delete="false" exclusive="false"/>
+
+    <!-- 监听 -->
+    <rabbit:listener-container connection-factory="connectionFactory" concurrency="5" max-concurrency="10" acknowledge="manual" prefetch="10">
+        <rabbit:listener queues="test.queue" ref="testDirectListener" method="onMessage"/>
+        <rabbit:listener queues="TransTransReqQueue:account" ref="transTransReqQueueListener" method="onMessage"/>
+        <rabbit:listener queues="QueryPayStatusQueue" ref="queryPayStatusQueueListener" method="onMessage"/>
+        <rabbit:listener queues="EaccTransTransReqQueue" ref="eaccTransFlowConsumerQueueListener" method="onMessage"/>
+        <rabbit:listener queues="TransferQueue" ref="transferQueueListener" method="onMessage"/>
+        <rabbit:listener queues="TransferQueue_ProdInvest" ref="transferQueueListener_ProdInvest" method="onMessage"/>
+        <rabbit:listener queues="TransferQueue_ProdTransfer" ref="transferQueueListener_ProdTransfer" method="onMessage"/>
+        <rabbit:listener queues="TransferQueue_PayFee" ref="transferQueueListener_PayFee" method="onMessage"/>
+        <rabbit:listener queues="BankReverseQueue" ref="bankReverseQueueListener" method="onMessage"/>
+    </rabbit:listener-container>
+
+    <!-- 监听器 -->
+    <bean id="testDirectListener" class="com.sunyard.sunfintech.account.modulepublic.mq.TestDirectReceiver"/>
+    <bean id="transTransReqQueueListener" class="com.sunyard.sunfintech.account.modulepublic.mq.TransTransreqConsumer"/>
+    <bean id="queryPayStatusQueueListener" class="com.sunyard.sunfintech.account.mq.QueryPayStatusConsumer"/>
+    <bean id="eaccTransFlowConsumerQueueListener"
+          class="com.sunyard.sunfintech.account.modulepublic.mq.EaccTransFlowConsumer"/>
+    <bean id="transferQueueListener" class="com.sunyard.sunfintech.account.mq.TransferConsumer"/>
+    <bean id="transferQueueListener_ProdInvest" class="com.sunyard.sunfintech.account.mq.TransferConsumer"/>
+    <bean id="transferQueueListener_ProdTransfer" class="com.sunyard.sunfintech.account.mq.TransferConsumer"/>
+    <bean id="transferQueueListener_PayFee" class="com.sunyard.sunfintech.account.mq.TransferConsumer"/>
+    <bean id="bankReverseQueueListener" class="com.sunyard.sunfintech.account.mq.BankReverseConsumer"/>
+
+
+</beans>

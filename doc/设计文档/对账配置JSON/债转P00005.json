@@ -1,0 +1,27 @@
+[
+  {
+    "amt": {
+      "remark": "本金",
+      "subject_from": "01",
+      "to_subject": "01"
+    },
+    "fee": {
+      "remark": "手续费",
+      "subject_from": "01",
+      "to_subject": "11"
+    },
+    "gift": {
+      "remark": "红包",
+      "subject_from": "11",
+      "to_subject": "01"
+    },
+    "transCode": "P00005"
+  },
+  {
+    "log_type":"0",
+    "amt": "deal_amount",
+    "fee": "commission.payout_amt,commission_ext.payout_amt",
+    "gift": "coupon_amt",
+    "transCode": "P00005"
+  }
+]

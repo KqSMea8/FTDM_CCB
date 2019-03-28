@@ -1,0 +1,539 @@
+{
+	"id": "e012cbb0-854a-c44e-2554-3e83ff9e427c",
+	"name": "对账相关",
+	"description": "",
+	"order": [
+		"c165f21c-9583-5307-b73b-5ea67326aae5",
+		"25e4ff94-ba0e-c878-37c1-0a1d43fa6115",
+		"aeb8802b-1aa0-0aff-a6df-5f5188663270",
+		"276bdaca-48f8-9de0-a9bb-43aaf2d74bb5",
+		"a07a45d8-c532-f07c-04b9-81055541b647",
+		"a1d69c0d-6150-fb04-4619-c6fd76cf9de1"
+	],
+	"folders": [],
+	"timestamp": 1493975129876,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "25e4ff94-ba0e-c878-37c1-0a1d43fa6115",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/billchecking/depository_balance",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e012cbb0-854a-c44e-2554-3e83ff9e427c",
+			"data": [
+				{
+					"key": "paycheck_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "precheck_flag",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "begin_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/billchecking/depository_balance",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493975197722,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "276bdaca-48f8-9de0-a9bb-43aaf2d74bb5",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/billchecking/eaccount_balance",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e012cbb0-854a-c44e-2554-3e83ff9e427c",
+			"data": [
+				{
+					"key": "paycheck_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "precheck_flag",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "begin_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/billchecking/eaccount_balance",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493975225487,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "a07a45d8-c532-f07c-04b9-81055541b647",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/billchecking/download_settlement_data",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e012cbb0-854a-c44e-2554-3e83ff9e427c",
+			"data": [
+				{
+					"key": "plat_no",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2016-05-05",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "2016-05-05 22:22:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "clear_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "signdata",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/billchecking/download_settlement_data",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493975389911,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "a1d69c0d-6150-fb04-4619-c6fd76cf9de1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/billchecking/search_settlement_status",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e012cbb0-854a-c44e-2554-3e83ff9e427c",
+			"data": [
+				{
+					"key": "plat_no",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "signdata",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/billchecking/search_settlement_status",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494036319675,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "aeb8802b-1aa0-0aff-a6df-5f5188663270",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/billchecking/eaccount_fund",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e012cbb0-854a-c44e-2554-3e83ff9e427c",
+			"data": [
+				{
+					"key": "paycheck_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "precheck_flag",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "begin_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/billchecking/eaccount_fund",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493975212601,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "c165f21c-9583-5307-b73b-5ea67326aae5",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/billchecking/channel_fund",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "paycheck_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "precheck_flag",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "begin_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494042829615,
+			"name": "http://localhost:8080/ftdm-web/billchecking/channel_fund",
+			"description": "",
+			"collectionId": "e012cbb0-854a-c44e-2554-3e83ff9e427c",
+			"responses": []
+		}
+	]
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd  
+                        http://www.springframework.org/schema/mvc  
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <bean lazy-init="false" id="springcontextholder" class="com.sunyard.sunfintech.core.util.SpringContextHolder"></bean>
+    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+    <context:component-scan base-package="com.sunyard.sunfintech">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+    <!--配置静态路径-->
+    <mvc:resources mapping="/image/**" location="/WEB-INF/views/image/"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/views/css/"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/views/js/"/>
+    <mvc:resources mapping="/publicjs/**" location="/WEB-INF/views/publicjs/"/>
+    <mvc:resources mapping="/svg/**" location="/WEB-INF/views/svg/"/>
+    <mvc:resources mapping="/ocx/**" location="/WEB-INF/views/ocx/"/>
+    <!--END-->
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <description>JSON转换器</description>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+
+                <property name="fastJsonConfig">
+                    <bean class="com.alibaba.fastjson.support.config.FastJsonConfig">
+                        <property name="serializerFeatures">
+                            <array>
+                                <value>QuoteFieldNames</value>
+                                <value>WriteDateUseDateFormat</value>
+                                <!-- 字符类型字段如果为null,输出为"",而非null -->
+                                <!--<value>WriteNullStringAsEmpty</value>-->
+                                <value>WriteNonStringValueAsString</value>
+                                <!--<value>WriteMapNullValue</value>-->
+                            </array>
+                        </property>
+                        <!-- TODO -->
+                        <property name="dateFormat" value="yyyyMMdd HHmmss"></property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <mvc:interceptors>
+        <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**/*"/>
+            <mvc:exclude-mapping path="/image/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/publicjs/**"/>
+            <mvc:exclude-mapping path="/svg/**"/>
+            <mvc:exclude-mapping path="/ocx/**"/>
+            <bean class="com.sunyard.sunfintech.web.interceptor.ApiPermissionInterceptor"></bean>
+        </mvc:interceptor>
+        <!--<bean class="com.sunyard.sunfintech.web.interceptor.WhiteListInterceptor"/>-->
+        <!--<bean class="com.sunyard.sunfintech.web.interceptor.OrderInterceptor"/>-->
+    </mvc:interceptors>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- 签名验证 -->
+    <bean id="signAdapter" class="com.sunyard.sunfintech.web.security.BankSign"/>
+    <bean id="authorizationAdapter" class="com.sunyard.sunfintech.web.security.BOBCheckPassword"/>
+    <bean id="signAspect" class="com.sunyard.sunfintech.core.aspect.SignAspect">
+        <constructor-arg ref="signAdapter" index="0"></constructor-arg>
+        <constructor-arg ref="authorizationAdapter" index="1"></constructor-arg>
+    </bean>
+    <bean id="logAspect" class="com.sunyard.sunfintech.core.aspect.LogAspect"/>
+    <!--<bean id="swaggerConfig" class="com.sunyard.sunfintech.web.SwaggerConfig" />-->
+
+    <bean class="com.sunyard.sunfintech.core.util.PropertiesUtil">
+        <property name="locations">
+            <list>
+                <value>classpath:config/system.properties</value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean>
+</beans>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type="text/javascript" src="publicjs/base.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/egret.css">
+	<title>重置交易密码</title>
+</head>
+<style type="text/css">
+    body .layui-layer{
+        background-color: transparent;
+    }
+    body .layui-layer .layui-layer-content{
+        width: 4rem;
+        height: 2rem!important;
+        padding: 0;
+    }
+</style>
+<body>
+    <div id="kaihu_page" >
+        <div class="bank_head">
+            <img src="image/js_bank_logo.png">
+        </div>
+        <div class="title_zu">
+            信息验证
+        </div>
+        <div class="list_page">
+            <ul>
+                <li>
+                    <p>用户姓名 </p>
+                    <input type="text" name="" value="李四">
+                </li>
+                <li>
+                    <p>身份证号</p>
+                    <input type="text" name="" value="198762166787677612">
+                </li>
+                <li>
+                    <p>银行卡号</p>
+                    <input type="text" name="" value="**** **** **** 1234">
+                </li>
+                <li>
+                    <p>完整卡号</p>
+                    <input type="text" name="" value="1234 1234 1231 1234">
+                </li>
+                <li>
+                    <p>预留手机号</p>
+                    <input type="text" name="" value="12345678909">
+                </li>
+                <li>
+                    <p>短信验证码</p>
+                    <input type="text" name="" maxlength="6" placeholder="请输入短信验证码">
+                    <div class="send_btn">发送验证码</div>
+                </li>
+                 
+            </ul>
+        </div>
+       
+        <div class="title_zu">
+            设置交易密码
+        </div>
+        <div class="list_page">
+            <ul>
+                <li>
+                    <p>设置密码</p>
+                    <input type="text" name="" placeholder="请设置六位交易密码">
+                </li>
+                <li>
+                    <p>确认密码</p>
+                    <input type="text" name="" value="请确认交易密码">
+                </li>
+            </ul>
+        </div>
+        <div class="submmit_btn">
+            提&nbsp;&nbsp;交
+        </div>
+    </div>
+    
+
+</body>
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="js/layui/layui.all.js"></script>
+<script type="text/javascript">
+$('.submmit_btn').on("click",function(){
+    alert_con("卡号错误")
+})
+//弹框 
+function alert_con(error_con){
+    var alertcon = "<div class=\"alert_box\">"+
+                        "<div class=\"alert_box_con\">"+
+                            "<img src=\"image/error.png\">"+
+                            "<span>"+error_con+"</span>"+
+                        "</div>"+
+                    "</div>";
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      var laysty = layer.msg(alertcon);
+      layer.style(laysty, {
+            width: '4rem',
+            height:'2rem',
+            top: '50%',
+            left: '50%',
+            marginTop: '-1rem',
+            marginLeft: '-2rem'
+        });
+    });     
+}
+
+
+</script>
+</html>

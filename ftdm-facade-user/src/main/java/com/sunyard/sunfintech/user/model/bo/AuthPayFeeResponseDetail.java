@@ -1,0 +1,62 @@
+package com.sunyard.sunfintech.user.model.bo;
+
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * 【功能描述】
+ *
+ * @author wyc  2018/2/1.
+ */
+@Data
+public class AuthPayFeeResponseDetail implements Serializable {
+    private String order_status;
+    private String process_date;
+    private String       query_id;
+    private String  error_no;
+    private String error_info;
+//    private String  sign;
+
+    public String getOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(String order_status) {
+        this.order_status = order_status;
+    }
+
+    public String getProcess_date() {
+        return process_date;
+    }
+
+    public void setProcess_date(String process_date) {
+        this.process_date = process_date;
+    }
+
+    public String getQuery_id() {
+        return query_id;
+    }
+
+    public void setQuery_id(String query_id) {
+        this.query_id = query_id;
+    }
+
+    public String getError_no() {
+        return error_no;
+    }
+
+    public void setError_no(String error_no) {
+        this.error_no = error_no;
+    }
+
+    public String getError_info() {
+        return error_info;
+    }
+
+    public void setError_info(String error_info) {
+        this.error_info = error_info;
+    }
+
+
+}

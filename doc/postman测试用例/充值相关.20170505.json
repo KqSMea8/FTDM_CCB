@@ -1,0 +1,1368 @@
+{
+	"id": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+	"name": "充值相关",
+	"description": "",
+	"order": [
+		"f20c77d8-f0bc-c71b-c1fb-9052db22170f",
+		"9bea1e4b-4b06-fb4e-6996-d319e0bd77ba",
+		"ea9c0025-6892-cf56-6ccc-a809554f7453",
+		"08822d79-8377-fe4d-9198-5a0b0c671151",
+		"e5e9e53f-2e44-3b68-4dcd-c11b2bb0a4cd",
+		"3d557e7c-f47e-005a-650a-b292912957b1",
+		"0f0c0db0-7bf9-55a1-a10e-778efe42da77",
+		"221f7640-ad29-dfc3-0509-e420d78d90cf",
+		"29a60599-e9bd-425d-4bbe-202403a0b579",
+		"7f77d088-1f45-8bed-b561-0e3635fe1249",
+		"b08076b0-4793-cf5f-d350-53d32fc762c8"
+	],
+	"folders": [],
+	"timestamp": 1494039520721,
+	"owner": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "08822d79-8377-fe4d-9198-5a0b0c671151",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/apply_quick_pay",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "ws",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "sdsad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_no",
+					"value": "ftfgdfga",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_type",
+					"value": "dfadfadfas",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "currency_code",
+					"value": "sdadfasd",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id_type",
+					"value": "dxdfas",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id_code",
+					"value": "dasfasdf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mobile",
+					"value": "asdfaef34",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "sdafasdfasdf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amt",
+					"value": "1223231213123",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_code",
+					"value": "dasdasd",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "branch_flag",
+					"value": "adsasdsa",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "dasdasd",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/payment/apply_quick_pay",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494041773830,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "0f0c0db0-7bf9-55a1-a10e-778efe42da77",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/notify_mall_pay",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "plat_no",
+					"value": "21322",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "4334",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_date",
+					"value": "3232",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_time",
+					"value": "2323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_status",
+					"value": "2323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "signdata",
+					"value": "23232",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/payment/notify_mall_pay",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494042702671,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "221f7640-ad29-dfc3-0509-e420d78d90cf",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/repay_off_line",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amt",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList",
+					"value": "[{},{}]",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList. platcust",
+					"value": "232323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList.amt",
+					"value": "23323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "122121",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/repay_off_line",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494043199668,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "29a60599-e9bd-425d-4bbe-202403a0b579",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/notify_off_line",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "plat_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amt",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList",
+					"value": "[]",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList. platcust",
+					"value": "232323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList.amt",
+					"value": "123212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "bank_no",
+					"value": "2323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "code",
+					"value": "321121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "signdata",
+					"value": "234234",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/payment/notify_off_line",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494043386368,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "3d557e7c-f47e-005a-650a-b292912957b1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/apply_quick_pay_mall",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "2121212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amt",
+					"value": "1223213",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "charge_type",
+					"value": "32423432",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "return_url",
+					"value": "32423423",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "21312312",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/payment/apply_quick_pay_mall",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494042153847,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "7f77d088-1f45-8bed-b561-0e3635fe1249",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/charge_off_line",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amt",
+					"value": "21221",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList",
+					"value": "[]",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList. platcust",
+					"value": "243323",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcustList.amt",
+					"value": "43434",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "32232",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/payment/charge_off_line",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494043581716,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "9bea1e4b-4b06-fb4e-6996-d319e0bd77ba",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/apply_quick_pay",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494041144633,
+			"name": "http://localhost:8080/ftdm-web/payment/comment",
+			"description": "",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"responses": []
+		},
+		{
+			"id": "b08076b0-4793-cf5f-d350-53d32fc762c8",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/batch_withdraw",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "total_num",
+					"value": "23232",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data",
+					"value": "[]",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .detail_no",
+					"value": "343443",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .platcust",
+					"value": "343434",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .amt",
+					"value": "233223",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .is_advance",
+					"value": "23232",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .pay_code",
+					"value": "4232",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .fee_amt",
+					"value": "32232",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .withdraw_type",
+					"value": "34232",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "client_property",
+					"value": "2123",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "city_code",
+					"value": "23232",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .notify_url",
+					"value": "3434",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data .remark",
+					"value": "23232",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/payment/batch_withdraw",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494046582699,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "e5e9e53f-2e44-3b68-4dcd-c11b2bb0a4cd",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/confirm_quick_pay",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "identifying_code",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "origin_order_no",
+					"value": "1212212122",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_code",
+					"value": "565545",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/payment/confirm_quick_pay",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494042070608,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "ea9c0025-6892-cf56-6ccc-a809554f7453",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/notity_payment",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "asdadas",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_amt",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_date",
+					"value": "12:111",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_time",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_order_no",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_finish_date",
+					"value": "1212s",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_finish_time",
+					"value": "wsss",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_status",
+					"value": "s3ds",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_amt",
+					"value": "1sdf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "dcsdasda",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "plat_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "signdata",
+					"value": "121212",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/payment/notity_payment",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494041010758,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "f20c77d8-f0bc-c71b-c1fb-9052db22170f",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/payment/geteway_pay",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "plat_no",
+					"value": "111",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "2221-投资账户",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "charge_type",
+					"value": "333",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "Bankcode",
+					"value": "444",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_no",
+					"value": "111121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "Amt",
+					"value": "1212",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "return_url",
+					"value": "www.google.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "www.cnm.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_code",
+					"value": "hahahahh",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "20170506",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "11:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "121",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "in77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dadad",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "12121",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494040018454,
+			"name": "http://localhost:8080/ftdm-web/payment/geteway_pay",
+			"description": "",
+			"collectionId": "0ff65e05-6e3f-bef9-cd10-c9691c70f7b2",
+			"responses": []
+		}
+	]
+}

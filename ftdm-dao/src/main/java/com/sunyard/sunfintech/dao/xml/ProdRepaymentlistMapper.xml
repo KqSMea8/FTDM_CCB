@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ProdRepaymentlistMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ProdRepaymentlist">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="repay_num" jdbcType="INTEGER" property="repay_num" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="repay_amount" jdbcType="DECIMAL" property="repay_amount" />
+    <result column="repay_val" jdbcType="DECIMAL" property="repay_val" />
+    <result column="repay_amt" jdbcType="DECIMAL" property="repay_amt" />
+    <result column="repay_date" jdbcType="TIMESTAMP" property="repay_date" />
+    <result column="real_repay_amount" jdbcType="DECIMAL" property="real_repay_amount" />
+    <result column="real_repay_val" jdbcType="DECIMAL" property="real_repay_val" />
+    <result column="real_repay_amt" jdbcType="DECIMAL" property="real_repay_amt" />
+    <result column="real_repay_date" jdbcType="TIMESTAMP" property="real_repay_date" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="if_advance" jdbcType="VARCHAR" property="if_advance" />
+    <result column="real_experience_amt" jdbcType="DECIMAL" property="real_experience_amt" />
+    <result column="real_rates_amt" jdbcType="DECIMAL" property="real_rates_amt" />
+    <result column="real_repay_fee" jdbcType="DECIMAL" property="real_repay_fee" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, plat_no, platcust, repay_num, prod_id, repay_amount, repay_val, repay_amt, repay_date, 
+    real_repay_amount, real_repay_val, real_repay_amt, real_repay_date, status, if_advance, 
+    real_experience_amt, real_rates_amt, real_repay_fee, enabled, remark, create_by, 
+    create_time, update_by, update_time, ext1, ext2
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdRepaymentlistExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from prod_repaymentlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdRepaymentlistExample">
+    delete from prod_repaymentlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ProdRepaymentlist">
+    insert into prod_repaymentlist (id, plat_no, platcust, 
+      repay_num, prod_id, repay_amount, 
+      repay_val, repay_amt, repay_date, 
+      real_repay_amount, real_repay_val, real_repay_amt, 
+      real_repay_date, status, if_advance, 
+      real_experience_amt, real_rates_amt, real_repay_fee, 
+      enabled, remark, create_by, 
+      create_time, update_by, update_time, 
+      ext1, ext2)
+    values (#{id,jdbcType=INTEGER}, #{plat_no,jdbcType=VARCHAR}, #{platcust,jdbcType=VARCHAR}, 
+      #{repay_num,jdbcType=INTEGER}, #{prod_id,jdbcType=VARCHAR}, #{repay_amount,jdbcType=DECIMAL}, 
+      #{repay_val,jdbcType=DECIMAL}, #{repay_amt,jdbcType=DECIMAL}, #{repay_date,jdbcType=TIMESTAMP}, 
+      #{real_repay_amount,jdbcType=DECIMAL}, #{real_repay_val,jdbcType=DECIMAL}, #{real_repay_amt,jdbcType=DECIMAL}, 
+      #{real_repay_date,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{if_advance,jdbcType=VARCHAR}, 
+      #{real_experience_amt,jdbcType=DECIMAL}, #{real_rates_amt,jdbcType=DECIMAL}, #{real_repay_fee,jdbcType=DECIMAL}, 
+      #{enabled,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdRepaymentlist">
+    insert into prod_repaymentlist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="platcust != null">
+        platcust,
+      </if>
+      <if test="repay_num != null">
+        repay_num,
+      </if>
+      <if test="prod_id != null">
+        prod_id,
+      </if>
+      <if test="repay_amount != null">
+        repay_amount,
+      </if>
+      <if test="repay_val != null">
+        repay_val,
+      </if>
+      <if test="repay_amt != null">
+        repay_amt,
+      </if>
+      <if test="repay_date != null">
+        repay_date,
+      </if>
+      <if test="real_repay_amount != null">
+        real_repay_amount,
+      </if>
+      <if test="real_repay_val != null">
+        real_repay_val,
+      </if>
+      <if test="real_repay_amt != null">
+        real_repay_amt,
+      </if>
+      <if test="real_repay_date != null">
+        real_repay_date,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="if_advance != null">
+        if_advance,
+      </if>
+      <if test="real_experience_amt != null">
+        real_experience_amt,
+      </if>
+      <if test="real_rates_amt != null">
+        real_rates_amt,
+      </if>
+      <if test="real_repay_fee != null">
+        real_repay_fee,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="ext1 != null">
+        ext1,
+      </if>
+      <if test="ext2 != null">
+        ext2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="repay_num != null">
+        #{repay_num,jdbcType=INTEGER},
+      </if>
+      <if test="prod_id != null">
+        #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="repay_amount != null">
+        #{repay_amount,jdbcType=DECIMAL},
+      </if>
+      <if test="repay_val != null">
+        #{repay_val,jdbcType=DECIMAL},
+      </if>
+      <if test="repay_amt != null">
+        #{repay_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="repay_date != null">
+        #{repay_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="real_repay_amount != null">
+        #{real_repay_amount,jdbcType=DECIMAL},
+      </if>
+      <if test="real_repay_val != null">
+        #{real_repay_val,jdbcType=DECIMAL},
+      </if>
+      <if test="real_repay_amt != null">
+        #{real_repay_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="real_repay_date != null">
+        #{real_repay_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="if_advance != null">
+        #{if_advance,jdbcType=VARCHAR},
+      </if>
+      <if test="real_experience_amt != null">
+        #{real_experience_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="real_rates_amt != null">
+        #{real_rates_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="real_repay_fee != null">
+        #{real_repay_fee,jdbcType=DECIMAL},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdRepaymentlistExample" resultType="java.lang.Integer">
+    select count(*) from prod_repaymentlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update prod_repaymentlist
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platcust != null">
+        platcust = #{record.platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repay_num != null">
+        repay_num = #{record.repay_num,jdbcType=INTEGER},
+      </if>
+      <if test="record.prod_id != null">
+        prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repay_amount != null">
+        repay_amount = #{record.repay_amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.repay_val != null">
+        repay_val = #{record.repay_val,jdbcType=DECIMAL},
+      </if>
+      <if test="record.repay_amt != null">
+        repay_amt = #{record.repay_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.repay_date != null">
+        repay_date = #{record.repay_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.real_repay_amount != null">
+        real_repay_amount = #{record.real_repay_amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.real_repay_val != null">
+        real_repay_val = #{record.real_repay_val,jdbcType=DECIMAL},
+      </if>
+      <if test="record.real_repay_amt != null">
+        real_repay_amt = #{record.real_repay_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.real_repay_date != null">
+        real_repay_date = #{record.real_repay_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.if_advance != null">
+        if_advance = #{record.if_advance,jdbcType=VARCHAR},
+      </if>
+      <if test="record.real_experience_amt != null">
+        real_experience_amt = #{record.real_experience_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.real_rates_amt != null">
+        real_rates_amt = #{record.real_rates_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.real_repay_fee != null">
+        real_repay_fee = #{record.real_repay_fee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_by != null">
+        create_by = #{record.create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_time != null">
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_by != null">
+        update_by = #{record.update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.update_time != null">
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ext1 != null">
+        ext1 = #{record.ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext2 != null">
+        ext2 = #{record.ext2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update prod_repaymentlist
+    set id = #{record.id,jdbcType=INTEGER},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      platcust = #{record.platcust,jdbcType=VARCHAR},
+      repay_num = #{record.repay_num,jdbcType=INTEGER},
+      prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      repay_amount = #{record.repay_amount,jdbcType=DECIMAL},
+      repay_val = #{record.repay_val,jdbcType=DECIMAL},
+      repay_amt = #{record.repay_amt,jdbcType=DECIMAL},
+      repay_date = #{record.repay_date,jdbcType=TIMESTAMP},
+      real_repay_amount = #{record.real_repay_amount,jdbcType=DECIMAL},
+      real_repay_val = #{record.real_repay_val,jdbcType=DECIMAL},
+      real_repay_amt = #{record.real_repay_amt,jdbcType=DECIMAL},
+      real_repay_date = #{record.real_repay_date,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=VARCHAR},
+      if_advance = #{record.if_advance,jdbcType=VARCHAR},
+      real_experience_amt = #{record.real_experience_amt,jdbcType=DECIMAL},
+      real_rates_amt = #{record.real_rates_amt,jdbcType=DECIMAL},
+      real_repay_fee = #{record.real_repay_fee,jdbcType=DECIMAL},
+      enabled = #{record.enabled,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_by = #{record.create_by,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_by = #{record.update_by,jdbcType=VARCHAR},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      ext1 = #{record.ext1,jdbcType=VARCHAR},
+      ext2 = #{record.ext2,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

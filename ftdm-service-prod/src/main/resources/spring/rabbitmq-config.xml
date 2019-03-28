@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 查找最新的schemaLocation 访问 http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/rabbit
+        http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd">
+
+    <!--<rabbit:connection-factory id="connectionFactory"   username="${mq.userName}"-->
+                               <!--password="${mq.password}"  virtual-host="${mq.vhost}"  addresses="${mq.addresses}"  />-->
+
+    <rabbit:connection-factory id="connectionFactory" host="${mq.host}" username="${mq.userName}"
+                               password="${mq.password}" port="${mq.port}" virtual-host="${mq.vhost}"/>
+    <rabbit:admin id="connectAdmin" connection-factory="connectionFactory"/>
+
+    <!-- spring template声明-->
+    <rabbit:template exchange="amqpExchange" id="amqpTemplate"
+                     connection-factory="connectionFactory"/> <!-- message-converter="jsonMessageConverter"-->
+
+    <!-- 消息对象json转换类 -->
+    <!--<bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter"/>-->
+    <rabbit:direct-exchange name="ftdm.prod.direct.exchange" durable="true" auto-delete="false" id="test-mq-exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="BatchInvestQueue" key="BatchInvestQueue"></rabbit:binding>
+            <rabbit:binding queue="BatchProdTransQueue" key="BatchProdTransQueue"></rabbit:binding>
+            <rabbit:binding queue="BatchRefundTransQueueForFengJR" key="BatchRefundTransQueueForFengJR"></rabbit:binding>
+            <rabbit:binding queue="BatchProdIdRefundQueue" key="BatchProdIdRefundQueue"></rabbit:binding>
+
+            <rabbit:binding queue="TransTransReqQueue:prod" key="TransTransReqQueue:prod"></rabbit:binding>
+            <rabbit:binding queue="NotifyQueue" key="NotifyQueue"></rabbit:binding>
+            <rabbit:binding queue="EaccTransTransReqQueue" key="EaccTransTransReqQueue"></rabbit:binding>
+            <rabbit:binding queue="MsgSendReqQueue" key="MsgSendReqQueue"></rabbit:binding>
+            <rabbit:binding queue="CCBMsgSendReqQueue" key="CCBMsgSendReqQueue"></rabbit:binding>
+            <rabbit:binding queue="ProductRefundQueue" key="ProductRefundQueue"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <!--转账交换机队列-->
+    <rabbit:direct-exchange name="ftdm.transfer.direct.exchange" durable="true" auto-delete="false">
+        <rabbit:bindings>
+            <rabbit:binding queue="TransferQueue" key="TransferQueue"/>
+            <rabbit:binding queue="TransferQueue_ProdInvest" key="TransferQueue_ProdInvest"/>
+            <rabbit:binding queue="TransferQueue_ProdTransfer" key="TransferQueue_ProdTransfer"/>
+            <rabbit:binding queue="TransferQueue_PayFee" key="TransferQueue_PayFee"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <rabbit:topic-exchange name="ftdm.link.topic.exchange" durable="true" auto-delete="false"  >
+        <rabbit:bindings>
+            <rabbit:binding queue="LinkToUserQueue" pattern="asynData.#"></rabbit:binding>
+
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+
+    <rabbit:queue name="LinkToUserQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransTransReqQueue:prod" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="NotifyQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="EaccTransTransReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="MsgSendReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="CCBMsgSendReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+
+    <!-- queue队列 -->
+    <!-- 批量投标队列 -->
+    <rabbit:queue name="BatchInvestQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!-- 批量债转队列 -->
+    <rabbit:queue name="BatchProdTransQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!-- 批量标的还款队列 -->
+    <rabbit:queue name="BatchRefundTransQueueForFengJR" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="BatchProdIdRefundQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="ProductRefundQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!--模块间通讯队列-->
+    <rabbit:queue name="ToProdQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!--转账队列-->
+    <rabbit:queue name="TransferQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_ProdInvest" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_ProdTransfer" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_PayFee" durable="true" auto-delete="false" exclusive="false"/>
+
+    <!-- 监听 -->
+    <rabbit:listener-container connection-factory="connectionFactory" concurrency="10" acknowledge="manual" prefetch="10">
+        <rabbit:listener queues="BatchInvestQueue" ref="batchInvestConsumer" method="onMessage" />
+        <rabbit:listener queues="BatchProdTransQueue" ref="batchProdQueueListener" method="onMessage"/>
+        <rabbit:listener queues="BatchRefundTransQueueForFengJR" ref="batchRefundQueueListenerForFengJR" method="onMessage"/>
+        <rabbit:listener queues="BatchProdIdRefundQueue" ref="batchRefundQueueListener" method="onMessage"/>
+        <rabbit:listener queues="ProductRefundQueue" ref="productRefundQueueListener" method="onMessage"/>
+        <rabbit:listener queues="TransTransReqQueue:prod" ref="transTransReqQueueListener" method="onMessage"/>
+        <rabbit:listener queues="EaccTransTransReqQueue" ref="eaccTransFlowConsumerQueueListener" method="onMessage"/>
+        <rabbit:listener queues="ToProdQueue" ref="toProdQueueListener" method="onMessage"/>
+    </rabbit:listener-container>
+
+    <!-- 监听器 -->
+    <bean id="sysParamsSetTopicListener" class="com.sunyard.sunfintech.prod.modulepublic.mq.SysParameterReceiver"/>
+    <bean id="batchInvestConsumer" class="com.sunyard.sunfintech.prod.mq.BatchInvestConsumer"/>
+    <bean id="batchProdQueueListener" class="com.sunyard.sunfintech.prod.mq.BatchProdConsumer"/>
+    <bean id="batchRefundQueueListenerForFengJR" class="com.sunyard.sunfintech.prod.mq.BatchRefundConsumerForFengJR"/>
+    <bean id="batchRefundQueueListener" class="com.sunyard.sunfintech.prod.mq.BatchProdIdRefundQueue"/>
+    <bean id="productRefundQueueListener" class="com.sunyard.sunfintech.prod.mq.ProductRefundConsumer"/>
+    <bean id="transTransReqQueueListener" class="com.sunyard.sunfintech.prod.modulepublic.mq.TransTransreqConsumer"/>
+    <bean id="eaccTransFlowConsumerQueueListener" class="com.sunyard.sunfintech.prod.modulepublic.mq.EaccTransFlowConsumer"/>
+    <bean id="toProdQueueListener" class="com.sunyard.sunfintech.prod.mq.ToProdBackNotifyConsumer"/>
+
+</beans>

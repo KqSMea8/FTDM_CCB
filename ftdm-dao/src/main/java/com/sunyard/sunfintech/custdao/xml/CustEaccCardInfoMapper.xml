@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustEaccCardInfoMapper">
+
+  <insert id="insertEaccCardInfoIgnore" parameterType="com.sunyard.sunfintech.dao.entity.EaccCardinfo">
+    insert ignore into eacc_cardinfo (mall_no, mallcust,
+      pay_channel, card_no, bank_no,
+      open_branch, card_type, mobile,
+      status, bindId, acct_name,
+      acct_no, org_no, enabled,
+      remark, create_by, create_time,
+      update_by, update_time)
+    values (#{mall_no,jdbcType=VARCHAR}, #{mallcust,jdbcType=VARCHAR},
+      #{pay_channel,jdbcType=VARCHAR}, #{card_no,jdbcType=VARCHAR}, #{bank_no,jdbcType=VARCHAR},
+      #{open_branch,jdbcType=CHAR}, #{card_type,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR},
+      #{status,jdbcType=CHAR}, #{bindId,jdbcType=VARCHAR}, #{acct_name,jdbcType=VARCHAR},
+      #{acct_no,jdbcType=VARCHAR}, #{org_no,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR},
+      #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="insertEaccCardInfoReplace" parameterType="com.sunyard.sunfintech.dao.entity.EaccCardinfo">
+    replace into eacc_cardinfo (mall_no, mallcust,
+      pay_channel, card_no, bank_no,
+      open_branch, card_type, mobile,
+      status, bindId, acct_name,
+      acct_no, org_no, enabled,
+      remark, create_by, create_time,
+      update_by, update_time)
+    values (#{mall_no,jdbcType=VARCHAR}, #{mallcust,jdbcType=VARCHAR},
+      #{pay_channel,jdbcType=VARCHAR}, #{card_no,jdbcType=VARCHAR}, #{bank_no,jdbcType=VARCHAR},
+      #{open_branch,jdbcType=CHAR}, #{card_type,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR},
+      #{status,jdbcType=CHAR}, #{bindId,jdbcType=VARCHAR}, #{acct_name,jdbcType=VARCHAR},
+      #{acct_no,jdbcType=VARCHAR}, #{org_no,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR},
+      #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP},
+      #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+
+
+  <update id="updateEaccCardinfoListByIds" parameterType="com.sunyard.sunfintech.dao.entity.EaccCardinfo">
+       update eacc_cardinfo set enabled=#{enabled},update_by = #{update_by},update_time = #{update_time} where id=#{id,jdbcType=INTEGER}
+  </update>
+</mapper>

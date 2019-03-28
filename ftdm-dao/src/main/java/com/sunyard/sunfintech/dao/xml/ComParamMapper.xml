@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ComParamMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ComParam">
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="param_type" jdbcType="VARCHAR" property="param_type" />
+    <result column="prod_type" jdbcType="VARCHAR" property="prod_type" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="param_code" jdbcType="VARCHAR" property="param_code" />
+    <result column="param_value" jdbcType="VARCHAR" property="param_value" />
+    <result column="param_name" jdbcType="VARCHAR" property="param_name" />
+    <result column="param_desc" jdbcType="VARCHAR" property="param_desc" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    plat_no, param_type, prod_type, prod_id, param_code, param_value, param_name, param_desc
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.ComParamExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from com_param
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.ComParamExample">
+    delete from com_param
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ComParam">
+    insert into com_param (plat_no, param_type, prod_type, 
+      prod_id, param_code, param_value, 
+      param_name, param_desc)
+    values (#{plat_no,jdbcType=VARCHAR}, #{param_type,jdbcType=VARCHAR}, #{prod_type,jdbcType=VARCHAR}, 
+      #{prod_id,jdbcType=VARCHAR}, #{param_code,jdbcType=VARCHAR}, #{param_value,jdbcType=VARCHAR}, 
+      #{param_name,jdbcType=VARCHAR}, #{param_desc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ComParam">
+    insert into com_param
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="param_type != null">
+        param_type,
+      </if>
+      <if test="prod_type != null">
+        prod_type,
+      </if>
+      <if test="prod_id != null">
+        prod_id,
+      </if>
+      <if test="param_code != null">
+        param_code,
+      </if>
+      <if test="param_value != null">
+        param_value,
+      </if>
+      <if test="param_name != null">
+        param_name,
+      </if>
+      <if test="param_desc != null">
+        param_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="param_type != null">
+        #{param_type,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_type != null">
+        #{prod_type,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_id != null">
+        #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="param_code != null">
+        #{param_code,jdbcType=VARCHAR},
+      </if>
+      <if test="param_value != null">
+        #{param_value,jdbcType=VARCHAR},
+      </if>
+      <if test="param_name != null">
+        #{param_name,jdbcType=VARCHAR},
+      </if>
+      <if test="param_desc != null">
+        #{param_desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.ComParamExample" resultType="java.lang.Integer">
+    select count(*) from com_param
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update com_param
+    <set>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param_type != null">
+        param_type = #{record.param_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prod_type != null">
+        prod_type = #{record.prod_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prod_id != null">
+        prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param_code != null">
+        param_code = #{record.param_code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param_value != null">
+        param_value = #{record.param_value,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param_name != null">
+        param_name = #{record.param_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param_desc != null">
+        param_desc = #{record.param_desc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update com_param
+    set plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      param_type = #{record.param_type,jdbcType=VARCHAR},
+      prod_type = #{record.prod_type,jdbcType=VARCHAR},
+      prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      param_code = #{record.param_code,jdbcType=VARCHAR},
+      param_value = #{record.param_value,jdbcType=VARCHAR},
+      param_name = #{record.param_name,jdbcType=VARCHAR},
+      param_desc = #{record.param_desc,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

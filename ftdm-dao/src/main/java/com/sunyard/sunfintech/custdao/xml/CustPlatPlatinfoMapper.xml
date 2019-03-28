@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustPlatPlatinfoMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.PlatPlatinfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mall_no" jdbcType="VARCHAR" property="mall_no" />
+    <result column="mall_name" jdbcType="VARCHAR" property="mall_name" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="plat_name" jdbcType="VARCHAR" property="plat_name" />
+    <result column="plat_type" jdbcType="VARCHAR" property="plat_type" />
+    <result column="plat_pwd" jdbcType="VARCHAR" property="plat_pwd" />
+    <result column="company_attr" jdbcType="VARCHAR" property="company_attr" />
+    <result column="company_name" jdbcType="VARCHAR" property="company_name" />
+    <result column="company_capital" jdbcType="VARCHAR" property="company_capital" />
+    <result column="company_license" jdbcType="VARCHAR" property="company_license" />
+    <result column="legal_name" jdbcType="VARCHAR" property="legal_name" />
+    <result column="legal_license_type" jdbcType="VARCHAR" property="legal_license_type" />
+    <result column="legal_license" jdbcType="VARCHAR" property="legal_license" />
+    <result column="tax_license" jdbcType="VARCHAR" property="tax_license" />
+    <result column="tax_number" jdbcType="VARCHAR" property="tax_number" />
+    <result column="org_license" jdbcType="VARCHAR" property="org_license" />
+    <result column="plat_state" jdbcType="VARCHAR" property="plat_state" />
+    <result column="company_establish_date" jdbcType="DATE" property="company_establish_date" />
+    <result column="plat_line_date" jdbcType="DATE" property="plat_line_date" />
+    <result column="plat_address" jdbcType="VARCHAR" property="plat_address" />
+    <result column="plat_busi_type" jdbcType="VARCHAR" property="plat_busi_type" />
+    <result column="plat_business" jdbcType="VARCHAR" property="plat_business" />
+    <result column="payment_plat_no" jdbcType="VARCHAR" property="payment_plat_no" />
+    <result column="actual_capital" jdbcType="VARCHAR" property="actual_capital" />
+    <result column="plat_domain" jdbcType="VARCHAR" property="plat_domain" />
+    <result column="info_security" jdbcType="VARCHAR" property="info_security" />
+    <result column="check_company" jdbcType="VARCHAR" property="check_company" />
+    <result column="check_time" jdbcType="VARCHAR" property="check_time" />
+    <result column="account_verification_channel" jdbcType="VARCHAR" property="account_verification_channel" />
+    <result column="social_credit_code" jdbcType="VARCHAR" property="social_credit_code" />
+    <result column="add_notify_url" jdbcType="VARCHAR" property="add_notify_url" />
+    <result column="daily_cut_url" jdbcType="VARCHAR" property="daily_cut_url" />
+    <result column="payment_account" jdbcType="VARCHAR" property="payment_account" />
+    <result column="liquidation_url" jdbcType="VARCHAR" property="liquidation_url" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, mall_no, mall_name, plat_no, plat_name, plat_type, plat_pwd, company_attr, company_name, 
+    company_capital, company_license, legal_name, legal_license_type, legal_license, 
+    tax_license, tax_number, org_license, plat_state, company_establish_date, plat_line_date, 
+    plat_address, plat_busi_type, plat_business, payment_plat_no, actual_capital, plat_domain, 
+    info_security, check_company, check_time, account_verification_channel, social_credit_code, 
+    add_notify_url, daily_cut_url, payment_account, liquidation_url, enabled, remark, 
+    create_by, create_time, update_by, update_time
+  </sql>
+
+  <select id="getPlatNoByMallNo" parameterType="string" resultType="string">
+    select
+      plat_no
+    from plat_platinfo
+    where mall_no = #{mall_no}
+  </select>
+
+  <select id="getMallNoByPlatNo" parameterType="string" resultType="string">
+    select mall_no from plat_platinfo where plat_no = #{plat_no}
+  </select>
+
+</mapper>

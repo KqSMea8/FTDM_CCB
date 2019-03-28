@@ -1,0 +1,949 @@
+{
+	"id": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+	"name": "account     用户相关Web接口测试用例",
+	"description": "",
+	"order": [
+		"d7774b9f-3f31-38d1-8c2f-8319e9c835e8",
+		"729807ac-c3b8-16ee-ae73-0f7ced129727",
+		"4b7047a2-7435-2c7b-6964-9706f9849027",
+		"2f58ed6d-425c-8c71-956d-8ad31f68230f",
+		"7fb38708-a6f4-96f8-340a-f27e72d7021e",
+		"c624c283-7527-f296-aac7-0dbab6e9ed6a",
+		"60f3dced-4228-2062-7476-e458abe026c1",
+		"026effb5-1ea8-a3da-5099-8de4b84bdf79"
+	],
+	"folders": [],
+	"timestamp": 1493892872543,
+	"owner": "1994899",
+	"public": false,
+	"requests": [
+		{
+			"id": "026effb5-1ea8-a3da-5099-8de4b84bdf79",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/account/change_account_info",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "sdfjsdjvf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cus_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "164516@qq.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mobile",
+					"value": "1684651351",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "org_name",
+					"value": "张三",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "business_license",
+					"value": "66684861534",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "bank_license",
+					"value": "sgerheth",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037752950,
+			"name": "http://localhost:8080/ftdm-web/account/change_account_info   客户信息变更",
+			"description": "",
+			"collectionId": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+			"responses": []
+		},
+		{
+			"id": "2f58ed6d-425c-8c71-956d-8ad31f68230f",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/account/unbind_card",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data",
+					"value": "[\n    {\n        \"detail_no\": \"2015484312\",\n        \"platcust\": \"fsfsdf\",\n        \"card_no\": \"8645315\",\n        \"card_type\": \"1\",\n        \"mobile\": \"12345644564\",\n        \"card_no_old\": \"561531046545\",\n        \"card_type_old\": \"1\",\n        \"name\": \"张三\",\n        \"pay_code\": \"1\",\n        \"remark\": \"sdskvj\"\n    }\n]",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037186269,
+			"name": "http://localhost:8080/ftdm-web/account/unbind_card   批量换卡（解绑+换卡申请）",
+			"description": "",
+			"collectionId": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+			"responses": []
+		},
+		{
+			"id": "4b7047a2-7435-2c7b-6964-9706f9849027",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/account/bind_card",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "sdfjsdjvf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id_code",
+					"value": "1646656652656",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "张三",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_no",
+					"value": "68435186481",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pre_mobile",
+					"value": "66684861534",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "org_no",
+					"value": "sgdfbdf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "acct_name",
+					"value": "vfdgdfb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "acct_no",
+					"value": "dfbrbe",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "open_branch",
+					"value": "fsgdfbd",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_code",
+					"value": "ffrbsrbsd",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "segwrwr",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037153202,
+			"name": "http://localhost:8080/ftdm-web/account/bind_card   绑卡（不对未绑卡及换卡用户调用）",
+			"description": "",
+			"collectionId": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+			"responses": []
+		},
+		{
+			"id": "60f3dced-4228-2062-7476-e458abe026c1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/account/confirm_bind_card",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "sdfjsdjvf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id_code",
+					"value": "1646656652656",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "张三",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_no",
+					"value": "68435186481",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pre_mobile",
+					"value": "66684861534",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_code",
+					"value": "ffrbsrbsd",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "identifying_code",
+					"value": "123548",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "origin_order_no",
+					"value": "gdgthddb",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037717947,
+			"name": "http://localhost:8080/ftdm-web/account/confirm_bind_card   短验绑卡（可包含开户）确认",
+			"description": "",
+			"collectionId": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+			"responses": []
+		},
+		{
+			"id": "729807ac-c3b8-16ee-ae73-0f7ced129727",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/account/batch_authentication",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "total_num",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data",
+					"value": "[{\n    \"detail_no\": \"2015484312\",\n    \"name\": \"张三\",\n    \"id_code\": \"546584684844451845\",\n    \"mobile\": \"12345644564\",\n    \"email\": \"15611331@qq.com\",\n    \"sex\": \"1\",\n    \"cus_type\": \"1\",\n    \"birthday\": \"2017-12-15\",\n    \"org_name\":\"sjkds\",\n    \"business_license\":\"jdjdfdf\",\n    \"bank_license\":\"ifdfvd\",\n    \"open_branch\": \"xjsch\",\n    \"notify_url\": \"htsfsdvdv/scsdl/sdcdskl\",\n    \"remark\": \"sdskvj\"\n}]",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037107246,
+			"name": "http://localhost:8080/ftdm-web/account/batch_authentication       批量开户（实名认证）",
+			"description": "",
+			"collectionId": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+			"responses": []
+		},
+		{
+			"id": "7fb38708-a6f4-96f8-340a-f27e72d7021e",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/account/switch_account",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "2846165",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amt",
+					"value": "14651561.12",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037612225,
+			"name": "http://localhost:8080/ftdm-web/account/switch_account   用户投融资账户转账",
+			"description": "",
+			"collectionId": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+			"responses": []
+		},
+		{
+			"id": "c624c283-7527-f296-aac7-0dbab6e9ed6a",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/account/apply_bind_card",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "fsgrgweg",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id_type",
+					"value": "465451",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id_code",
+					"value": "jfbdfl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "ggrgw",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_no",
+					"value": "1354351535",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pre_mobile",
+					"value": "56684561",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_code",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037683559,
+			"name": "http://localhost:8080/ftdm-web/account/apply_bind_card  短验绑卡（可包含开户）申请",
+			"description": "",
+			"collectionId": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+			"responses": []
+		},
+		{
+			"id": "d7774b9f-3f31-38d1-8c2f-8319e9c835e8",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/account/batch_register",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "total_num",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data",
+					"value": "[{\n    \"detail_no\": \"2015484312\",\n    \"name\": \"张三\",\n    \"id_type\": \"1\",\n    \"id_code\": \"546584684844451845\",\n    \"mobile\": \"12345644564\",\n    \"email\": \"15611331@qq.com\",\n    \"sex\": \"1\",\n    \"cus_type\": \"1\",\n    \"birthday\": \"2017-12-15\",\n    \"open_branch\": \"xjsch\",\n    \"card_no\": \"8645315\",\n    \"card_type\": \"1\",\n    \"pre_mobile\": \"15451513214\",\n    \"pay_code\": \"1\",\n    \"notify_url\": \"htsfsdvdv/scsdl/sdcdskl\",\n    \"remark\": \"sdskvj\"\n}]",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037046775,
+			"name": "http://localhost:8080/ftdm-web/account/batch_register    批量开户(四要素绑卡)",
+			"description": "",
+			"collectionId": "3f6cfb56-6233-6db4-ef94-312666c73a62",
+			"responses": []
+		}
+	]
+}

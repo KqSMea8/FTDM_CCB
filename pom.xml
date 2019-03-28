@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sunyard.sunfintech</groupId>
+    <artifactId>ftdm-parent</artifactId>
+    <version>2.0</version>
+    <packaging>pom</packaging>
+
+    <name>ftdm-parent</name>
+    <url>http://www.sunfintech.com.cn</url>
+
+    <modules>
+        <module>ftdm-common</module>
+        <!-- account 账户系统 -->
+        <module>ftdm-facade-account</module>
+        <module>ftdm-service-account</module>
+		
+		<!-- thirdparty调用第三方服务    -->
+		<module>ftdm-facade-thirdparty</module>
+        <module>ftdm-service-thirdparty</module>
+
+        <!-- 标的模块 -->
+        <module>ftdm-facade-prod</module>
+        <module>ftdm-service-prod</module>
+
+        <module>ftdm-facade-user</module>
+        <module>ftdm-service-user</module>
+
+        <module>ftdm-web</module>
+        <module>ftdm-boss</module>
+
+        <!--开发用的module -->
+        <module>ftdm-dao</module>
+        <!--tbschedule-->
+        <module>ftdm-service-schedule</module>
+
+        <!-- 公共模块接口 -->
+        <module>ftdm-facade-public</module>
+        <module>ftdm-facade-billcheck</module>
+        <module>ftdm-service-billcheck</module>
+        <module>ftdm-service-user-ccb</module>
+        <module>ftdm-facade-search</module>
+        <module>ftdm-service-search</module>
+        <module>ftdm-service-listcheck</module>
+    </modules>
+
+    <properties>
+        <!-- 开发阶段配置文件位置, 发布时打包加参数：-P product -->
+        <sys.jdbc.config.path>classpath:config/jdbc.properties</sys.jdbc.config.path>
+        <system.config.path>classpath:config/system.properties</system.config.path>
+
+        <!-- common projects -->
+        <ftdm-common.version>2.0</ftdm-common.version>
+        <ftdm-dao.version>2.0</ftdm-dao.version>
+        <ftdm-web.version>2.0</ftdm-web.version>
+
+        <!-- facade projects -->
+        <ftdm-facade-account.version>2.0</ftdm-facade-account.version>
+        <ftdm-facade-prod.version>2.0</ftdm-facade-prod.version>
+        <ftdm-facade-thirdparty.version>2.0</ftdm-facade-thirdparty.version>
+        <ftdm-facade-user.version>2.0</ftdm-facade-user.version>
+        <ftdm-facade-public.version>2.0</ftdm-facade-public.version>
+        <ftdm-facade-billcheck.version>2.0</ftdm-facade-billcheck.version>
+        <ftdm-facade-search.version>2.0</ftdm-facade-search.version>
+
+        <!-- service projects -->
+        <ftdm-service-account.version>2.0</ftdm-service-account.version>
+        <ftdm-service-prod.version>2.0</ftdm-service-prod.version>
+        <ftdm-service-thirdparty.version>2.0</ftdm-service-thirdparty.version>
+        <ftdm-service-user.version>2.0</ftdm-service-user.version>
+        <ftdm-service-billcheck.version>2.0</ftdm-service-billcheck.version>
+        <ftdm-service-search.version>2.0</ftdm-service-search.version>
+
+
+        <!-- main version setting -->
+        <spring.version>4.3.0.RELEASE</spring.version>
+        <spring-session.version>1.3.0.RELEASE</spring-session.version>
+        <spring-data-redis.version>1.8.1.RELEASE</spring-data-redis.version>
+        <spring-rabbit.version>1.7.5.RELEASE</spring-rabbit.version>
+        <!--dubbo相关-->
+
+        <dubbo.version>2.5.6</dubbo.version>
+        <netty.version>3.7.0.Final</netty.version>
+        <zookeeper.version>3.4.10</zookeeper.version>
+        <zkclient.version>0.3</zkclient.version>
+
+        <mybatis.version>3.4.2</mybatis.version>
+        <mybatis-spring.version>1.3.1</mybatis-spring.version>
+        <mybatis-plus.version>2.0.7</mybatis-plus.version>
+        <pagehelper.version>5.0.1</pagehelper.version>
+        <druid.version>1.0.29</druid.version>
+        <shiro.version>1.2.4</shiro.version>
+        <quartz.version>2.2.3</quartz.version>
+        <aspectj.version>1.8.9</aspectj.version>
+
+        <!-- tools version setting -->
+        <slf4j.version>1.7.9</slf4j.version>
+        <log4j.version>2.4.1</log4j.version>
+        <disruptor.version>3.3.4</disruptor.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-codec.version>1.9</commons-codec.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <commons-beanutils.version>1.9.1</commons-beanutils.version>
+        <commons-logging.version>1.1</commons-logging.version>
+        <commons-httpclient.version>3.1</commons-httpclient.version>
+        <commons-pool.version>1.5.4</commons-pool.version>
+
+        <httpclient.version>4.5.2</httpclient.version>
+        <jackson.version>2.8.6</jackson.version>
+        <fastjson.version>1.2.28</fastjson.version>
+        <xstream.version>1.4.7</xstream.version>
+        <guava.version>17.0</guava.version>
+        <dozer.version>5.5.1</dozer.version>
+        <poi.version>3.9</poi.version>
+        <freemarker.version>2.3.20</freemarker.version>
+        <validator.version>5.2.4.Final</validator.version>
+
+        <activemq.version>5.13.3</activemq.version>
+        <rabbitmq.version>4.1.1</rabbitmq.version>
+        <jedis.version>2.9.0</jedis.version>
+        <redisson.version>3.2.4</redisson.version>
+
+        <!-- jdbc driver setting -->
+        <mysql.driver.version>5.1.40</mysql.driver.version>
+
+        <!-- 开发阶段配置文件位置, 发布时打包加参数：-P product -->
+        <sys.jdbc.config.path>classpath:config/jdbc.properties</sys.jdbc.config.path>
+        <system.config.path>classpath:config/system.properties</system.config.path>
+
+        <!-- environment setting -->
+        <jdk.version>1.8</jdk.version>
+        <tomcat.version>2.2</tomcat.version>
+        <jetty.version>8.1.16.v20140903</jetty.version>
+        <webserver.port>8080</webserver.port>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <downloadSources>true</downloadSources>
+
+    </properties>
+
+    <repositories>
+
+        <repository>
+            <id>repos</id>
+            <name>Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+
+    </repositories>
+
+    <!-- 设定插件仓库 -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repos</id>
+            <name>Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- -->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-digester</groupId>
+            <artifactId>commons-digester</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>${commons-pool.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- mybatis -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <!-- spring核心包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring-data-redis.version}</version>
+        </dependency>
+        <!-- 缓存 -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>${redisson.version}</version>
+        </dependency>
+        -->
+        <!-- alibaba工具包 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <!-- bean validate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${validator.version}</version>
+        </dependency>
+
+        <!-- 导入java ee -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.5.0-b01</version>
+        </dependency>
+        <!-- 日志文件管理包 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${disruptor.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.18.2-GA</version>
+        </dependency>
+        <!-- Dubbo -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jboss.netty</groupId>
+                    <artifactId>netty</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.8</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+        <!-- activemq -->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.activemq</groupId>-->
+            <!--<artifactId>activemq-spring</artifactId>-->
+            <!--<version>${activemq.version}</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>${rabbitmq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>${spring-rabbit.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>reflectasm</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${pagehelper.version}</version>
+        </dependency>
+        <!-- jackson -->
+        <!--
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        -->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>1.5.13</version>
+        </dependency>
+
+        <!--ESAPI防护-->
+        <dependency>
+            <groupId>org.owasp.esapi</groupId>
+            <artifactId>esapi</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.7.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.54</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

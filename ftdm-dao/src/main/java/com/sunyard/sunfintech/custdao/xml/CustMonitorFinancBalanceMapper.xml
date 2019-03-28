@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustMonitorFinancBalanceMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.MonitorFinancBalance">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="monitor_date" jdbcType="DATE" property="monitor_date" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="cus_type" jdbcType="VARCHAR" property="cus_type" />
+    <result column="cust_name" jdbcType="VARCHAR" property="cust_name" />
+    <result column="prod_date" jdbcType="VARCHAR" property="prod_date" />
+    <result column="vol" jdbcType="DECIMAL" property="vol" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+  </resultMap>
+
+  <select id="getMonitorFinancBalance" parameterType="Object" resultMap="BaseResultMap">
+      SELECT #{monitor_date} monitor_date,ps.plat_no,eu.mallcust platcust,eu.name cust_name,
+      eu.cus_type,ps.prod_id,date_format(ef.create_time, '%Y%m%d') prod_date,ps.tot_vol vol
+      FROM prod_share_inall ps
+      LEFT JOIN eacc_financinfo ef
+      ON ps.prod_id = ef.prod_id
+      LEFT JOIN eacc_userinfo eu
+      ON ef.platcust = eu.mallcust AND mall_no = #{mall_no}
+      WHERE ps.plat_no = ${plat_no} AND ps.tot_vol > 0
+      GROUP BY prod_id;
+  </select>
+
+  <select id="insertMonitorFinancBalance" parameterType="java.util.List">
+      INSERT INTO clear_checkinfo_emxlist
+      (monitor_date,plat_no,prod_id,platcust,cus_type,cust_name,prod_date,vol,remark,create_time,create_by,update_time,update_by)
+      VALUES
+      <foreach collection="list" item="item" index="index"
+               separator=",">
+        (#{item.monitor_date},
+        #{item.plat_no},
+        #{item.prod_id},
+        #{item.platcust},
+        #{item.cus_type},
+        #{item.cust_name},
+        #{item.prod_date},
+        #{item.vol},
+        #{item.remark},
+        NOW(),
+        #{item.create_by},
+        #{item.update_time},
+        #{item.update_by}
+        )
+      </foreach>
+  </select>
+</mapper>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.PayTransSerialTransferMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.PayTransSerialTransfer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pay_trans_serial" jdbcType="VARCHAR" property="pay_trans_serial" />
+    <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="enabled" jdbcType="VARCHAR" property="enabled" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, pay_trans_serial, trans_serial, status, enabled
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.PayTransSerialTransferExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from pay_trans_serial_transfer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_trans_serial_transfer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_trans_serial_transfer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.PayTransSerialTransferExample">
+    delete from pay_trans_serial_transfer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.PayTransSerialTransfer">
+    insert into pay_trans_serial_transfer (id, pay_trans_serial, trans_serial, 
+      status, enabled)
+    values (#{id,jdbcType=INTEGER}, #{pay_trans_serial,jdbcType=VARCHAR}, #{trans_serial,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{enabled,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.PayTransSerialTransfer">
+    insert into pay_trans_serial_transfer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pay_trans_serial != null">
+        pay_trans_serial,
+      </if>
+      <if test="trans_serial != null">
+        trans_serial,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pay_trans_serial != null">
+        #{pay_trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_serial != null">
+        #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.PayTransSerialTransferExample" resultType="java.lang.Integer">
+    select count(*) from pay_trans_serial_transfer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pay_trans_serial_transfer
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.pay_trans_serial != null">
+        pay_trans_serial = #{record.pay_trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_serial != null">
+        trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pay_trans_serial_transfer
+    set id = #{record.id,jdbcType=INTEGER},
+      pay_trans_serial = #{record.pay_trans_serial,jdbcType=VARCHAR},
+      trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.PayTransSerialTransfer">
+    update pay_trans_serial_transfer
+    <set>
+      <if test="pay_trans_serial != null">
+        pay_trans_serial = #{pay_trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_serial != null">
+        trans_serial = #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.PayTransSerialTransfer">
+    update pay_trans_serial_transfer
+    set pay_trans_serial = #{pay_trans_serial,jdbcType=VARCHAR},
+      trans_serial = #{trans_serial,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

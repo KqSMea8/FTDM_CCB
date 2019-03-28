@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 查找最新的schemaLocation 访问 http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/rabbit
+        http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd">
+
+    <rabbit:connection-factory id="connectionFactory"   username="${mq.userName}"
+                               password="${mq.password}"  virtual-host="${mq.vhost}"  addresses="${mq.addresses}"  />
+
+    <!--<rabbit:connection-factory id="connectionFactory" host="${mq.host}" username="${mq.userName}"-->
+                               <!--password="${mq.password}" port="${mq.port}" virtual-host="${mq.vhost}"/>-->
+    <rabbit:admin id="connectAdmin" connection-factory="connectionFactory"/>
+
+    <!-- spring template声明-->
+    <rabbit:template exchange="amqpExchange" id="amqpTemplate"
+                     connection-factory="connectionFactory"/> <!-- message-converter="jsonMessageConverter"-->
+
+    <!-- queue队列 -->
+    <rabbit:queue name="CCBMsgSendReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+
+    <!-- 监听 -->
+    <rabbit:listener-container connection-factory="connectionFactory" concurrency="5" max-concurrency="10" acknowledge="manual">
+        <rabbit:listener queues="CCBMsgSendReqQueue" ref="ccbMsgSendReqQueueListener" method="onMessage"/>
+    </rabbit:listener-container>
+
+    <!-- 监听器 -->
+    <bean id="ccbMsgSendReqQueueListener" class="com.sunyard.sunfintech.thirdparty.mq.SendMessageMQConsumer"/>
+
+</beans>

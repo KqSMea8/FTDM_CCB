@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustEaccAccountamtlistMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.EaccAccountamtlist">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="sub_subject" jdbcType="VARCHAR" property="sub_subject" />
+    <result column="trans_code" jdbcType="VARCHAR" property="trans_code" />
+    <result column="trans_name" jdbcType="VARCHAR" property="trans_name" />
+    <result column="trans_date" jdbcType="VARCHAR" property="trans_date" />
+    <result column="trans_time" jdbcType="VARCHAR" property="trans_time" />
+    <result column="amt_type" jdbcType="VARCHAR" property="amt_type" />
+    <result column="oppo_plat_no" jdbcType="VARCHAR" property="oppo_plat_no" />
+    <result column="oppo_platcust" jdbcType="VARCHAR" property="oppo_platcust" />
+    <result column="oppo_subject" jdbcType="VARCHAR" property="oppo_subject" />
+    <result column="oppo_sub_subject" jdbcType="VARCHAR" property="oppo_sub_subject" />
+    <result column="amt" jdbcType="DECIMAL" property="amt" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="switch_state" jdbcType="VARCHAR" property="switch_state" />
+    <result column="switch_amt" jdbcType="DECIMAL" property="switch_amt" />
+    <result column="pay_code" jdbcType="VARCHAR" property="pay_code" />
+    <result column="account_date" jdbcType="DATE" property="account_date" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="ext3" jdbcType="VARCHAR" property="ext3" />
+    <result column="ext4" jdbcType="VARCHAR" property="ext4" />
+    <result column="ext5" jdbcType="VARCHAR" property="ext5" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+
+  <select id="selectAccountFund" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlist" resultType="String">
+    select CONCAT_WS('|',
+    eacc.plat_no,
+    DATE_FORMAT(STR_TO_DATE(eacc.trans_date,'%Y%m%d %H:%i:%s'),'%Y%m%d'),
+    DATE_FORMAT(STR_TO_DATE(eacc.trans_time,'%H:%i:%s'),'%H%i%s'),
+    'dingjiangyu_orderno',
+    eacc.amt,
+    case eacc.amt_type WHEN '0' THEN 'C' WHEN '1' then 'T' END) accountFund
+    from eacc_accountamtlist eacc
+    where eacc.plat_no=#{plat_no} and subject=#{subject} and sub_subject=#{sub_subject}
+    and DATE_FORMAT(DATE_ADD(STR_TO_DATE(eacc.trans_date,'%Y%m%d %H:%i:%s'),INTERVAL 1 day),'%Y-%m-%d')=STR_TO_DATE(#{trans_date},'%Y%m%d')
+    ORDER BY DATE_FORMAT(STR_TO_DATE(eacc.trans_time,'%H:%i:%s'),'%H%i%s')
+  </select>
+
+  <select id="selectQueryEaccAccoun" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT plat_no,platcust,SUBJECT,sub_subject,oppo_platcust,oppo_subject,oppo_sub_subject,amt_type,amt
+    FROM eacc_accountamtlist WHERE trans_serial=#{trans_serial}
+  </select>
+  <select id="selectTolEacclist" parameterType="map" resultType="map">
+    select concat_ws('|',#{mall_no},#{clear_date},count(*)) as accTransEacclistInfo
+    from eacc_accountamtlist
+    where sub_subject = '03'
+    and plat_no = #{mall_no}
+    and DATE_FORMAT(account_date,'%Y%m%d') = #{clear_date}
+    and sub_subject != '20' and oppo_sub_subject != '20'
+    and trans_code != 'S00001'
+  </select>
+
+  <select id="selectDetailEacclist" parameterType="map" resultType="map">
+    select concat_ws('|',a.trans_date,a.trans_time,b.order_no,a.platcust,a.subject,FORMAT(a.amt,2),case when a.amt_type='0' then 'C' else 'T' end) as accTransEacclistInfo
+    from eacc_accountamtlist a left join trans_transreq b
+    on a.trans_serial = b.trans_serial
+    where a.sub_subject = '03'
+    and a.plat_no = #{mall_no}
+    and DATE_FORMAT(a.account_date,'%Y%m%d') = #{clear_date}
+    and a.sub_subject != '20' and a.oppo_sub_subject != '20'
+    and a.trans_code != 'S00001'
+  </select>
+
+  <select id="selectTollist" parameterType="map" resultType="map">
+    select concat_ws('|',#{mall_no},#{clear_date},count(*)) as accTransEacclistInfo
+    from eacc_accountamtlist
+    where  plat_no = #{mall_no}
+    and DATE_FORMAT(account_date,'%Y%m%d') = #{clear_date}
+    and sub_subject != '20' and oppo_sub_subject != '20'
+    and trans_code != 'S00001'
+  </select>
+
+  <select id="selectDetaillist" parameterType="map" resultType="map">
+    SELECT concat_ws( '|', a.trans_date, a.trans_time, b.order_no, a.platcust, a. SUBJECT, FORMAT(sum(a.amt), 2), CASE WHEN a.amt_type = '0' THEN 'C' ELSE 'T' END ) AS accTransEacclistInfo
+    FROM eacc_accountamtlist a LEFT JOIN trans_transreq b ON a.trans_serial = b.trans_serial
+    WHERE a.plat_no = #{mall_no}
+    AND DATE_FORMAT(a.account_date, '%Y%m%d') = #{clear_date}
+    AND a.enabled='1'
+    AND a.sub_subject != '20' AND a.oppo_sub_subject != '20' AND a.trans_code != 'S00001'
+    AND a.amt_type IN ('0', '1') GROUP BY b.order_no, a.platcust
+  </select>
+
+  <select id="getPlatcustList" parameterType="map" resultType="map">
+    select platcust from eacc_accountamtlist where sub_subject = '03' GROUP BY platcust
+  </select>
+  
+  <update id="batchUpdateAllSwitch" parameterType="java.util.List">    
+        update eacc_accountamtlist  set  switch_state='2',switch_amt=amt   
+        where id in     
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}    
+        </foreach>  
+  </update> 
+  <update id="updatePartSwitch" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlist">    
+        update eacc_accountamtlist  set  switch_state=#{switch_state},switch_amt=#{switch_amt}   
+        where id =#{id}
+  </update>
+  <sql id="Base_Column_List">
+    id, trans_serial, plat_no, platcust, subject, sub_subject, trans_code, trans_name, 
+    trans_date, trans_time, amt_type, oppo_plat_no, oppo_platcust, oppo_subject, oppo_sub_subject,
+    amt, remark, switch_state, switch_amt, pay_code, account_date, ext1, ext2, ext3, 
+    ext4, ext5, enabled, ramerk, create_by, create_time, update_by, update_time
+  </sql>
+
+
+  <select id="getChargeScope" parameterType="map" resultType="map">
+    select
+       ifnull(min(id),0) minId,ifnull(max(id),0) maxId
+    from eacc_accountamtlist
+    where plat_no=#{plat_no} and account_date=DATE_FORMAT(#{clear_date},'%Y%m%d')
+  </select>
+
+  <select id="getTransMaxId" resultType="long">
+    select ifnull(max(id),0) from eacc_accountamtlist
+  </select>
+  <!-- 待清算充值记录 不查询无用字段-->
+  <select id="getChargeList" parameterType="map" resultMap="BaseResultMap">
+    select
+        id,plat_no, platcust, subject, sub_subject, amt, pay_code, account_date
+    from eacc_accountamtlist
+   	where switch_state='0' and amt_type='0' 
+   		and trans_code in('C00001','C00002','C00003','C00011','CK0001','C00005') and subject='02'
+   		and plat_no=#{plat_no} and id &lt; #{maxId} and id>=#{minId}
+   		and account_date=DATE_FORMAT(#{clear_date},'%Y%m%d')
+  </select>
+  <!-- 待清算转账记录 -->
+  <select id="getTransferList" parameterType="map" resultMap="BaseResultMap">
+    select
+    	id,plat_no, platcust, subject, sub_subject, amt,amt_type,
+    	oppo_plat_no, oppo_platcust, oppo_subject, oppo_sub_subject,sub_subject, switch_state, switch_amt
+    from eacc_accountamtlist
+   	where switch_state in('0','1') and amt_type in('1','2','3') and subject='02'
+   		and plat_no=#{plat_no} and id >= #{minId} and id &lt; #{maxId}
+   	order by id
+  </select>
+  <!-- (集团)待清算充值记录 -->
+  <select id="getMallChargeList" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from eacc_accountamtlist
+    where switch_state='0' and amt_type='0'
+      and trans_code in('C00001','C00002','C00003','C00011','C00005','CK0001') and subject='02'
+      and plat_no in <foreach collection="list" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      and account_date=#{clear_date}
+  </select>
+
+  <!-- (集团)预清算对所有未清算流水 -->
+  <select id="getMallAllChargeList" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from eacc_accountamtlist
+    where switch_amt &lt; amt and amt_type='0'
+    and trans_code in('C00001','C00002','C00003','C00011','C00005','CK0001') and subject='02'
+    and plat_no in <foreach collection="list" item="item" open="(" separator="," close=")">
+    #{item}
+  </foreach>
+    and account_date>=#{clear_date} and enabled = '1'
+  </select>
+
+  <!-- (集团)待清算转账记录  and account_date>=#{clear_date} and account_date>=#{clear_date}-->
+  <select id="getMallTransferList" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from eacc_accountamtlist
+    where switch_state in('0','1') and amt_type in('1','2','3') and subject='02'
+      and plat_no in <foreach collection="list" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      and enabled='1'
+
+    order by id
+  </select>
+
+  <select id="selectTolPayCodeCtlist" parameterType="map" resultType="map">
+      select concat_ws('|',a.plat_no,#{clear_date},count(*),IFNULL(FORMAT(sum(a.tamt),2),0)) as accTransPayCodelistInfo from
+      (SELECT rc.plat_no,rc.trans_date,rc.trans_time,rc.order_no,rc.trans_amt AS tamt,'C' AS atype,rc.pay_code,
+        (SELECT tripartite_num FROM clear_checkinfo_emxlist
+          WHERE clear_checkinfo_emxlist.`serial_no` = rc.trans_serial) AS tripartite_num
+      FROM rw_recharge rc LEFT JOIN eacc_accountamtlist ea ON rc.plat_no = ea.plat_no AND rc.trans_serial = ea.trans_serial
+      WHERE rc.plat_no = #{plat_no}
+      AND DATE_FORMAT(ea.account_date, '%Y%m%d') = #{clear_date}
+      AND rc.pay_code IS NOT NULL
+      AND rc.trans_code IN ('C00001','C00002','C00003','C00011','CK0001','C00005')
+      union ALL
+
+      SELECT rw.plat_no,rw.trans_date,rw.trans_time,rw.order_no,rw.out_amt AS tamt,'T' AS atype,rw.pay_code,(SELECT tripartite_num FROM clear_checkinfo_emxlist
+      WHERE clear_checkinfo_emxlist.`serial_no` = rw.trans_serial) AS tripartite_num
+      FROM rw_withdraw rw WHERE rw.plat_no = #{plat_no} AND rw.pay_code IS NOT NULL
+      AND rw.trans_code IN ( 'W00001', 'P00004', 'W10001', 'W10003' ) AND rw.pay_status = '20' AND EXISTS
+     (SELECT trans_serial FROM eacc_accountamtlist ea WHERE
+      ea.trans_serial = rw.trans_serial AND DATE_FORMAT(ea.account_date,'%Y%m%d') =  #{clear_date} AND ea.amt_type = '1')
+
+        union all
+       SELECT rc.plat_no,rc.trans_date,rc.trans_time,rc.order_no,rc.trans_amt AS tamt,'C' AS atype,rc.pay_code,rc.trans_serial AS tripartite_num
+        FROM rw_recharge rc
+        LEFT JOIN eacc_accountamtlist ea
+        ON rc.plat_no = ea.plat_no AND rc.trans_serial = ea.trans_serial
+        WHERE rc.plat_no = #{plat_no}
+        AND DATE_FORMAT(ea.account_date,'%Y%m%d') =  #{clear_date}
+        AND rc.trans_code IN ('P00008','C00004')
+      )a
+  </select>
+
+  <select id="selectDetailPayCodeCtlist" parameterType="map" resultType="map">
+    select concat_ws('|',IFNULL(a.plat_no,''),IFNULL(a.trans_date,''),IFNULL(a.trans_time,''),IFNULL(a.order_no,''),IFNULL(FORMAT(a.tamt,2),0),IFNULL(a.atype,''),IFNULL(a.pay_code,''),IFNULL(a.tripartite_num,'')) as accTransPayCodelistInfo from
+    (SELECT rc.plat_no,rc.trans_date,rc.trans_time,rc.order_no,rc.trans_amt AS tamt,'C' AS atype,rc.pay_code,
+        (SELECT tripartite_num FROM clear_checkinfo_emxlist
+          WHERE clear_checkinfo_emxlist.`serial_no` = rc.trans_serial) AS tripartite_num
+      FROM rw_recharge rc LEFT JOIN eacc_accountamtlist ea ON rc.plat_no = ea.plat_no AND rc.trans_serial = ea.trans_serial
+      WHERE rc.plat_no = #{plat_no}
+      AND DATE_FORMAT(ea.account_date, '%Y%m%d') = #{clear_date}
+      AND rc.pay_code IS NOT NULL
+      AND rc.trans_code IN ('C00001','C00002','C00003','C00011','CK0001','C00005')
+      union ALL
+
+      SELECT rw.plat_no,rw.trans_date,rw.trans_time,rw.order_no,rw.out_amt AS tamt,'T' AS atype,rw.pay_code,(SELECT tripartite_num FROM clear_checkinfo_emxlist
+      WHERE clear_checkinfo_emxlist.`serial_no` = rw.trans_serial) AS tripartite_num
+      FROM rw_withdraw rw WHERE rw.plat_no = #{plat_no} AND rw.pay_code IS NOT NULL
+      AND rw.trans_code IN ( 'W00001', 'P00004', 'W10001', 'W10003' ) AND rw.pay_status = '20' AND EXISTS
+     (SELECT trans_serial FROM eacc_accountamtlist ea WHERE
+      ea.trans_serial = rw.trans_serial AND DATE_FORMAT(ea.account_date,'%Y%m%d') =  #{clear_date} AND ea.amt_type = '1')
+
+        union all
+       SELECT rc.plat_no,rc.trans_date,rc.trans_time,rc.order_no,rc.trans_amt AS tamt,'C' AS atype,rc.pay_code,rc.trans_serial AS tripartite_num
+        FROM rw_recharge rc
+        LEFT JOIN eacc_accountamtlist ea
+        ON rc.plat_no = ea.plat_no AND rc.trans_serial = ea.trans_serial
+        WHERE rc.plat_no = #{plat_no}
+        AND DATE_FORMAT(ea.account_date,'%Y%m%d') =  #{clear_date}
+        AND rc.trans_code IN ('P00008','C00004')
+      )a
+  </select>
+
+  <select id="selectTolPlatCtlist" parameterType="map" resultType="map">
+    select concat_ws('|',a.plat_no,#{clear_date},count(*)) as accTransPlatlistInfo from
+      (
+        select rc.plat_no,rc.trans_date,rc.trans_time,rc.order_no,rc.trans_amt as tamt,'C' as atype
+        from rw_recharge rc
+        LEFT JOIN eacc_accountamtlist ea
+        on rc.plat_no = ea.plat_no and rc.trans_serial = ea.trans_serial
+        WHERE rc.plat_no = #{plat_no}
+        AND DATE_FORMAT(ea.account_date,'%Y%m%d') = #{clear_date}
+        AND rc.trans_code = 'CP0001'
+
+        union ALL
+
+        select rw.plat_no,rw.trans_date,rw.trans_time,rw.order_no,rw.out_amt as tamt,'T' as atype
+        from rw_withdraw rw
+        LEFT JOIN eacc_accountamtlist ea
+        on rw.plat_no = ea.plat_no and rw.trans_serial = ea.trans_serial and rw.pay_status = '20'
+        WHERE rw.plat_no = #{plat_no}
+        AND DATE_FORMAT(ea.account_date,'%Y%m%d') = #{clear_date} and ea.amt_type = '1'
+        AND rw.trans_code = 'WP0001'
+      )a
+  </select>
+
+  <select id="selectDetailPlatCtlist" parameterType="map" resultType="map">
+    select concat_ws('|',a.plat_no,a.trans_date,a.trans_time,a.order_no,IFNULL(FORMAT(a.tamt,2),0),a.atype) as accTransPlatlistInfo from
+    (
+      select rc.plat_no,rc.trans_date,rc.trans_time,rc.order_no,rc.trans_amt as tamt,'C' as atype
+      from rw_recharge rc
+      LEFT JOIN eacc_accountamtlist ea
+      on rc.plat_no = ea.plat_no and rc.trans_serial = ea.trans_serial
+      WHERE rc.plat_no = #{plat_no}
+      AND DATE_FORMAT(ea.account_date,'%Y%m%d') = #{clear_date}
+      AND rc.trans_code = 'CP0001'
+
+      union ALL
+
+      select rw.plat_no,rw.trans_date,rw.trans_time,rw.order_no,rw.out_amt as tamt,'T' as atype
+      from rw_withdraw rw
+      LEFT JOIN eacc_accountamtlist ea
+      on rw.plat_no = ea.plat_no and rw.trans_serial = ea.trans_serial and rw.pay_status = '20'
+      WHERE rw.plat_no = #{plat_no}
+      AND DATE_FORMAT(ea.account_date,'%Y%m%d') = #{clear_date} and ea.amt_type = '1'
+      AND rw.trans_code = 'WP0001'
+    )a
+  </select>
+
+  <!-- (集团)待清算转账记录 -->
+  <select id="getClearRecord" parameterType="map" resultMap="BaseResultMap">
+    select
+      platcust,subject,sub_subject,sum(amt) amt,account_date,pay_code,plat_no
+    from eacc_accountamtlist
+    where plat_no=#{plat_no} and pay_code=#{pay_code}
+      and account_date=#{clear_date} and amt_type ='1' and trans_code in('S00001','S00002')
+    group by platcust,subject,sub_subject
+  </select>
+
+  <select id="selectLimitByDay" resultType="map">
+    select sum(amt) as amt from eacc_accountamtlist
+    where sub_subject = '11' and oppo_sub_subject in('01','02','03') and amt_type = '1'
+    and DATE_FORMAT(create_time,'%Y%m%d') = DATE_FORMAT(NOW(),'%Y%m%d')
+  </select>
+
+  <select id="selectLimitByMonth" resultType="map">
+    select sum(amt) as amt from eacc_accountamtlist
+    where sub_subject = '11' and oppo_sub_subject in('01','02','03') and amt_type = '1'
+    and DATE_FORMAT(create_time,'%Y%m%d') &gt; DATE_FORMAT(date_add(curdate(), interval - day(curdate()) + 1 day),'%Y%m%d')
+    and DATE_FORMAT(create_time,'%Y%m%d') &lt; DATE_FORMAT(last_day(curdate()),'%Y%m%d')
+  </select>
+</mapper>

@@ -1,0 +1,1234 @@
+{
+	"id": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+	"name": "search 查询相关Web接口测试用例",
+	"description": "",
+	"order": [
+		"babb15fb-a08b-1306-04a0-bfc6437cc9cf",
+		"ed067f63-90bf-9439-cd08-a3158f08c98a",
+		"29f43d9e-547c-d200-ee4c-6ee8197d7c36",
+		"5dabd749-f213-3951-c32e-dc3db92e5422",
+		"7f359b28-93f8-3328-9fd2-e39b083601c2",
+		"f6907888-3f5e-b581-8320-859e0423d8d1",
+		"c4b05437-93c7-623b-377a-e6e39ede37b3",
+		"e7d40b39-a15e-3ee1-ed61-70c0480bd48f",
+		"00082d3d-561a-8d99-4012-8a2c39b156b1",
+		"408eb5bc-90f7-b930-4f18-f5fcd68f5ac4",
+		"000b8c2b-e0f4-4edb-8be9-969110d39441",
+		"df09a1ed-efb8-e255-2a3f-2c4d72062fd8",
+		"59129661-0316-33c4-009a-674ab354a2eb"
+	],
+	"folders": [],
+	"timestamp": 1494037814585,
+	"owner": "1994899",
+	"public": false,
+	"requests": [
+		{
+			"id": "00082d3d-561a-8d99-4012-8a2c39b156b1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/charge_status",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "original_serial_no",
+					"value": "651561",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "occur_balance",
+					"value": "12000000",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494038326846,
+			"name": "http://localhost:8080/ftdm-web/search/charge_status   充值订单状态查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "d71b87c3-7416-d8de-f426-817460464d26"
+		},
+		{
+			"id": "000b8c2b-e0f4-4edb-8be9-969110d39441",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/company_account_balance",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "card_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494038169591,
+			"name": "http://localhost:8080/ftdm-web/search/company_account_balance   平台对公账户余额查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "29f43d9e-547c-d200-ee4c-6ee8197d7c36",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/repay_detail",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "fsgrgweg",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "start_date",
+					"value": "2017-12-12",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end_date",
+					"value": "2017-12-12",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pagesize",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pagenum",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494039068652,
+			"name": "http://localhost:8080/ftdm-web/search/repay_detail   还款明细查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "408eb5bc-90f7-b930-4f18-f5fcd68f5ac4",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/refund",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494038286162,
+			"name": "http://localhost:8080/ftdm-web/search/refund   退票补单查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "59129661-0316-33c4-009a-674ab354a2eb",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/eaccount_balance",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "16845",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494037954311,
+			"name": "http://localhost:8080/ftdm-web/search/eaccount_balance   电子账户余额查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "485f249b-ca8e-9e1b-5f9f-c5bb9edc6c60"
+		},
+		{
+			"id": "5dabd749-f213-3951-c32e-dc3db92e5422",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/product_investment_detail",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "86415165",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pagesize",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pagenum",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494038688448,
+			"name": "http://localhost:8080/ftdm-web/search/product_investment_detail   标的投资明细查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "7f359b28-93f8-3328-9fd2-e39b083601c2",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/product_info",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "86415165",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494039012182,
+			"name": "http://localhost:8080/ftdm-web/search/product_info   标的信息查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "babb15fb-a08b-1306-04a0-bfc6437cc9cf",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/account_balance",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494039379876,
+			"name": "http://localhost:8080/ftdm-web/search/account_balance   资金余额查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "fa762605-ceb6-0c15-c070-85b7e7bd8deb"
+		},
+		{
+			"id": "c4b05437-93c7-623b-377a-e6e39ede37b3",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/product_balance",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "86415165",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494038941662,
+			"name": "http://localhost:8080/ftdm-web/search/product_balance   标的账户余额查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "df09a1ed-efb8-e255-2a3f-2c4d72062fd8",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/eaccount_info",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "16845",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494038068034,
+			"name": "http://localhost:8080/ftdm-web/search/eaccount_info   电子账户信息查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "e7d40b39-a15e-3ee1-ed61-70c0480bd48f",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/order_status",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "query_order_no",
+					"value": "651561",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494038430486,
+			"name": "http://localhost:8080/ftdm-web/search/order_status   订单状态查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "ed067f63-90bf-9439-cd08-a3158f08c98a",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/fund_change",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "fsgrgweg",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "start_date",
+					"value": "2017-12-12",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end_date",
+					"value": "2017-12-12",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_name",
+					"value": "sgwrg",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pagesize",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pagenum",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494039221578,
+			"name": "http://localhost:8080/ftdm-web/search/fund_change   资金变动明细查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		},
+		{
+			"id": "f6907888-3f5e-b581-8320-859e0423d8d1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/search/account_balance_detail",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-01-01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "14:22:02",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "16845135",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "jkdvskv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "46511545",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "dkvpdfkb",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "16481534616",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "vjsvskvnsksdkl",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "jsdcsvlvjsldv",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "account",
+					"value": "86415165",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "acct_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "fund_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1494038538936,
+			"name": "http://localhost:8080/ftdm-web/search/account_balance_detail   账户余额明细查询",
+			"description": "",
+			"collectionId": "114e14cf-6ffc-6590-9a38-f235ef452ce7",
+			"responses": []
+		}
+	]
+}

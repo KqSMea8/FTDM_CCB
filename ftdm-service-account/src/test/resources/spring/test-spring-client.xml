@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.0.xsd
+         http://code.alibabatech.com/schema/dubbo
+         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 引入属性配置文件 -->
+    <bean class="com.sunyard.sunfintech.core.util.PropertiesUtil">
+        <property name="locations">
+            <list>
+                <value>classpath:config/test-jdbc.properties</value>
+                <value>classpath:config/test-system.properties</value>
+            </list>
+        </property>
+        <property name="properties">
+            <props>
+                <!-- dubbo个性化配置(服务名,端口) -->
+                <prop key="dubbo.application.name">ftdm-service-account</prop>
+                <prop key="dubbo.protocol.port">9876</prop>
+            </props>
+        </property>
+        <property name="decryptProperties">
+            <array>
+                <!-- 需要解密的配置 -->
+                <value>db.reader.password</value>
+                <value>db.writer.password</value>
+            </array>
+        </property>
+    </bean>
+
+    <!-- 引入属性配置文件 -->
+    <dubbo:reference id="clearService" interface="com.sunyard.sunfintech.account.provider.IClearService" url="dubbo://localhost:18081" check="false" />
+
+    <!-- 引入SPRING配置文件 -->
+    <!-- <import resource="spring/mq.xml"/> -->
+    <import resource="classpath*:spring/test-dubbo.xml" />
+</beans>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustProdProductinfoMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ProdProductinfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="prod_name" jdbcType="VARCHAR" property="prod_name" />
+    <result column="prod_type" jdbcType="VARCHAR" property="prod_type" />
+    <result column="total_limit" jdbcType="DECIMAL" property="total_limit" />
+    <result column="remain_limit" jdbcType="DECIMAL" property="remain_limit" />
+    <result column="saled_limit" jdbcType="DECIMAL" property="saled_limit" />
+    <result column="value_type" jdbcType="VARCHAR" property="value_type" />
+    <result column="create_type" jdbcType="VARCHAR" property="create_type" />
+    <result column="payout_type" jdbcType="VARCHAR" property="payout_type" />
+    <result column="sell_date" jdbcType="VARCHAR" property="sell_date" />
+    <result column="value_date" jdbcType="VARCHAR" property="value_date" />
+    <result column="expire_date" jdbcType="VARCHAR" property="expire_date" />
+    <result column="cycle" jdbcType="INTEGER" property="cycle" />
+    <result column="cycle_unit" jdbcType="VARCHAR" property="cycle_unit" />
+    <result column="parti_num" jdbcType="INTEGER" property="parti_num" />
+    <result column="ist_year" jdbcType="DECIMAL" property="ist_year" />
+    <result column="prod_state" jdbcType="VARCHAR" property="prod_state" />
+    <result column="repay_type" jdbcType="VARCHAR" property="repay_type" />
+    <result column="prod_account" jdbcType="VARCHAR" property="prod_account" />
+    <result column="charge_off_auto" jdbcType="VARCHAR" property="charge_off_auto" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="risk_lvl" jdbcType="VARCHAR" property="risk_lvl" />
+    <result column="prod_info" jdbcType="VARCHAR" property="prod_info" />
+    <result column="buyer_num_limit" jdbcType="VARCHAR" property="buyer_num_limit" />
+    <result column="overLimit" jdbcType="VARCHAR" property="overLimit" />
+    <result column="over_total_limit" jdbcType="VARCHAR" property="over_total_limit" />
+  </resultMap>
+
+  <update id="updateProd" parameterType="map">
+    update prod_productinfo set remain_limit = remain_limit + #{vol},saled_limit = saled_limit - #{vol},
+           update_time = #{update_time},update_by = #{update_by}
+    where prod_id = #{prod_id} and plat_no = #{plat_no}
+  </update>
+
+</mapper>

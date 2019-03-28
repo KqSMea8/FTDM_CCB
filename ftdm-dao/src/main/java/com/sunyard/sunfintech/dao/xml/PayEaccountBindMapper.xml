@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.PayEaccountBindMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.PayEaccountBind">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="eaccount" jdbcType="VARCHAR" property="eaccount" />
+    <id column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+    <id column="status" jdbcType="VARCHAR" property="status" />
+    <id column="enabled" jdbcType="VARCHAR" property="enabled" />
+    <result column="order_no" jdbcType="VARCHAR" property="order_no" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, eaccount, trans_serial, status, enabled, order_no
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBindExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from pay_eaccount_bind
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBindKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_eaccount_bind
+    where id = #{id,jdbcType=INTEGER}
+      and eaccount = #{eaccount,jdbcType=VARCHAR}
+      and trans_serial = #{trans_serial,jdbcType=VARCHAR}
+      and status = #{status,jdbcType=VARCHAR}
+      and enabled = #{enabled,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBindKey">
+    delete from pay_eaccount_bind
+    where id = #{id,jdbcType=INTEGER}
+      and eaccount = #{eaccount,jdbcType=VARCHAR}
+      and trans_serial = #{trans_serial,jdbcType=VARCHAR}
+      and status = #{status,jdbcType=VARCHAR}
+      and enabled = #{enabled,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBindExample">
+    delete from pay_eaccount_bind
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBind">
+    insert into pay_eaccount_bind (id, eaccount, trans_serial, 
+      status, enabled, order_no
+      )
+    values (#{id,jdbcType=INTEGER}, #{eaccount,jdbcType=VARCHAR}, #{trans_serial,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{enabled,jdbcType=VARCHAR}, #{order_no,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBind">
+    insert into pay_eaccount_bind
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="eaccount != null">
+        eaccount,
+      </if>
+      <if test="trans_serial != null">
+        trans_serial,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="order_no != null">
+        order_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="eaccount != null">
+        #{eaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_serial != null">
+        #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=VARCHAR},
+      </if>
+      <if test="order_no != null">
+        #{order_no,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBindExample" resultType="java.lang.Integer">
+    select count(*) from pay_eaccount_bind
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pay_eaccount_bind
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.eaccount != null">
+        eaccount = #{record.eaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_serial != null">
+        trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=VARCHAR},
+      </if>
+      <if test="record.order_no != null">
+        order_no = #{record.order_no,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pay_eaccount_bind
+    set id = #{record.id,jdbcType=INTEGER},
+      eaccount = #{record.eaccount,jdbcType=VARCHAR},
+      trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=VARCHAR},
+      order_no = #{record.order_no,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBind">
+    update pay_eaccount_bind
+    <set>
+      <if test="order_no != null">
+        order_no = #{order_no,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and eaccount = #{eaccount,jdbcType=VARCHAR}
+      and trans_serial = #{trans_serial,jdbcType=VARCHAR}
+      and status = #{status,jdbcType=VARCHAR}
+      and enabled = #{enabled,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.PayEaccountBind">
+    update pay_eaccount_bind
+    set order_no = #{order_no,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and eaccount = #{eaccount,jdbcType=VARCHAR}
+      and trans_serial = #{trans_serial,jdbcType=VARCHAR}
+      and status = #{status,jdbcType=VARCHAR}
+      and enabled = #{enabled,jdbcType=VARCHAR}
+  </update>
+</mapper>

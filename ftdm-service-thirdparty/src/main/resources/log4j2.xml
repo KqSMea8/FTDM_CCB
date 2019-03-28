@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" monitorInterval="30">
+    <properties>
+        <property name="LOG_HOME">/home/fund/ftdm/thirdparty/logs</property>
+        <property name="FILE_NAME">ftdm-thirdparty</property>
+    </properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <RollingRandomAccessFile  name="RollingFile" fileName="${LOG_HOME}/${FILE_NAME}.log"
+                                  filePattern="${LOG_HOME}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <Policies>
+                <!--<TimeBasedTriggeringPolicy interval="1"/>-->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="50"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <!--<Appenders>-->
+    <!--<Flume name="eventLogger" compress="false">-->
+    <!--<Agent host="127.0.0.1" port="41414" />-->
+    <!--<RFC5424Layout enterpriseNumber="18060" includeMDC="true" appName="MyApp" />-->
+    <!--</Flume>-->
+    <!--</Appenders>-->
+    <loggers>
+        <logger name="org.slf4j" level="INFO" />
+        <logger name="org.quartz" level="INFO" />
+        <logger name="org.redisson" level="INFO" />
+        <logger name="com.atomikos" level="WARN" />
+        <logger name="com.alibaba.dubbo" level="INFO" />
+        <logger name="org.apache.activemq" level="INFO" />
+        <logger name="org.springframework" level="INFO" />
+        <logger name="org.apache.zookeeper" level="WARN" />
+        <logger name="org.springframework.web" level="DEBUG" />
+        <logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO" />
+        <logger name="log4jdbc.log4j2" level="DEBUG" additivity="true">
+            <MarkerFilter marker="LOG4JDBC_NON_STATEMENT" onMatch="DENY" onMismatch="NEUTRAL" />
+            <appender-ref ref="Console" />
+        </logger>
+        <AsyncLogger  name="org.ibase4j" level="DEBUG" additivity="false" includeLocation="true">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+        </AsyncLogger>
+        <Root level="DEBUG">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+        </Root>
+    </loggers>
+</Configuration>

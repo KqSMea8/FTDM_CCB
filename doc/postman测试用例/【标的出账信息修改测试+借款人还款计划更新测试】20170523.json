@@ -1,0 +1,219 @@
+{
+	"id": "c07b09be-6774-26f7-a901-4ab52803a8fd",
+	"name": "djy",
+	"description": "",
+	"order": [
+		"3c1533c4-9be5-eb73-7a9e-98e0da337280",
+		"9a457131-6262-129c-5cfe-40b5c5244fc6"
+	],
+	"folders": [],
+	"timestamp": 1495525090525,
+	"owner": "2080929",
+	"public": false,
+	"requests": [
+		{
+			"id": "3c1533c4-9be5-eb73-7a9e-98e0da337280",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/update_payout_account",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "c07b09be-6774-26f7-a901-4ab52803a8fd",
+			"data": [
+				{
+					"key": "version",
+					"value": "v2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2111-5-6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "2016-5-5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "52",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyardd",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "sun",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "open_branch",
+					"value": "chinaBink",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "withdraw_account",
+					"value": "54887656464",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "account_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "payee_name",
+					"value": "sunyyrd",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "标的出账信息修改测试",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495525345814,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "9a457131-6262-129c-5cfe-40b5c5244fc6",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/update_repayment_plan",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "c07b09be-6774-26f7-a901-4ab52803a8fd",
+			"data": [
+				{
+					"key": "version",
+					"value": "v2.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2111-5-6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "2016-5-5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "52",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_name",
+					"value": "sunyardd",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_name",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "sun",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "sunyard",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_plan_list",
+					"value": "[{\"repay_amt\":\"1000\" ,\"repay_fee\":\"12\",\n\"repay_num\":\"12\",\"repay_date\":\"2016-07-09\"},{\"repay_amt\":\"10\" ,\"repay_fee\":\"58255\",\n\"repay_num\":\"13\",\"repay_date\":\"2005-07-09\"}]",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "借款人还款计划更新测试",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495525921189,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

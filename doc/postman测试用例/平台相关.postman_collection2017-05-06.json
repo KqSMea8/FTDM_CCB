@@ -1,0 +1,831 @@
+{
+	"id": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+	"name": "平台相关",
+	"description": "",
+	"order": [
+		"6a9abcfb-3bf3-4891-2654-f51b5f4cacc6",
+		"a83188f4-571d-018b-36af-3ed243750c79",
+		"f761429f-5d92-031b-1255-c01fa06c030c",
+		"41ba4b19-2a8c-4480-6047-ea6d815d4950",
+		"df366df5-b0a9-da00-f4cb-e6c4dd896437",
+		"e52bad15-bcf5-3e14-3248-0c03ca2779a5",
+		"7dfcd783-c458-b529-a308-4c198f1c9da9",
+		"8326310a-6d9c-e335-f121-7ebb0aaa9a36"
+	],
+	"folders": [],
+	"timestamp": 1493971101666,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "41ba4b19-2a8c-4480-6047-ea6d815d4950",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/platform/charge",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+			"data": [
+				{
+					"key": "amount",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/platform/charge",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494038223510,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "6a9abcfb-3bf3-4891-2654-f51b5f4cacc6",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/platform/freeze_fund",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+			"data": [
+				{
+					"key": "platcust",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amount",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "freeze_flg",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "freeze_order_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remark",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/platform/freeze_fund",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494037054434,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "7dfcd783-c458-b529-a308-4c198f1c9da9",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/platform/substitute_pay_fee",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+			"data": [
+				{
+					"key": "fee_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "start_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/platform/substitute_pay_fee",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494041230662,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "8326310a-6d9c-e335-f121-7ebb0aaa9a36",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/platform/download_account_list",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+			"data": [
+				{
+					"key": "plat_no",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "start_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "end_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "signdata",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/platform/download_account_list",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494042188532,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "a83188f4-571d-018b-36af-3ed243750c79",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/platform/transfer_to_person",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+			"data": [
+				{
+					"key": "plat_account",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amount",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cause_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/platform/transfer_to_person",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494037319177,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "df366df5-b0a9-da00-f4cb-e6c4dd896437",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/platform/withdraw",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+			"data": [
+				{
+					"key": "amount",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/platform/withdraw",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494038537225,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "e52bad15-bcf5-3e14-3248-0c03ca2779a5",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/platform/withdraw_no_depository",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+			"data": [
+				{
+					"key": "account_type",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amount",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "paymessage",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "{",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"user_no\"",
+					"value": "\"1\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"user_type\"",
+					"value": "\"2\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"out_user_no\"",
+					"value": "\"3\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"acct_no\"",
+					"value": "\"4\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"curr\"",
+					"value": "\"5\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"trans_amt\"",
+					"value": "2,",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"product_type\"",
+					"value": "\"1\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"product_no\"",
+					"value": "\"2\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"product_name\"",
+					"value": "\"3\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"product_url\"",
+					"value": "\"4\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"pay_type\"",
+					"value": "\"5\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"bank_no\"",
+					"value": "\"6\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"bank_card_no\"",
+					"value": "\"7\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"pay_code\"",
+					"value": "\"8\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"memo\"",
+					"value": "\"9\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"extfld1\"",
+					"value": "\"3\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"extfld2\"",
+					"value": "\"4\",",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "\"extfld3\"",
+					"value": "\"5\"",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "}",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/platform/withdraw_no_depository",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494040868811,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "f761429f-5d92-031b-1255-c01fa06c030c",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/platform/transfer_to_platform",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "05e0171d-6bff-2e30-9d14-1aa83d5c766c",
+			"data": [
+				{
+					"key": "source_account",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "amt",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "dest_account",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/platform/transfer_to_platform",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1494037667395,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

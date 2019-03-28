@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustRwWithdrawMapper">
+    <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.RwWithdraw">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+        <result column="order_no" jdbcType="VARCHAR" property="order_no" />
+        <result column="trans_date" jdbcType="VARCHAR" property="trans_date" />
+        <result column="trans_time" jdbcType="VARCHAR" property="trans_time" />
+        <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+        <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+        <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+        <result column="trans_code" jdbcType="VARCHAR" property="trans_code" />
+        <result column="trans_name" jdbcType="VARCHAR" property="trans_name" />
+        <result column="out_amt" jdbcType="DECIMAL" property="out_amt" />
+        <result column="subject" jdbcType="VARCHAR" property="subject" />
+        <result column="sub_subject" jdbcType="VARCHAR" property="sub_subject" />
+        <result column="pay_code" jdbcType="VARCHAR" property="pay_code" />
+        <result column="fee_amt" jdbcType="DECIMAL" property="fee_amt" />
+        <result column="advance_amt" jdbcType="DECIMAL" property="advance_amt" />
+        <result column="oppo_account" jdbcType="VARCHAR" property="oppo_account" />
+        <result column="open_branch" jdbcType="VARCHAR" property="open_branch" />
+        <result column="payee_name" jdbcType="VARCHAR" property="payee_name" />
+        <result column="client_property" jdbcType="VARCHAR" property="client_property" />
+        <result column="city_code" jdbcType="VARCHAR" property="city_code" />
+        <result column="bank_id" jdbcType="VARCHAR" property="bank_id" />
+        <result column="brabank_name" jdbcType="VARCHAR" property="brabank_name" />
+        <result column="is_advance" jdbcType="VARCHAR" property="is_advance" />
+        <result column="pay_status" jdbcType="VARCHAR" property="pay_status" />
+        <result column="acct_state" jdbcType="VARCHAR" property="acct_state" />
+        <result column="withdraw_no" jdbcType="VARCHAR" property="withdraw_no" />
+        <result column="pay_time" jdbcType="VARCHAR" property="pay_time" />
+        <result column="finish_time" jdbcType="VARCHAR" property="finish_time" />
+        <result column="notify_url" jdbcType="VARCHAR" property="notify_url" />
+        <result column="host_req_serial_no" jdbcType="VARCHAR" property="host_req_serial_no" />
+        <result column="enabled" jdbcType="CHAR" property="enabled" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+        <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+        <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+        <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+        <result column="ext3" jdbcType="VARCHAR" property="ext3" />
+        <result column="ext4" jdbcType="VARCHAR" property="ext4" />
+        <result column="query_no_num" jdbcType="INTEGER" property="query_no_num" />
+        <result column="paymessage" jdbcType="VARCHAR" property="paymessage" />
+        <result column="province_code" jdbcType="VARCHAR" property="province_code" />
+        <result column="payment_status" jdbcType="VARCHAR" property="payment_status" />
+        <result column="payment_date" jdbcType="CHAR" property="payment_date" />
+        <result column="card_type" jdbcType="CHAR" property="card_type" />
+    </resultMap>
+
+    <select id="selectAllList" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+            *
+        FROM
+            (
+                SELECT
+                    trans_serial,
+                    account_date
+                FROM
+                    eacc_accountamtlist
+                GROUP BY
+                    trans_serial
+            ) e
+        LEFT JOIN rw_withdraw r ON e.trans_serial = r.trans_serial
+        WHERE
+            r.trans_code IN ('W00001', 'P00004', 'W10001')
+        AND DATE_FORMAT(e.account_date, '%Y%m%d') = #{clear_date}
+        AND r.pay_status = #{status}
+        AND r.plat_no = #{plat_no}
+        AND r.pay_code = #{pay_code}
+        AND enabled = '1'
+    </select>
+
+    <select id="selectTransSerial" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from rw_withdraw where trans_serial = #{trans_serial} and (pay_status = '24' or pay_status = '20') and enabled = '1'
+    </select>
+
+    <select id="selectTransSerialAndInitPay" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from rw_withdraw where trans_serial = #{trans_serial} and pay_status = '23' and enabled = '1'
+    </select>
+
+    <select id="selectByOriginOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from rw_withdraw where origin_order_no = #{origin_order_no} AND enabled = '1'
+    </select>
+
+    <select id="selectSolved" resultMap="BaseResultMap">
+        select * from rw_withdraw where pay_status = '24' AND enabled = '1'
+        and create_time BETWEEN date_sub(now(),interval 10 day)
+        and date_sub(now(), interval 20 minute) limit #{withdrawNum}
+    </select>
+
+    <select id="selectWaitPay" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from rw_withdraw where pay_status = '23' AND enabled = '1'
+        and create_time BETWEEN date_sub(now(),interval 1 day) and now()
+        and trans_code != 'W10002' limit #{withdrawNum}
+    </select>
+
+    <select id="selectWaitSend" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from rw_withdraw where pay_status = '33' AND enabled = '1'
+        and create_time BETWEEN date_sub(now(),interval 1 day) and now()
+        and trans_code != 'W10002' limit #{withdrawNum}
+    </select>
+
+    <update id="updateByIdAndPayStatusByInit" parameterType="com.sunyard.sunfintech.dao.entity.RwWithdraw">
+        update rw_withdraw
+        <set>
+            <if test="pay_status != null">
+              pay_status = #{pay_status},
+            </if>
+        </set>
+        where id = #{id} and pay_status = '23' AND enabled = '1'
+    </update>
+
+    <update id="updateByIdAndPayStatusByProcessing" parameterType="com.sunyard.sunfintech.dao.entity.RwWithdraw">
+        update rw_withdraw
+        <set>
+            <if test="pay_status != null">
+                pay_status = #{pay_status},
+            </if>
+            <if test="acct_state != null">
+                acct_state = #{acct_state},
+            </if>
+            <if test="pay_time != null">
+                pay_time = #{pay_time},
+            </if>
+            <if test="finish_time != null">
+                finish_time = #{finish_time},
+            </if>
+            <if test="host_req_serial_no != null">
+                host_req_serial_no = #{host_req_serial_no},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time},
+            </if>
+            <if test="query_no_num != null">
+                query_no_num = #{query_no_num},
+            </if>
+            <if test="payment_status != null">
+                payment_status = #{payment_status},
+            </if>
+            <if test="payment_date != null">
+                payment_date = #{payment_date}
+            </if>
+        </set>
+        where id = #{id} and pay_status = '24' AND enabled = '1'
+    </update>
+
+    <update id="updateByIdAndPayStatusByProcessingCCB" parameterType="com.sunyard.sunfintech.dao.entity.RwWithdraw">
+        update rw_withdraw
+        <set>
+            <if test="pay_status != null">
+                pay_status = #{pay_status},
+            </if>
+            <if test="acct_state != null">
+                acct_state = #{acct_state},
+            </if>
+            <if test="pay_time != null">
+                pay_time = #{pay_time},
+            </if>
+            <if test="finish_time != null">
+                finish_time = #{finish_time},
+            </if>
+            <if test="host_req_serial_no != null">
+                host_req_serial_no = #{host_req_serial_no},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time},
+            </if>
+            <if test="query_no_num != null">
+                query_no_num = #{query_no_num},
+            </if>
+            <if test="payment_status != null">
+                payment_status = #{payment_status},
+            </if>
+            <if test="payment_date != null">
+                payment_date = #{payment_date}
+            </if>
+        </set>
+        where id = #{id} and pay_status = '38' AND enabled = '1'
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.RwWithdraw">
+        update rw_withdraw
+        <set>
+            <if test="trans_serial != null">
+                trans_serial = #{trans_serial,jdbcType=VARCHAR},
+            </if>
+            <if test="order_no != null">
+                order_no = #{order_no,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_date != null">
+                trans_date = #{trans_date,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_time != null">
+                trans_time = #{trans_time,jdbcType=VARCHAR},
+            </if>
+            <if test="plat_no != null">
+                plat_no = #{plat_no,jdbcType=VARCHAR},
+            </if>
+            <if test="prod_id != null">
+                prod_id = #{prod_id,jdbcType=VARCHAR},
+            </if>
+            <if test="platcust != null">
+                platcust = #{platcust,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_code != null">
+                trans_code = #{trans_code,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_name != null">
+                trans_name = #{trans_name,jdbcType=VARCHAR},
+            </if>
+            <if test="out_amt != null">
+                out_amt = #{out_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="subject != null">
+                subject = #{subject,jdbcType=VARCHAR},
+            </if>
+            <if test="sub_subject != null">
+                sub_subject = #{sub_subject,jdbcType=VARCHAR},
+            </if>
+            <if test="pay_code != null">
+                pay_code = #{pay_code,jdbcType=VARCHAR},
+            </if>
+            <if test="fee_amt != null">
+                fee_amt = #{fee_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="advance_amt != null">
+                advance_amt = #{advance_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="oppo_account != null">
+                oppo_account = #{oppo_account,jdbcType=VARCHAR},
+            </if>
+            <if test="open_branch != null">
+                open_branch = #{open_branch,jdbcType=VARCHAR},
+            </if>
+            <if test="payee_name != null">
+                payee_name = #{payee_name,jdbcType=VARCHAR},
+            </if>
+            <if test="client_property != null">
+                client_property = #{client_property,jdbcType=VARCHAR},
+            </if>
+            <if test="city_code != null">
+                city_code = #{city_code,jdbcType=VARCHAR},
+            </if>
+            <if test="bank_id != null">
+                bank_id = #{bank_id,jdbcType=VARCHAR},
+            </if>
+            <if test="brabank_name != null">
+                brabank_name = #{brabank_name,jdbcType=VARCHAR},
+            </if>
+            <if test="is_advance != null">
+                is_advance = #{is_advance,jdbcType=VARCHAR},
+            </if>
+            <if test="pay_status != null">
+                pay_status = #{pay_status,jdbcType=VARCHAR},
+            </if>
+            <if test="acct_state != null">
+                acct_state = #{acct_state,jdbcType=VARCHAR},
+            </if>
+            <if test="withdraw_no != null">
+                withdraw_no = #{withdraw_no,jdbcType=VARCHAR},
+            </if>
+            <if test="pay_time != null">
+                pay_time = #{pay_time,jdbcType=VARCHAR},
+            </if>
+            <if test="finish_time != null">
+                finish_time = #{finish_time,jdbcType=VARCHAR},
+            </if>
+            <if test="notify_url != null">
+                notify_url = #{notify_url,jdbcType=VARCHAR},
+            </if>
+            <if test="host_req_serial_no != null">
+                host_req_serial_no = #{host_req_serial_no,jdbcType=VARCHAR},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="create_by != null">
+                create_by = #{create_by,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_by != null">
+                update_by = #{update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ext1 != null">
+                ext1 = #{ext1,jdbcType=VARCHAR},
+            </if>
+            <if test="ext2 != null">
+                ext2 = #{ext2,jdbcType=VARCHAR},
+            </if>
+            <if test="ext3 != null">
+                ext3 = #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                ext4 = #{ext4,jdbcType=VARCHAR},
+            </if>
+            <if test="query_no_num != null">
+                query_no_num = #{query_no_num,jdbcType=INTEGER},
+            </if>
+            <if test="paymessage != null">
+                paymessage = #{paymessage,jdbcType=VARCHAR},
+            </if>
+            <if test="province_code != null">
+                province_code = #{province_code,jdbcType=VARCHAR},
+            </if>
+            <if test="payment_status != null">
+                payment_status = #{payment_status,jdbcType=VARCHAR},
+            </if>
+            <if test="payment_date != null">
+                payment_date = #{payment_date,jdbcType=CHAR},
+            </if>
+            <if test="card_type != null">
+                card_type = #{card_type,jdbcType=CHAR},
+            </if>
+            <if test="origin_order_no != null">
+                origin_order_no = #{origin_order_no,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER} and trans_code = 'W10002' AND enabled = '1'
+    </update>
+
+    <update id="updateStatusByIdAndStatus" parameterType="Map">
+        update rw_withdraw set pay_status = #{params.pay_status},update_time=now()
+        where id = #{params.id} and pay_status=#{params.old_status} AND enabled = '1'
+    </update>
+
+    <select id="getRefund" parameterType="Map" resultMap="BaseResultMap">
+        SELECT * FROM rw_withdraw
+        WHERE pay_status = '21'
+        AND acct_state = '30'
+        AND payment_status = '7'
+        AND create_time BETWEEN date_sub(now(),interval 10 day) AND now()
+        AND enabled = '1'
+        AND pay_code IN
+        <if test="paycodelist != null">
+            <foreach collection="paycodelist" item="item" index="0" open="(" separator="," close=")" >
+              #{item}
+            </foreach>
+        </if>
+        limit #{count}
+    </select>
+
+    <select id="queryRwWithdrawByStatus" resultMap="BaseResultMap">
+        select * from rw_withdraw where pay_status = #{params.status} and enabled='1' and trans_code='W10003' order by id limit #{params.limit};
+    </select>
+</mapper>

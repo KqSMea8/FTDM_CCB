@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustProdShareListMapper">
+  <resultMap id="prodShareListMap" type="com.sunyard.sunfintech.dao.entity.ProdShareList">
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="vol" jdbcType="DECIMAL" property="vol" />
+  </resultMap>
+  <select id="queryProdShareSumList" parameterType="java.util.Map" resultMap="prodShareListMap">
+     select plat_no, prod_id, platcust, sum(if(amt_type = '0',vol,-vol)) as vol from prod_share_list
+       where plat_no=#{params.plat_no} and prod_id=#{params.prod_id} and (amt_type = '0' or amt_type = '1')
+        and status='1' and enabled='1' GROUP BY platcust
+  </select>
+
+  <select id="selectQueryProdlist" parameterType="java.lang.String" resultMap="prodShareListMap">
+    select vol,trans_date,trans_time,platcust,trans_code,plat_no,in_interest,amt_type,status,prod_id,self_amt,
+        coupon_amt,experience_amt,payout_amt,interest
+    from prod_share_list where trans_serial=#{trans_serial}
+  </select>
+  
+  <insert id="insertMore"  parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty= "id" order= "AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into prod_share_list
+    (trans_serial, trans_code,
+    plat_no, platcust, prod_id,
+    trans_date, trans_time, vol,
+    amt_type, in_interest, status,
+    enabled, remark, create_by,
+    create_time, update_by, update_time,
+    ext1, ext2, self_amt,
+    coupon_amt, experience_amt, payout_amt,
+    self_priority, fee_priority, interest)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (
+      #{item.trans_serial,jdbcType=VARCHAR},
+      #{item.trans_code,jdbcType=VARCHAR},
+      #{item.plat_no,jdbcType=VARCHAR},
+      #{item.platcust,jdbcType=VARCHAR},
+      #{item.prod_id,jdbcType=VARCHAR},
+      #{item.trans_date,jdbcType=VARCHAR},
+      #{item.trans_time,jdbcType=VARCHAR},
+      #{item.vol,jdbcType=DECIMAL},
+      #{item.amt_type,jdbcType=VARCHAR},
+      #{item.in_interest,jdbcType=DECIMAL},
+      #{item.status,jdbcType=VARCHAR},
+      #{item.enabled,jdbcType=CHAR},
+      #{item.remark,jdbcType=VARCHAR},
+      #{item.create_by,jdbcType=VARCHAR},
+      #{item.create_time,jdbcType=TIMESTAMP},
+      #{item.update_by,jdbcType=VARCHAR},
+      #{item.update_time,jdbcType=TIMESTAMP},
+      #{item.ext1,jdbcType=VARCHAR},
+      #{item.ext2,jdbcType=VARCHAR},
+      #{item.self_amt,jdbcType=DECIMAL},
+      #{item.coupon_amt,jdbcType=DECIMAL},
+      #{item.experience_amt,jdbcType=DECIMAL},
+      #{item.payout_amt,jdbcType=DECIMAL},
+      #{item.self_priority,jdbcType=VARCHAR},
+      #{item.fee_priority,jdbcType=VARCHAR},
+      #{item.interest,jdbcType=DECIMAL}
+      )
+    </foreach>
+  </insert>
+
+
+  <resultMap id="CustProdShareListMap" type="com.sunyard.sunfintech.custdao.entity.CustProdShareList">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+    <result column="order_no" jdbcType="VARCHAR" property="order_no" />
+    <result column="prod_name" jdbcType="VARCHAR" property="prod_name" />
+    <result column="plat_name" jdbcType="VARCHAR" property="plat_name" />
+    <result column="trans_code" jdbcType="VARCHAR" property="trans_code" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="trans_date" jdbcType="VARCHAR" property="trans_date" />
+    <result column="trans_time" jdbcType="VARCHAR" property="trans_time" />
+    <result column="vol" jdbcType="DECIMAL" property="vol" />
+    <result column="amt_type" jdbcType="VARCHAR" property="amt_type" />
+    <result column="in_interest" jdbcType="DECIMAL" property="in_interest" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="self_amt" jdbcType="DECIMAL" property="self_amt" />
+    <result column="coupon_amt" jdbcType="DECIMAL" property="coupon_amt" />
+    <result column="experience_amt" jdbcType="DECIMAL" property="experience_amt" />
+    <result column="payout_amt" jdbcType="DECIMAL" property="payout_amt" />
+    <result column="self_priority" jdbcType="VARCHAR" property="self_priority" />
+    <result column="fee_priority" jdbcType="VARCHAR" property="fee_priority" />
+    <result column="interest" jdbcType="DECIMAL" property="interest" />
+  </resultMap>
+
+  <select id="selectCustProdShareList" parameterType="java.util.Map" resultMap="CustProdShareListMap">
+    select l.id, l.trans_serial, l.trans_code, l.plat_no, l.platcust, l.prod_id, l.trans_date, l.trans_time,
+    l.vol, l.amt_type, l.in_interest, l.status, l.enabled, l.remark, l.create_by, l.create_time, l.update_by,
+    l.update_time, l.ext1, l.ext2, l.self_amt, l.coupon_amt, l.experience_amt, l.payout_amt, l.self_priority,
+    l.fee_priority, l.interest,p.`prod_name`,pl.`plat_name`,t.order_no
+    from prod_share_list l
+    LEFT JOIN `prod_productinfo` p ON l.`prod_id`=p.`prod_id`
+    LEFT JOIN `plat_platinfo` pl ON l.`plat_no`=pl.`plat_no`
+    LEFT JOIN `trans_transreq` t ON l.`trans_serial`=t.`trans_serial`
+    WHERE l.prod_id=#{params.prod_id} AND l.enabled=#{params.enabled}
+  </select>
+  <select id="getRemainAmtByPlacust" parameterType="java.util.Map" resultType="String">
+    SELECT 	IFNULL(SUM(IF(amt_type = '0',vol ,-vol)),'0') FROM prod_share_list WHERE platcust=#{platcust} AND plat_no=#{plat_no} and enabled='1';
+  </select>
+</mapper>

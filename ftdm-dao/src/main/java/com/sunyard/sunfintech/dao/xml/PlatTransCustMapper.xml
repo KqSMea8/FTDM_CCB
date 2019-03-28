@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.PlatTransCustMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.PlatTransCust">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mall_no" jdbcType="VARCHAR" property="mall_no" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="order_no" jdbcType="VARCHAR" property="order_no" />
+    <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="sub_subject" jdbcType="VARCHAR" property="sub_subject" />
+    <result column="oppo_subject" jdbcType="VARCHAR" property="oppo_subject" />
+    <result column="oppo_sub_subject" jdbcType="VARCHAR" property="oppo_sub_subject" />
+    <result column="total_amt" jdbcType="DECIMAL" property="total_amt" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="trans_date" jdbcType="VARCHAR" property="trans_date" />
+    <result column="trans_time" jdbcType="VARCHAR" property="trans_time" />
+    <result column="cause_type" jdbcType="VARCHAR" property="cause_type" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, mall_no, plat_no, order_no, trans_serial, platcust, subject, sub_subject, oppo_subject, 
+    oppo_sub_subject, total_amt, balance, trans_date, trans_time, cause_type, enabled, 
+    remark, create_by, create_time, update_by, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.PlatTransCustExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from plat_trans_cust
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from plat_trans_cust
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from plat_trans_cust
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.PlatTransCustExample">
+    delete from plat_trans_cust
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.PlatTransCust">
+    insert into plat_trans_cust (id, mall_no, plat_no, 
+      order_no, trans_serial, platcust, 
+      subject, sub_subject, oppo_subject, 
+      oppo_sub_subject, total_amt, balance, 
+      trans_date, trans_time, cause_type, 
+      enabled, remark, create_by, 
+      create_time, update_by, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{mall_no,jdbcType=VARCHAR}, #{plat_no,jdbcType=VARCHAR}, 
+      #{order_no,jdbcType=VARCHAR}, #{trans_serial,jdbcType=VARCHAR}, #{platcust,jdbcType=VARCHAR}, 
+      #{subject,jdbcType=VARCHAR}, #{sub_subject,jdbcType=VARCHAR}, #{oppo_subject,jdbcType=VARCHAR}, 
+      #{oppo_sub_subject,jdbcType=VARCHAR}, #{total_amt,jdbcType=DECIMAL}, #{balance,jdbcType=DECIMAL}, 
+      #{trans_date,jdbcType=VARCHAR}, #{trans_time,jdbcType=VARCHAR}, #{cause_type,jdbcType=VARCHAR}, 
+      #{enabled,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.PlatTransCust">
+    insert into plat_trans_cust
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mall_no != null">
+        mall_no,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="order_no != null">
+        order_no,
+      </if>
+      <if test="trans_serial != null">
+        trans_serial,
+      </if>
+      <if test="platcust != null">
+        platcust,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="sub_subject != null">
+        sub_subject,
+      </if>
+      <if test="oppo_subject != null">
+        oppo_subject,
+      </if>
+      <if test="oppo_sub_subject != null">
+        oppo_sub_subject,
+      </if>
+      <if test="total_amt != null">
+        total_amt,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="trans_date != null">
+        trans_date,
+      </if>
+      <if test="trans_time != null">
+        trans_time,
+      </if>
+      <if test="cause_type != null">
+        cause_type,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mall_no != null">
+        #{mall_no,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="order_no != null">
+        #{order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_serial != null">
+        #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="sub_subject != null">
+        #{sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_subject != null">
+        #{oppo_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_sub_subject != null">
+        #{oppo_sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="total_amt != null">
+        #{total_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="trans_date != null">
+        #{trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_time != null">
+        #{trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="cause_type != null">
+        #{cause_type,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.PlatTransCustExample" resultType="java.lang.Integer">
+    select count(*) from plat_trans_cust
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update plat_trans_cust
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.mall_no != null">
+        mall_no = #{record.mall_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.order_no != null">
+        order_no = #{record.order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_serial != null">
+        trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platcust != null">
+        platcust = #{record.platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subject != null">
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sub_subject != null">
+        sub_subject = #{record.sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oppo_subject != null">
+        oppo_subject = #{record.oppo_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oppo_sub_subject != null">
+        oppo_sub_subject = #{record.oppo_sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.total_amt != null">
+        total_amt = #{record.total_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.balance != null">
+        balance = #{record.balance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.trans_date != null">
+        trans_date = #{record.trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_time != null">
+        trans_time = #{record.trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cause_type != null">
+        cause_type = #{record.cause_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_by != null">
+        create_by = #{record.create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_time != null">
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_by != null">
+        update_by = #{record.update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.update_time != null">
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update plat_trans_cust
+    set id = #{record.id,jdbcType=INTEGER},
+      mall_no = #{record.mall_no,jdbcType=VARCHAR},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      order_no = #{record.order_no,jdbcType=VARCHAR},
+      trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      platcust = #{record.platcust,jdbcType=VARCHAR},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      sub_subject = #{record.sub_subject,jdbcType=VARCHAR},
+      oppo_subject = #{record.oppo_subject,jdbcType=VARCHAR},
+      oppo_sub_subject = #{record.oppo_sub_subject,jdbcType=VARCHAR},
+      total_amt = #{record.total_amt,jdbcType=DECIMAL},
+      balance = #{record.balance,jdbcType=DECIMAL},
+      trans_date = #{record.trans_date,jdbcType=VARCHAR},
+      trans_time = #{record.trans_time,jdbcType=VARCHAR},
+      cause_type = #{record.cause_type,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_by = #{record.create_by,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_by = #{record.update_by,jdbcType=VARCHAR},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.PlatTransCust">
+    update plat_trans_cust
+    <set>
+      <if test="mall_no != null">
+        mall_no = #{mall_no,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="order_no != null">
+        order_no = #{order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_serial != null">
+        trans_serial = #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        platcust = #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="sub_subject != null">
+        sub_subject = #{sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_subject != null">
+        oppo_subject = #{oppo_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_sub_subject != null">
+        oppo_sub_subject = #{oppo_sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="total_amt != null">
+        total_amt = #{total_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="trans_date != null">
+        trans_date = #{trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_time != null">
+        trans_time = #{trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="cause_type != null">
+        cause_type = #{cause_type,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        create_by = #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.PlatTransCust">
+    update plat_trans_cust
+    set mall_no = #{mall_no,jdbcType=VARCHAR},
+      plat_no = #{plat_no,jdbcType=VARCHAR},
+      order_no = #{order_no,jdbcType=VARCHAR},
+      trans_serial = #{trans_serial,jdbcType=VARCHAR},
+      platcust = #{platcust,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      sub_subject = #{sub_subject,jdbcType=VARCHAR},
+      oppo_subject = #{oppo_subject,jdbcType=VARCHAR},
+      oppo_sub_subject = #{oppo_sub_subject,jdbcType=VARCHAR},
+      total_amt = #{total_amt,jdbcType=DECIMAL},
+      balance = #{balance,jdbcType=DECIMAL},
+      trans_date = #{trans_date,jdbcType=VARCHAR},
+      trans_time = #{trans_time,jdbcType=VARCHAR},
+      cause_type = #{cause_type,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

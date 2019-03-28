@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 查找最新的schemaLocation 访问 http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/rabbit
+        http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd">
+
+    <rabbit:connection-factory id="connectionFactory"   username="${mq.userName}"
+                               password="${mq.password}"  virtual-host="${mq.vhost}"  addresses="${mq.addresses}"  />
+
+    <!--<rabbit:connection-factory id="connectionFactory" host="${mq.host}" username="${mq.userName}"-->
+                               <!--password="${mq.password}" port="${mq.port}" virtual-host="${mq.vhost}"/>-->
+    <rabbit:admin id="connectAdmin" connection-factory="connectionFactory"/>
+
+    <!-- spring template声明-->
+    <rabbit:template exchange="amqpExchange" id="amqpTemplate"
+                     connection-factory="connectionFactory"/> <!-- message-converter="jsonMessageConverter"-->
+
+    <!-- 消息对象json转换类 -->
+    <!--<bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter"/>-->
+
+    <!-- queue队列 -->
+    <rabbit:queue name="BatchPlatfromToPersonQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="InsertReqLogQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransTransReqQueue:user" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="EaccTransTransReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="MsgSendReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="CCBMsgSendReqQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="NotifyQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="PayFeeQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="BatchRwWithdrawQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="RwWithdrawAffirmQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!-- 批量借款人还款队列 -->
+    <rabbit:queue name="BatchBorrowQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!-- 批量借款人还款队列 老-->
+    <rabbit:queue name="BatchBorrowOldQueue" durable="true" auto-delete="false" exclusive="false"/>
+
+
+    <!--模块间通讯队列-->
+    <rabbit:queue name="ToUserQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!--转账队列-->
+    <rabbit:queue name="TransferQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_ProdInvest" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_ProdTransfer" durable="true" auto-delete="false" exclusive="false"/>
+    <rabbit:queue name="TransferQueue_PayFee" durable="true" auto-delete="false" exclusive="false"/>
+    <!--短信发送结果入库队列-->
+    <rabbit:queue name="MsgResultToBDQueue" durable="true" auto-delete="false" exclusive="false"/>
+    <!--邮件发送队列-->
+    <rabbit:queue name="MailSendQueue" durable="true" auto-delete="false" exclusive="false"/>
+
+    <!--转账交换机队列-->
+    <rabbit:direct-exchange name="ftdm.transfer.direct.exchange" durable="true" auto-delete="false">
+        <rabbit:bindings>
+            <rabbit:binding queue="TransferQueue" key="TransferQueue"/>
+            <rabbit:binding queue="TransferQueue_ProdInvest" key="TransferQueue_ProdInvest"/>
+            <rabbit:binding queue="TransferQueue_ProdTransfer" key="TransferQueue_ProdTransfer"/>
+            <rabbit:binding queue="TransferQueue_PayFee" key="TransferQueue_PayFee"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <!-- 生产者 -->
+    <rabbit:direct-exchange name="ftdm.user.direct.exchange" durable="true" auto-delete="false">
+        <rabbit:bindings>
+            <rabbit:binding queue="BatchPlatfromToPersonQueue" key="BatchPlatfromToPersonQueue"></rabbit:binding>
+            <rabbit:binding queue="TransTransReqQueue:user" key="TransTransReqQueue:user"></rabbit:binding>
+            <rabbit:binding queue="EaccTransTransReqQueue" key="EaccTransTransReqQueue"></rabbit:binding>
+            <rabbit:binding queue="MsgSendReqQueue" key="MsgSendReqQueue"></rabbit:binding>
+            <rabbit:binding queue="CCBMsgSendReqQueue" key="CCBMsgSendReqQueue"></rabbit:binding>
+            <rabbit:binding queue="NotifyQueue" key="NotifyQueue"></rabbit:binding>
+            <rabbit:binding queue="BatchRwWithdrawQueue" key="BatchRwWithdrawQueue"></rabbit:binding>
+            <rabbit:binding queue="RwWithdrawAffirmQueue" key="RwWithdrawAffirmQueue"></rabbit:binding>
+            <rabbit:binding queue="PayFeeQueue" key="PayFeeQueue"></rabbit:binding>
+            <rabbit:binding queue="BatchBorrowQueue" key="BatchBorrowQueue"></rabbit:binding>
+            <rabbit:binding queue="BatchBorrowOldQueue" key="BatchBorrowOldQueue"></rabbit:binding>
+            <rabbit:binding queue="MailSendQueue" key="MailSendQueue"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <!-- 监听 -->
+    <rabbit:listener-container connection-factory="connectionFactory" concurrency="5" max-concurrency="10" acknowledge="manual">
+        <rabbit:listener queues="BatchPlatfromToPersonQueue" ref="batchPlatfromToPersonFanoutListener" method="onMessage"/>
+        <rabbit:listener queues="InsertReqLogQueue" ref="insertReqLogQueueDirectListener" method="onMessage"/>
+        <rabbit:listener queues="TransTransReqQueue:user" ref="transTransReqQueueListener" method="onMessage"/>
+        <rabbit:listener queues="EaccTransTransReqQueue" ref="eaccTransFlowConsumerQueueListener" method="onMessage"/>
+        <!--<rabbit:listener queues="BeforeMsgSendReqQueue" ref="beforeMsgSendReqQueueListener" method="onMessage"/>-->
+        <!--<rabbit:listener queues="ToUserBackNotifyQueue" ref="toUserBackNotifyQueueListener" method="onMessage"/>-->
+        <rabbit:listener queues="PayFeeQueue" ref="payFeeQueueListener" method="onMessage"/>
+        <rabbit:listener queues="ToUserQueue" ref="toUserQueueListener" method="onMessage"/>
+        <rabbit:listener queues="BatchBorrowQueue" ref="batchBorrowQueueListener" method="onMessage"/>
+        <rabbit:listener queues="BatchBorrowOldQueue" ref="batchBorrowOldQueueListener" method="onMessage"/>
+        <rabbit:listener queues="MsgResultToBDQueue" ref="msgResultToDBQueueListener" method="onMessage"/>
+    </rabbit:listener-container>
+
+    <rabbit:listener-container connection-factory="connectionFactory" concurrency="1" max-concurrency="5" acknowledge="manual">
+        <rabbit:listener queues="PayFeeQueue" ref="payFeeQueueListener" method="onMessage"/>
+        <rabbit:listener queues="ToUserQueue" ref="toUserQueueListener" method="onMessage"/>
+    </rabbit:listener-container>
+
+    <!-- 监听器 -->
+    <bean id="sysParamsSetFanoutListener" class="com.sunyard.sunfintech.user.modulepublic.mq.SysParameterReceiver"/>
+        <!--<rabbit:listener queues="ToUserBackNotifyQueue" ref="toUserBackNotifyQueueListener" method="onMessage"/>-->
+
+
+    <!--</rabbit:listener-container>-->
+
+    <rabbit:listener-container connection-factory="connectionFactory" concurrency="1" max-concurrency="5" acknowledge="manual">
+        <rabbit:listener queues="BatchRwWithdrawQueue" ref="BatchRwWithdrawQueueListener" method="onMessage"/>
+        <rabbit:listener queues="RwWithdrawAffirmQueue" ref="RwWithdrawAffirmQueueListener" method="onMessage"/>
+    </rabbit:listener-container>
+
+    <!-- 监听器 -->
+
+    <bean id="batchPlatfromToPersonFanoutListener" class="com.sunyard.sunfintech.user.mq.BatchPlatformToPersonConsumer"/>
+    <bean id="insertReqLogQueueDirectListener" class="com.sunyard.sunfintech.user.mq.ReqLogConsumer"/>
+    <bean id="transTransReqQueueListener" class="com.sunyard.sunfintech.user.modulepublic.mq.TransTransreqConsumer"/>
+    <bean id="eaccTransFlowConsumerQueueListener" class="com.sunyard.sunfintech.user.modulepublic.mq.EaccTransFlowConsumer"/>
+    <!--<bean id="beforeMsgSendReqQueueListener" class="com.sunyard.sunfintech.user.modulepublic.mq.BeforeSendMsgConsumer"/>-->
+    <bean id="toUserQueueListener" class="com.sunyard.sunfintech.user.mq.ToUserBackNotifyConsumer"/>
+    <bean id="BatchRwWithdrawQueueListener" class="com.sunyard.sunfintech.user.mq.BatchRwWithdrawConsumer"/>
+    <bean id="RwWithdrawAffirmQueueListener" class="com.sunyard.sunfintech.user.mq.RwWithdrawAffirmConsumer"/>
+    <bean id="toUserBackNotifyQueueListener" class="com.sunyard.sunfintech.user.mq.ToUserBackNotifyConsumer"/>
+    <bean id="payFeeQueueListener" class="com.sunyard.sunfintech.user.mq.PayFeeConsumer"/>
+
+    <bean id="batchBorrowQueueListener" class="com.sunyard.sunfintech.user.mq.BatchBorrowConsumer"/>
+    <bean id="batchBorrowOldQueueListener" class="com.sunyard.sunfintech.user.mq.BatchBorrowOldConsumer"/>
+    <bean id="msgResultToDBQueueListener" class="com.sunyard.sunfintech.user.mq.MsgResultToDBConsumer"/>
+
+</beans>

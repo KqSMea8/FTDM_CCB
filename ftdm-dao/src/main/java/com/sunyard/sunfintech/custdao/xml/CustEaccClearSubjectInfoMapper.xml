@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustEaccClearSubjectInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.EaccClearSubjectInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="eaccount" jdbcType="VARCHAR" property="eaccount" />
+    <result column="t_balance" jdbcType="VARCHAR" property="t_balance" />
+    <result column="n_balance" jdbcType="VARCHAR" property="n_balance" />
+    <result column="f_balance" jdbcType="VARCHAR" property="f_balance" />
+    <result column="clear_date" jdbcType="VARCHAR" property="clear_date" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="sub_subject" jdbcType="VARCHAR" property="sub_subject" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+  </resultMap>
+
+  <insert id="insertMoreInit" parameterType="map">
+    insert into eacc_clear_subject_info(eaccount,t_balance,n_balance,f_balance,clear_date,subject,sub_subject,create_time)
+    select u.eaccount,a.t_balance, a.n_balance, a.f_balance,#{clear_date},a.subject, a.sub_subject,NOW()
+    from account_subject_info a
+    left join eacc_userinfo u
+    on a.platcust = u.mallcust and u.eaccount_flg = '1'
+    where a.subject = '01' and a.sub_subject = '03' and a.enabled = '1' and u.eaccount is not null
+  </insert>
+
+  <insert id="insertMore" parameterType="map">
+    insert into eacc_clear_subject_info(eaccount,t_balance,n_balance,f_balance,clear_date,subject,sub_subject,create_time)
+    select u.eaccount,a.t_balance, a.n_balance, a.f_balance,#{clear_date},a.subject, a.sub_subject,NOW()
+    from account_subject_info a
+    inner join
+    (select platcust,account_date from eacc_accountamtlist where DATE_FORMAT(account_date,'%Y%m%d') = #{clear_date} and sub_subject = '03' GROUP BY platcust) e
+    on a.platcust = e.platcust
+    left join eacc_userinfo u
+    on e.platcust = u.mallcust and u.eaccount_flg = '1'
+    where a.subject = '01' and a.sub_subject = '03' and a.enabled = '1' and u.eaccount is not null
+  </insert>
+</mapper>

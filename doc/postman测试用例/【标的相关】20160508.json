@@ -1,0 +1,994 @@
+{
+	"id": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+	"name": "ftdm-web/product",
+	"description": "",
+	"order": [
+		"60b539f6-def0-74c4-35f3-cb8541adae7c",
+		"dabf5dae-5c40-8f36-9471-621830f8f5df",
+		"0d9ff0d2-598c-9150-a860-46f54c1be2af",
+		"7b26dd86-7b20-32d8-344c-f13ad228a5a8",
+		"6df2848f-bd17-81bd-1660-22119b073803",
+		"9ee4e94e-cd00-c502-7ca9-d605c2db2ae6",
+		"cc68e3d2-84e0-15a0-086a-e97c7a1477e0",
+		"ec6903f0-53bc-b366-4a51-f1cc7aa65637",
+		"30c20ba1-92f2-3519-ebc1-41e3e73433d3",
+		"c539a7af-0282-9445-02e5-b2cda118f9af"
+	],
+	"folders": [],
+	"timestamp": 1493886529520,
+	"owner": "911377",
+	"public": false,
+	"requests": [
+		{
+			"id": "0d9ff0d2-598c-9150-a860-46f54c1be2af",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/establish_or_abort",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "flag",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "funddata",
+					"value": "{\"payout_plat_type\":\"01\",\"payout_amt\":\"1313.12\"}",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "subdata",
+					"value": "[\n    {\n        \"plat_cust\": \"46789987\",\n        \"amt\": \"1313.12\",\n        \"remark\": \"担保费\"\n    },\n    {\n        \"plat_cust\": \"46789987\",\n        \"amt\": \"1313.12\",\n        \"remark\": \"担保费\"\n    }\n]",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "repay_plan_list",
+					"value": "[\n    {\n        \"repay_amt\": \"1000\",\n        \"repay_fee\": \"0\",\n        \"repay_num\": \"1\",\n        \"repay_date\": \"2015-07-09\"\n    },\n    {\n        \"repay_amt\": \"1000\",\n        \"repay_fee\": \"0\",\n        \"repay_num\": \"1\",\n        \"repay_date\": \"2015-07-09\"\n    }\n]",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/establish_or_abort",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493949200287,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "30c20ba1-92f2-3519-ebc1-41e3e73433d3",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/update_payout_account",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/update_payout_account",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493951872414,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "60b539f6-def0-74c4-35f3-cb8541adae7c",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/publish",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_name",
+					"value": "TESTPRODNAME",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_type",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "total_limit",
+					"value": "10000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "value_type",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "create_type",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sell_date",
+					"value": "2017-11-02 12:34:56",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "value_date",
+					"value": "2017-11-02 12:34:56",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "expire_date",
+					"value": "2017-11-02 12:34:56",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cycle",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cycle_unit",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "ist_year",
+					"value": "0.089",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_type",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "financing_info_list",
+					"value": "[\n    {\n        \"cust_no\": \"6545454\",\n        \"reg_date\": \"2015-01-01\",\n        \"reg_time\": \"10:00:01\",\n        \"financ_int\": \"0.12\",\n        \"financ_purpose\": \"ha\",\n        \"use_date\": \"2015-07-10\",\n        \"open_branch\": \"shs\",\n        \"withdraw_account\": \"0.12\",\n        \"account_type\": \"01\",\n        \"payee_name\": \"jej\",\n        \"financ_amt\": \"1212\"\n    },\n    {\n        \"cust_no\": \"6545454\",\n        \"reg_date\": \"2015-01-01\",\n        \"reg_time\": \"10:00:01\",\n        \"financ_int\": \"0.12\",\n        \"financ_purpose\": \"ha\",\n        \"use_date\": \"2015-07-10\",\n        \"open_branch\": \"shs\",\n        \"withdraw_account\": \"0.12\",\n        \"account_type\": \"01\",\n        \"payee_name\": \"jej\",\n        \"financ_amt\": \"1212\"\n    }\n]",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "chargeOff_auto",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "overLimit",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "over_total_limit",
+					"value": "100",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1493948139372,
+			"name": "http://localhost:8080/ftdm-web/product/publish",
+			"description": "",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"responses": []
+		},
+		{
+			"id": "6df2848f-bd17-81bd-1660-22119b073803",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/transfer",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "USER0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_share",
+					"value": "100",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_amt",
+					"value": "1000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "deal_amount",
+					"value": "100",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "coupon_amt",
+					"value": "100",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "deal_platcust",
+					"value": "AAAA",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "commission",
+					"value": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "commission_ext",
+					"value": "{\"payout_plat_type\":\"01\",\"payout_amt\":\"1313.12\"}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "publish_date",
+					"value": "2017-12-34 21:23:34",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_date",
+					"value": "2017-12-34 21:23:34",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "transfer_income",
+					"value": "100",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "income_acct",
+					"value": "01",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "subject_priority",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/transfer",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493950826392,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "7b26dd86-7b20-32d8-344c-f13ad228a5a8",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/charge_off",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "charge_off_list",
+					"value": "[\n    {\n        \"platcust\": \"6545454\",\n        \"out_amt\": \"199.9\",\n        \"open_branch\": \"1234\",\n        \"withdraw_account\": \"34567\",\n        \"payee_name\": \"2345\"\n    },\n    {\n        \"platcust\": \"6545454\",\n        \"out_amt\": \"199.9\",\n        \"open_branch\": \"1234\",\n        \"withdraw_account\": \"34567\",\n        \"payee_name\": \"2345\"\n    }\n]",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "notify_url",
+					"value": "http://www.baidu.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pay_code",
+					"value": "0001",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/charge_off",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493949351361,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "9ee4e94e-cd00-c502-7ca9-d605c2db2ae6",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/batch_transfer",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "USER0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data",
+					"value": "[\n    {\n        \"detail_no\": \"111\",\n        \"trans_share\": \"100\",\n        \"trans_amt\": \"122\",\n        \"deal_amount\": \"122\",\n        \"coupon_amt\": \"122\",\n        \"deal_platcust\": \"212121\",\n        \"commission\": \"{\\\"payout_plat_type\\\":\\\"01\\\",\\\"payout_amt\\\":\\\"1313.12\\\"}\",\n        \"commission_ext\": \"\",\n        \"publish_date\": \"2017-02-03 12:23:34\",\n        \"trans_date\": \"2017-02-03 12:23:34\",\n        \"transfer_income\": \"100\",\n        \"income_acct\": \"2222\"\n    },\n    {\n        \"detail_no\": \"111\",\n        \"trans_share\": \"100\",\n        \"trans_amt\": \"122\",\n        \"deal_amount\": \"122\",\n        \"coupon_amt\": \"122\",\n        \"deal_platcust\": \"212121\",\n        \"commission\": \"{\\\"payout_plat_type\\\":\\\"01\\\",\\\"payout_amt\\\":\\\"1313.12\\\"}\",\n        \"commission_ext\": \"\",\n        \"publish_date\": \"2017-02-03 12:23:34\",\n        \"trans_date\": \"2017-02-03 12:23:34\",\n        \"transfer_income\": \"100\",\n        \"income_acct\": \"2222\"\n    }\n]",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/batch_transfer",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493951356736,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "c539a7af-0282-9445-02e5-b2cda118f9af",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/abort_investment",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trasn_order_no",
+					"value": "12345678",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/abort_investment",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493951911249,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "cc68e3d2-84e0-15a0-086a-e97c7a1477e0",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/repay",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_num",
+					"value": "12",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "is_payoff",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_amt",
+					"value": "1000",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_flag",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "funddata",
+					"value": "{\n    \"custRepayList\": [\n        {\n            \"cust_no\": \"123456\",\n            \"real_repay_amt\": \"1000\",\n            \"real_repay_amount\": \"900\",\n            \"real_repay_val\": \"100\",\n            \"experience_amt\": \"0\",\n            \"repay_fee\": \"0\",\n            \"rates_amt\": \"0\",\n            \"repay_num\": \"1\",\n            \"repay_flag\": \"1\",\n            \"repay_date\": \"2015-07-09\",\n            \"real_repay_date\": \"2015-07-09\"\n        },\n        {\n            \"cust_no\": \"123456\",\n            \"real_repay_amt\": \"1000\",\n            \"real_repay_amount\": \"900\",\n            \"real_repay_val\": \"100\",\n            \"experience_amt\": \"0\",\n            \"repay_fee\": \"0\",\n            \"rates_amt\": \"0\",\n            \"repay_num\": \"1\",\n            \"repay_flag\": \"1\",\n            \"repay_date\": \"2015-07-09\",\n            \"real_repay_date\": \"2015-07-09\"\n        }\n    ]\n}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/repay",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493951722763,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "dabf5dae-5c40-8f36-9471-621830f8f5df",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/invest",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "total_num",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "data",
+					"value": "[\n    {\n        \"detail_no\": \"00001\",\n        \"platcust\": \"USER0001\",\n        \"trans_amt\": 100,\n        \"experience_amt\": 0,\n        \"coupon_amt\": 0,\n        \"self_amt\": 100,\n        \"in_interes\": 0.03,\n        \"subject_priority\": \"1\",\n        \"commission\": \"{\\\"payout_plat_type\\\":\\\"01\\\",\\\"payout_amt\\\":\\\"1313.12\\\"}\"\n    },\n    {\n        \"detail_no\": \"00001\",\n        \"platcust\": \"USER0001\",\n        \"trans_amt\": 100,\n        \"experience_amt\": 0,\n        \"coupon_amt\": 0,\n        \"self_amt\": 100,\n        \"in_interes\": 0.03,\n        \"subject_priority\": \"1\",\n        \"commission\": \"{\\\"payout_plat_type\\\":\\\"01\\\",\\\"payout_amt\\\":\\\"1313.12\\\"}\"\n    }\n]",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/invest",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493948177226,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "ec6903f0-53bc-b366-4a51-f1cc7aa65637",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/update_repayment_plan",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "00a73be1-33b2-0c77-aab0-7730d80000c3",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "PLAT-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "PROD0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_plan_list",
+					"value": "[\n    {\n        \"repay_amt\": \"1000\",\n        \"repay_fee\": \"0\",\n        \"repay_num\": \"1\",\n        \"repay_date\": \"2015-07-09\"\n    },\n    {\n        \"repay_amt\": \"1000\",\n        \"repay_fee\": \"0\",\n        \"repay_num\": \"1\",\n        \"repay_date\": \"2015-07-09\"\n    }\n]",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/product/update_repayment_plan",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493951830913,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

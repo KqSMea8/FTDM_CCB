@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustPlatCardinfoMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.PlatCardinfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mall_no" jdbcType="VARCHAR" property="mall_no" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="card_type" jdbcType="VARCHAR" property="card_type" />
+    <result column="card_no" jdbcType="VARCHAR" property="card_no" />
+    <result column="card_name" jdbcType="VARCHAR" property="card_name" />
+    <result column="dedust_no" jdbcType="VARCHAR" property="dedust_no" />
+    <result column="pay_no" jdbcType="VARCHAR" property="pay_no" />
+    <result column="real_time_balance" jdbcType="DECIMAL" property="real_time_balance" />
+    <result column="today_amt" jdbcType="DECIMAL" property="today_amt" />
+    <result column="yesterday_amt" jdbcType="DECIMAL" property="yesterday_amt" />
+    <result column="query_date" jdbcType="TIMESTAMP" property="query_date" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mall_no, plat_no, card_type, card_no, card_name, dedust_no, pay_no, real_time_balance,
+    today_amt, yesterday_amt, query_date, enabled, remark, create_by, create_time, update_by,
+    update_time
+  </sql>
+  <select id="getByUnionKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from plat_cardinfo
+    where plat_no=#{plat_no} and card_type=#{card_type}
+  </select>
+</mapper>

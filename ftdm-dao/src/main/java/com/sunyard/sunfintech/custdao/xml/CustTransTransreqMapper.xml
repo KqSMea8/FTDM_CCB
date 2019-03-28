@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustTransTransreqMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.TransTransreq">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="order_no" />
+    <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="trans_code" jdbcType="VARCHAR" property="trans_code" />
+    <result column="trans_name" jdbcType="VARCHAR" property="trans_name" />
+    <result column="trans_date" jdbcType="VARCHAR" property="trans_date" />
+    <result column="trans_time" jdbcType="VARCHAR" property="trans_time" />
+    <result column="return_code" jdbcType="VARCHAR" property="return_code" />
+    <result column="return_msg" jdbcType="VARCHAR" property="return_msg" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="batch_order_no" jdbcType="VARCHAR" property="batch_order_no" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="notify_url" jdbcType="VARCHAR" property="notify_url" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="ext3" jdbcType="VARCHAR" property="ext3" />
+    <result column="ext4" jdbcType="VARCHAR" property="ext4" />
+    <result column="ext5" jdbcType="VARCHAR" property="ext5" />
+    <result column="origin_order_no" jdbcType="VARCHAR" property="origin_order_no" />
+    <result column="service_name" jdbcType="VARCHAR" property="service_name" />
+  </resultMap>
+
+  <select id="queryProcessingPayfee" parameterType="map" resultMap="BaseResultMap">
+    SELECT * FROM trans_transreq q
+    WHERE status = '0'
+    AND  enabled='1'
+    AND create_time BETWEEN date_sub(now(),interval 3 day)
+    AND date_sub(now(), interval 60 minute)
+    AND service_name ='user'
+    AND  NOT EXISTS(SELECT * FROM trans_transreq account WHERE account.service_name='account' AND account.status='0' AND account.order_no=q.order_no)
+    AND trans_code IN
+    <foreach collection="trans_codes" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    order by id DESC
+    limit 10
+  </select>
+  <select id="queryProdProcessing" parameterType="map" resultMap="BaseResultMap">
+    SELECT * FROM trans_transreq q
+    WHERE status = '0'
+    AND  enabled='1'
+    AND create_time BETWEEN date_sub(now(),interval 3 day)
+    AND date_sub(now(), interval 300 minute)
+    AND service_name =#{service_name}
+    AND  NOT EXISTS(SELECT * FROM trans_transreq account WHERE account.service_name='account' AND account.status='0' AND create_time BETWEEN date_sub(now(),interval 3 day)
+    AND date_sub(now(), interval 300 minute)
+    AND account.order_no=q.order_no)
+    AND trans_code IN
+    <foreach collection="trans_codes" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    order by id
+    limit #{limit}
+  </select>
+
+  <select id="queryProcessOrders" resultMap="BaseResultMap">
+    select * from trans_transreq where status in ('0','11','24') and enabled='1'
+    and service_name =#{params.service_name} and trans_code in('P00001','P00005','P00006','PTA00001','B00002','B00003','B00004','P00007')
+    and create_time BETWEEN #{params.start_time} and #{params.end_time} order by id limit #{params.limit};
+  </select>
+
+</mapper>

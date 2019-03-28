@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.EaccAccountamtlistMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.EaccAccountamtlist">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="sub_subject" jdbcType="VARCHAR" property="sub_subject" />
+    <result column="trans_code" jdbcType="VARCHAR" property="trans_code" />
+    <result column="trans_name" jdbcType="VARCHAR" property="trans_name" />
+    <result column="trans_date" jdbcType="VARCHAR" property="trans_date" />
+    <result column="trans_time" jdbcType="VARCHAR" property="trans_time" />
+    <result column="amt_type" jdbcType="VARCHAR" property="amt_type" />
+    <result column="oppo_plat_no" jdbcType="VARCHAR" property="oppo_plat_no" />
+    <result column="oppo_platcust" jdbcType="VARCHAR" property="oppo_platcust" />
+    <result column="oppo_subject" jdbcType="VARCHAR" property="oppo_subject" />
+    <result column="oppo_sub_subject" jdbcType="VARCHAR" property="oppo_sub_subject" />
+    <result column="amt" jdbcType="DECIMAL" property="amt" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="switch_state" jdbcType="VARCHAR" property="switch_state" />
+    <result column="switch_amt" jdbcType="DECIMAL" property="switch_amt" />
+    <result column="pay_code" jdbcType="VARCHAR" property="pay_code" />
+    <result column="account_date" jdbcType="DATE" property="account_date" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="ext3" jdbcType="VARCHAR" property="ext3" />
+    <result column="ext4" jdbcType="VARCHAR" property="ext4" />
+    <result column="ext5" jdbcType="VARCHAR" property="ext5" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="ramerk" jdbcType="VARCHAR" property="ramerk" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="order_no" jdbcType="VARCHAR" property="order_no" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, trans_serial, plat_no, platcust, subject, sub_subject, trans_code, trans_name, 
+    trans_date, trans_time, amt_type, oppo_plat_no, oppo_platcust, oppo_subject, oppo_sub_subject, 
+    amt, remark, switch_state, switch_amt, pay_code, account_date, ext1, ext2, ext3, 
+    ext4, ext5, enabled, ramerk, create_by, create_time, update_by, update_time, order_no, 
+    balance
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlistExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from eacc_accountamtlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eacc_accountamtlist
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from eacc_accountamtlist
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlistExample">
+    delete from eacc_accountamtlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlist">
+    insert into eacc_accountamtlist (id, trans_serial, plat_no, 
+      platcust, subject, sub_subject, 
+      trans_code, trans_name, trans_date, 
+      trans_time, amt_type, oppo_plat_no, 
+      oppo_platcust, oppo_subject, oppo_sub_subject, 
+      amt, remark, switch_state, 
+      switch_amt, pay_code, account_date, 
+      ext1, ext2, ext3, ext4, 
+      ext5, enabled, ramerk, 
+      create_by, create_time, update_by, 
+      update_time, order_no, balance
+      )
+    values (#{id,jdbcType=BIGINT}, #{trans_serial,jdbcType=VARCHAR}, #{plat_no,jdbcType=VARCHAR}, 
+      #{platcust,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{sub_subject,jdbcType=VARCHAR}, 
+      #{trans_code,jdbcType=VARCHAR}, #{trans_name,jdbcType=VARCHAR}, #{trans_date,jdbcType=VARCHAR}, 
+      #{trans_time,jdbcType=VARCHAR}, #{amt_type,jdbcType=VARCHAR}, #{oppo_plat_no,jdbcType=VARCHAR}, 
+      #{oppo_platcust,jdbcType=VARCHAR}, #{oppo_subject,jdbcType=VARCHAR}, #{oppo_sub_subject,jdbcType=VARCHAR}, 
+      #{amt,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{switch_state,jdbcType=VARCHAR}, 
+      #{switch_amt,jdbcType=DECIMAL}, #{pay_code,jdbcType=VARCHAR}, #{account_date,jdbcType=DATE}, 
+      #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}, 
+      #{ext5,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR}, #{ramerk,jdbcType=VARCHAR}, 
+      #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{order_no,jdbcType=VARCHAR}, #{balance,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlist">
+    insert into eacc_accountamtlist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="trans_serial != null">
+        trans_serial,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="platcust != null">
+        platcust,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="sub_subject != null">
+        sub_subject,
+      </if>
+      <if test="trans_code != null">
+        trans_code,
+      </if>
+      <if test="trans_name != null">
+        trans_name,
+      </if>
+      <if test="trans_date != null">
+        trans_date,
+      </if>
+      <if test="trans_time != null">
+        trans_time,
+      </if>
+      <if test="amt_type != null">
+        amt_type,
+      </if>
+      <if test="oppo_plat_no != null">
+        oppo_plat_no,
+      </if>
+      <if test="oppo_platcust != null">
+        oppo_platcust,
+      </if>
+      <if test="oppo_subject != null">
+        oppo_subject,
+      </if>
+      <if test="oppo_sub_subject != null">
+        oppo_sub_subject,
+      </if>
+      <if test="amt != null">
+        amt,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="switch_state != null">
+        switch_state,
+      </if>
+      <if test="switch_amt != null">
+        switch_amt,
+      </if>
+      <if test="pay_code != null">
+        pay_code,
+      </if>
+      <if test="account_date != null">
+        account_date,
+      </if>
+      <if test="ext1 != null">
+        ext1,
+      </if>
+      <if test="ext2 != null">
+        ext2,
+      </if>
+      <if test="ext3 != null">
+        ext3,
+      </if>
+      <if test="ext4 != null">
+        ext4,
+      </if>
+      <if test="ext5 != null">
+        ext5,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="ramerk != null">
+        ramerk,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="order_no != null">
+        order_no,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="trans_serial != null">
+        #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="sub_subject != null">
+        #{sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_code != null">
+        #{trans_code,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_name != null">
+        #{trans_name,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_date != null">
+        #{trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_time != null">
+        #{trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="amt_type != null">
+        #{amt_type,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_plat_no != null">
+        #{oppo_plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_platcust != null">
+        #{oppo_platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_subject != null">
+        #{oppo_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_sub_subject != null">
+        #{oppo_sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null">
+        #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="switch_state != null">
+        #{switch_state,jdbcType=VARCHAR},
+      </if>
+      <if test="switch_amt != null">
+        #{switch_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="pay_code != null">
+        #{pay_code,jdbcType=VARCHAR},
+      </if>
+      <if test="account_date != null">
+        #{account_date,jdbcType=DATE},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="ext3 != null">
+        #{ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="ext4 != null">
+        #{ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="ext5 != null">
+        #{ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="ramerk != null">
+        #{ramerk,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="order_no != null">
+        #{order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlistExample" resultType="java.lang.Integer">
+    select count(*) from eacc_accountamtlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update eacc_accountamtlist
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.trans_serial != null">
+        trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platcust != null">
+        platcust = #{record.platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subject != null">
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sub_subject != null">
+        sub_subject = #{record.sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_code != null">
+        trans_code = #{record.trans_code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_name != null">
+        trans_name = #{record.trans_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_date != null">
+        trans_date = #{record.trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_time != null">
+        trans_time = #{record.trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amt_type != null">
+        amt_type = #{record.amt_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oppo_plat_no != null">
+        oppo_plat_no = #{record.oppo_plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oppo_platcust != null">
+        oppo_platcust = #{record.oppo_platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oppo_subject != null">
+        oppo_subject = #{record.oppo_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oppo_sub_subject != null">
+        oppo_sub_subject = #{record.oppo_sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amt != null">
+        amt = #{record.amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.switch_state != null">
+        switch_state = #{record.switch_state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.switch_amt != null">
+        switch_amt = #{record.switch_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pay_code != null">
+        pay_code = #{record.pay_code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account_date != null">
+        account_date = #{record.account_date,jdbcType=DATE},
+      </if>
+      <if test="record.ext1 != null">
+        ext1 = #{record.ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext2 != null">
+        ext2 = #{record.ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext3 != null">
+        ext3 = #{record.ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext4 != null">
+        ext4 = #{record.ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext5 != null">
+        ext5 = #{record.ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=CHAR},
+      </if>
+      <if test="record.ramerk != null">
+        ramerk = #{record.ramerk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_by != null">
+        create_by = #{record.create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_time != null">
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_by != null">
+        update_by = #{record.update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.update_time != null">
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.order_no != null">
+        order_no = #{record.order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.balance != null">
+        balance = #{record.balance,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update eacc_accountamtlist
+    set id = #{record.id,jdbcType=BIGINT},
+      trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      platcust = #{record.platcust,jdbcType=VARCHAR},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      sub_subject = #{record.sub_subject,jdbcType=VARCHAR},
+      trans_code = #{record.trans_code,jdbcType=VARCHAR},
+      trans_name = #{record.trans_name,jdbcType=VARCHAR},
+      trans_date = #{record.trans_date,jdbcType=VARCHAR},
+      trans_time = #{record.trans_time,jdbcType=VARCHAR},
+      amt_type = #{record.amt_type,jdbcType=VARCHAR},
+      oppo_plat_no = #{record.oppo_plat_no,jdbcType=VARCHAR},
+      oppo_platcust = #{record.oppo_platcust,jdbcType=VARCHAR},
+      oppo_subject = #{record.oppo_subject,jdbcType=VARCHAR},
+      oppo_sub_subject = #{record.oppo_sub_subject,jdbcType=VARCHAR},
+      amt = #{record.amt,jdbcType=DECIMAL},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      switch_state = #{record.switch_state,jdbcType=VARCHAR},
+      switch_amt = #{record.switch_amt,jdbcType=DECIMAL},
+      pay_code = #{record.pay_code,jdbcType=VARCHAR},
+      account_date = #{record.account_date,jdbcType=DATE},
+      ext1 = #{record.ext1,jdbcType=VARCHAR},
+      ext2 = #{record.ext2,jdbcType=VARCHAR},
+      ext3 = #{record.ext3,jdbcType=VARCHAR},
+      ext4 = #{record.ext4,jdbcType=VARCHAR},
+      ext5 = #{record.ext5,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=CHAR},
+      ramerk = #{record.ramerk,jdbcType=VARCHAR},
+      create_by = #{record.create_by,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_by = #{record.update_by,jdbcType=VARCHAR},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      order_no = #{record.order_no,jdbcType=VARCHAR},
+      balance = #{record.balance,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlist">
+    update eacc_accountamtlist
+    <set>
+      <if test="trans_serial != null">
+        trans_serial = #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        platcust = #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="sub_subject != null">
+        sub_subject = #{sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_code != null">
+        trans_code = #{trans_code,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_name != null">
+        trans_name = #{trans_name,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_date != null">
+        trans_date = #{trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_time != null">
+        trans_time = #{trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="amt_type != null">
+        amt_type = #{amt_type,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_plat_no != null">
+        oppo_plat_no = #{oppo_plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_platcust != null">
+        oppo_platcust = #{oppo_platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_subject != null">
+        oppo_subject = #{oppo_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="oppo_sub_subject != null">
+        oppo_sub_subject = #{oppo_sub_subject,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null">
+        amt = #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="switch_state != null">
+        switch_state = #{switch_state,jdbcType=VARCHAR},
+      </if>
+      <if test="switch_amt != null">
+        switch_amt = #{switch_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="pay_code != null">
+        pay_code = #{pay_code,jdbcType=VARCHAR},
+      </if>
+      <if test="account_date != null">
+        account_date = #{account_date,jdbcType=DATE},
+      </if>
+      <if test="ext1 != null">
+        ext1 = #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        ext2 = #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="ext3 != null">
+        ext3 = #{ext3,jdbcType=VARCHAR},
+      </if>
+      <if test="ext4 != null">
+        ext4 = #{ext4,jdbcType=VARCHAR},
+      </if>
+      <if test="ext5 != null">
+        ext5 = #{ext5,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="ramerk != null">
+        ramerk = #{ramerk,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        create_by = #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="order_no != null">
+        order_no = #{order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.EaccAccountamtlist">
+    update eacc_accountamtlist
+    set trans_serial = #{trans_serial,jdbcType=VARCHAR},
+      plat_no = #{plat_no,jdbcType=VARCHAR},
+      platcust = #{platcust,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      sub_subject = #{sub_subject,jdbcType=VARCHAR},
+      trans_code = #{trans_code,jdbcType=VARCHAR},
+      trans_name = #{trans_name,jdbcType=VARCHAR},
+      trans_date = #{trans_date,jdbcType=VARCHAR},
+      trans_time = #{trans_time,jdbcType=VARCHAR},
+      amt_type = #{amt_type,jdbcType=VARCHAR},
+      oppo_plat_no = #{oppo_plat_no,jdbcType=VARCHAR},
+      oppo_platcust = #{oppo_platcust,jdbcType=VARCHAR},
+      oppo_subject = #{oppo_subject,jdbcType=VARCHAR},
+      oppo_sub_subject = #{oppo_sub_subject,jdbcType=VARCHAR},
+      amt = #{amt,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      switch_state = #{switch_state,jdbcType=VARCHAR},
+      switch_amt = #{switch_amt,jdbcType=DECIMAL},
+      pay_code = #{pay_code,jdbcType=VARCHAR},
+      account_date = #{account_date,jdbcType=DATE},
+      ext1 = #{ext1,jdbcType=VARCHAR},
+      ext2 = #{ext2,jdbcType=VARCHAR},
+      ext3 = #{ext3,jdbcType=VARCHAR},
+      ext4 = #{ext4,jdbcType=VARCHAR},
+      ext5 = #{ext5,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=CHAR},
+      ramerk = #{ramerk,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      order_no = #{order_no,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

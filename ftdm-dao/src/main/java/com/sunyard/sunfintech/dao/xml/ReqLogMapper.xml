@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ReqLogMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ReqLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="order_no" jdbcType="VARCHAR" property="order_no" />
+    <result column="req_date" jdbcType="VARCHAR" property="req_date" />
+    <result column="req_ip" jdbcType="VARCHAR" property="req_ip" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="class_name" jdbcType="VARCHAR" property="class_name" />
+    <result column="method_name" jdbcType="VARCHAR" property="method_name" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sunyard.sunfintech.dao.entity.ReqLogWithBLOBs">
+    <result column="req_param" jdbcType="LONGVARCHAR" property="req_param" />
+    <result column="req_result" jdbcType="LONGVARCHAR" property="req_result" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, plat_no, order_no, req_date, req_ip, method, class_name, method_name, enabled, 
+    remark, create_by, create_time, update_by, update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    req_param, req_result
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.sunyard.sunfintech.dao.entity.ReqLogExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from req_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.ReqLogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from req_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from req_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from req_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.ReqLogExample">
+    delete from req_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ReqLogWithBLOBs">
+    insert into req_log (id, plat_no, order_no, 
+      req_date, req_ip, method, 
+      class_name, method_name, enabled, 
+      remark, create_by, create_time, 
+      update_by, update_time, req_param, 
+      req_result)
+    values (#{id,jdbcType=BIGINT}, #{plat_no,jdbcType=VARCHAR}, #{order_no,jdbcType=VARCHAR}, 
+      #{req_date,jdbcType=VARCHAR}, #{req_ip,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
+      #{class_name,jdbcType=VARCHAR}, #{method_name,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP}, #{req_param,jdbcType=LONGVARCHAR}, 
+      #{req_result,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ReqLogWithBLOBs">
+    insert into req_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="order_no != null">
+        order_no,
+      </if>
+      <if test="req_date != null">
+        req_date,
+      </if>
+      <if test="req_ip != null">
+        req_ip,
+      </if>
+      <if test="method != null">
+        method,
+      </if>
+      <if test="class_name != null">
+        class_name,
+      </if>
+      <if test="method_name != null">
+        method_name,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="req_param != null">
+        req_param,
+      </if>
+      <if test="req_result != null">
+        req_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="order_no != null">
+        #{order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="req_date != null">
+        #{req_date,jdbcType=VARCHAR},
+      </if>
+      <if test="req_ip != null">
+        #{req_ip,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="class_name != null">
+        #{class_name,jdbcType=VARCHAR},
+      </if>
+      <if test="method_name != null">
+        #{method_name,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="req_param != null">
+        #{req_param,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="req_result != null">
+        #{req_result,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.ReqLogExample" resultType="java.lang.Integer">
+    select count(*) from req_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update req_log
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.order_no != null">
+        order_no = #{record.order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.req_date != null">
+        req_date = #{record.req_date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.req_ip != null">
+        req_ip = #{record.req_ip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.method != null">
+        method = #{record.method,jdbcType=VARCHAR},
+      </if>
+      <if test="record.class_name != null">
+        class_name = #{record.class_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.method_name != null">
+        method_name = #{record.method_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_by != null">
+        create_by = #{record.create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_time != null">
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_by != null">
+        update_by = #{record.update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.update_time != null">
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.req_param != null">
+        req_param = #{record.req_param,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.req_result != null">
+        req_result = #{record.req_result,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update req_log
+    set id = #{record.id,jdbcType=BIGINT},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      order_no = #{record.order_no,jdbcType=VARCHAR},
+      req_date = #{record.req_date,jdbcType=VARCHAR},
+      req_ip = #{record.req_ip,jdbcType=VARCHAR},
+      method = #{record.method,jdbcType=VARCHAR},
+      class_name = #{record.class_name,jdbcType=VARCHAR},
+      method_name = #{record.method_name,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_by = #{record.create_by,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_by = #{record.update_by,jdbcType=VARCHAR},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      req_param = #{record.req_param,jdbcType=LONGVARCHAR},
+      req_result = #{record.req_result,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update req_log
+    set id = #{record.id,jdbcType=BIGINT},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      order_no = #{record.order_no,jdbcType=VARCHAR},
+      req_date = #{record.req_date,jdbcType=VARCHAR},
+      req_ip = #{record.req_ip,jdbcType=VARCHAR},
+      method = #{record.method,jdbcType=VARCHAR},
+      class_name = #{record.class_name,jdbcType=VARCHAR},
+      method_name = #{record.method_name,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_by = #{record.create_by,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_by = #{record.update_by,jdbcType=VARCHAR},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.ReqLogWithBLOBs">
+    update req_log
+    <set>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="order_no != null">
+        order_no = #{order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="req_date != null">
+        req_date = #{req_date,jdbcType=VARCHAR},
+      </if>
+      <if test="req_ip != null">
+        req_ip = #{req_ip,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="class_name != null">
+        class_name = #{class_name,jdbcType=VARCHAR},
+      </if>
+      <if test="method_name != null">
+        method_name = #{method_name,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        create_by = #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="req_param != null">
+        req_param = #{req_param,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="req_result != null">
+        req_result = #{req_result,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sunyard.sunfintech.dao.entity.ReqLogWithBLOBs">
+    update req_log
+    set plat_no = #{plat_no,jdbcType=VARCHAR},
+      order_no = #{order_no,jdbcType=VARCHAR},
+      req_date = #{req_date,jdbcType=VARCHAR},
+      req_ip = #{req_ip,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      class_name = #{class_name,jdbcType=VARCHAR},
+      method_name = #{method_name,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      req_param = #{req_param,jdbcType=LONGVARCHAR},
+      req_result = #{req_result,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ReqLog">
+    update req_log
+    set plat_no = #{plat_no,jdbcType=VARCHAR},
+      order_no = #{order_no,jdbcType=VARCHAR},
+      req_date = #{req_date,jdbcType=VARCHAR},
+      req_ip = #{req_ip,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      class_name = #{class_name,jdbcType=VARCHAR},
+      method_name = #{method_name,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

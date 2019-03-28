@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ProdShareListMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ProdShareList">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial" />
+    <result column="trans_code" jdbcType="VARCHAR" property="trans_code" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="platcust" jdbcType="VARCHAR" property="platcust" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="trans_date" jdbcType="VARCHAR" property="trans_date" />
+    <result column="trans_time" jdbcType="VARCHAR" property="trans_time" />
+    <result column="vol" jdbcType="DECIMAL" property="vol" />
+    <result column="amt_type" jdbcType="VARCHAR" property="amt_type" />
+    <result column="in_interest" jdbcType="DECIMAL" property="in_interest" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="self_amt" jdbcType="DECIMAL" property="self_amt" />
+    <result column="coupon_amt" jdbcType="DECIMAL" property="coupon_amt" />
+    <result column="experience_amt" jdbcType="DECIMAL" property="experience_amt" />
+    <result column="payout_amt" jdbcType="DECIMAL" property="payout_amt" />
+    <result column="self_priority" jdbcType="VARCHAR" property="self_priority" />
+    <result column="fee_priority" jdbcType="VARCHAR" property="fee_priority" />
+    <result column="interest" jdbcType="DECIMAL" property="interest" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, trans_serial, trans_code, plat_no, platcust, prod_id, trans_date, trans_time, 
+    vol, amt_type, in_interest, status, enabled, remark, create_by, create_time, update_by, 
+    update_time, ext1, ext2, self_amt, coupon_amt, experience_amt, payout_amt, self_priority, 
+    fee_priority, interest
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdShareListExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from prod_share_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from prod_share_list
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from prod_share_list
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdShareListExample">
+    delete from prod_share_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ProdShareList">
+    insert into prod_share_list (id, trans_serial, trans_code, 
+      plat_no, platcust, prod_id, 
+      trans_date, trans_time, vol, 
+      amt_type, in_interest, status, 
+      enabled, remark, create_by, 
+      create_time, update_by, update_time, 
+      ext1, ext2, self_amt, 
+      coupon_amt, experience_amt, payout_amt, 
+      self_priority, fee_priority, interest
+      )
+    values (#{id,jdbcType=INTEGER}, #{trans_serial,jdbcType=VARCHAR}, #{trans_code,jdbcType=VARCHAR}, 
+      #{plat_no,jdbcType=VARCHAR}, #{platcust,jdbcType=VARCHAR}, #{prod_id,jdbcType=VARCHAR}, 
+      #{trans_date,jdbcType=VARCHAR}, #{trans_time,jdbcType=VARCHAR}, #{vol,jdbcType=DECIMAL}, 
+      #{amt_type,jdbcType=VARCHAR}, #{in_interest,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, 
+      #{enabled,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP}, 
+      #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, #{self_amt,jdbcType=DECIMAL}, 
+      #{coupon_amt,jdbcType=DECIMAL}, #{experience_amt,jdbcType=DECIMAL}, #{payout_amt,jdbcType=DECIMAL}, 
+      #{self_priority,jdbcType=VARCHAR}, #{fee_priority,jdbcType=VARCHAR}, #{interest,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdShareList">
+    insert into prod_share_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="trans_serial != null">
+        trans_serial,
+      </if>
+      <if test="trans_code != null">
+        trans_code,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="platcust != null">
+        platcust,
+      </if>
+      <if test="prod_id != null">
+        prod_id,
+      </if>
+      <if test="trans_date != null">
+        trans_date,
+      </if>
+      <if test="trans_time != null">
+        trans_time,
+      </if>
+      <if test="vol != null">
+        vol,
+      </if>
+      <if test="amt_type != null">
+        amt_type,
+      </if>
+      <if test="in_interest != null">
+        in_interest,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="ext1 != null">
+        ext1,
+      </if>
+      <if test="ext2 != null">
+        ext2,
+      </if>
+      <if test="self_amt != null">
+        self_amt,
+      </if>
+      <if test="coupon_amt != null">
+        coupon_amt,
+      </if>
+      <if test="experience_amt != null">
+        experience_amt,
+      </if>
+      <if test="payout_amt != null">
+        payout_amt,
+      </if>
+      <if test="self_priority != null">
+        self_priority,
+      </if>
+      <if test="fee_priority != null">
+        fee_priority,
+      </if>
+      <if test="interest != null">
+        interest,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="trans_serial != null">
+        #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_code != null">
+        #{trans_code,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_id != null">
+        #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_date != null">
+        #{trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_time != null">
+        #{trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="vol != null">
+        #{vol,jdbcType=DECIMAL},
+      </if>
+      <if test="amt_type != null">
+        #{amt_type,jdbcType=VARCHAR},
+      </if>
+      <if test="in_interest != null">
+        #{in_interest,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="self_amt != null">
+        #{self_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="coupon_amt != null">
+        #{coupon_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="experience_amt != null">
+        #{experience_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="payout_amt != null">
+        #{payout_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="self_priority != null">
+        #{self_priority,jdbcType=VARCHAR},
+      </if>
+      <if test="fee_priority != null">
+        #{fee_priority,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdShareListExample" resultType="java.lang.Integer">
+    select count(*) from prod_share_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update prod_share_list
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.trans_serial != null">
+        trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_code != null">
+        trans_code = #{record.trans_code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platcust != null">
+        platcust = #{record.platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prod_id != null">
+        prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_date != null">
+        trans_date = #{record.trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trans_time != null">
+        trans_time = #{record.trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vol != null">
+        vol = #{record.vol,jdbcType=DECIMAL},
+      </if>
+      <if test="record.amt_type != null">
+        amt_type = #{record.amt_type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.in_interest != null">
+        in_interest = #{record.in_interest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_by != null">
+        create_by = #{record.create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.create_time != null">
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_by != null">
+        update_by = #{record.update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="record.update_time != null">
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ext1 != null">
+        ext1 = #{record.ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext2 != null">
+        ext2 = #{record.ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.self_amt != null">
+        self_amt = #{record.self_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.coupon_amt != null">
+        coupon_amt = #{record.coupon_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.experience_amt != null">
+        experience_amt = #{record.experience_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payout_amt != null">
+        payout_amt = #{record.payout_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.self_priority != null">
+        self_priority = #{record.self_priority,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fee_priority != null">
+        fee_priority = #{record.fee_priority,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interest != null">
+        interest = #{record.interest,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update prod_share_list
+    set id = #{record.id,jdbcType=INTEGER},
+      trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+      trans_code = #{record.trans_code,jdbcType=VARCHAR},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      platcust = #{record.platcust,jdbcType=VARCHAR},
+      prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      trans_date = #{record.trans_date,jdbcType=VARCHAR},
+      trans_time = #{record.trans_time,jdbcType=VARCHAR},
+      vol = #{record.vol,jdbcType=DECIMAL},
+      amt_type = #{record.amt_type,jdbcType=VARCHAR},
+      in_interest = #{record.in_interest,jdbcType=DECIMAL},
+      status = #{record.status,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_by = #{record.create_by,jdbcType=VARCHAR},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_by = #{record.update_by,jdbcType=VARCHAR},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      ext1 = #{record.ext1,jdbcType=VARCHAR},
+      ext2 = #{record.ext2,jdbcType=VARCHAR},
+      self_amt = #{record.self_amt,jdbcType=DECIMAL},
+      coupon_amt = #{record.coupon_amt,jdbcType=DECIMAL},
+      experience_amt = #{record.experience_amt,jdbcType=DECIMAL},
+      payout_amt = #{record.payout_amt,jdbcType=DECIMAL},
+      self_priority = #{record.self_priority,jdbcType=VARCHAR},
+      fee_priority = #{record.fee_priority,jdbcType=VARCHAR},
+      interest = #{record.interest,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdShareList">
+    update prod_share_list
+    <set>
+      <if test="trans_serial != null">
+        trans_serial = #{trans_serial,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_code != null">
+        trans_code = #{trans_code,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="platcust != null">
+        platcust = #{platcust,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_id != null">
+        prod_id = #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_date != null">
+        trans_date = #{trans_date,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_time != null">
+        trans_time = #{trans_time,jdbcType=VARCHAR},
+      </if>
+      <if test="vol != null">
+        vol = #{vol,jdbcType=DECIMAL},
+      </if>
+      <if test="amt_type != null">
+        amt_type = #{amt_type,jdbcType=VARCHAR},
+      </if>
+      <if test="in_interest != null">
+        in_interest = #{in_interest,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        create_by = #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ext1 != null">
+        ext1 = #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="ext2 != null">
+        ext2 = #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="self_amt != null">
+        self_amt = #{self_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="coupon_amt != null">
+        coupon_amt = #{coupon_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="experience_amt != null">
+        experience_amt = #{experience_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="payout_amt != null">
+        payout_amt = #{payout_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="self_priority != null">
+        self_priority = #{self_priority,jdbcType=VARCHAR},
+      </if>
+      <if test="fee_priority != null">
+        fee_priority = #{fee_priority,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        interest = #{interest,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ProdShareList">
+    update prod_share_list
+    set trans_serial = #{trans_serial,jdbcType=VARCHAR},
+      trans_code = #{trans_code,jdbcType=VARCHAR},
+      plat_no = #{plat_no,jdbcType=VARCHAR},
+      platcust = #{platcust,jdbcType=VARCHAR},
+      prod_id = #{prod_id,jdbcType=VARCHAR},
+      trans_date = #{trans_date,jdbcType=VARCHAR},
+      trans_time = #{trans_time,jdbcType=VARCHAR},
+      vol = #{vol,jdbcType=DECIMAL},
+      amt_type = #{amt_type,jdbcType=VARCHAR},
+      in_interest = #{in_interest,jdbcType=DECIMAL},
+      status = #{status,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      ext1 = #{ext1,jdbcType=VARCHAR},
+      ext2 = #{ext2,jdbcType=VARCHAR},
+      self_amt = #{self_amt,jdbcType=DECIMAL},
+      coupon_amt = #{coupon_amt,jdbcType=DECIMAL},
+      experience_amt = #{experience_amt,jdbcType=DECIMAL},
+      payout_amt = #{payout_amt,jdbcType=DECIMAL},
+      self_priority = #{self_priority,jdbcType=VARCHAR},
+      fee_priority = #{fee_priority,jdbcType=VARCHAR},
+      interest = #{interest,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getInvestmentDetail" parameterType="map" resultType="map">
+     SELECT
+  s.amt_type,
+  s.in_interest,
+  s.platcust,
+  s.trans_date,
+  s.trans_time,
+  IFNULL(s.vol, '0') vol,
+  (SELECT
+    prod_name
+  FROM
+    prod_productinfo
+  WHERE prod_id = #{prod_id}) prod_name,
+  (SELECT
+    plat_name
+  FROM
+    plat_platinfo
+  WHERE plat_no = #{plat_no})  plat_name
+FROM
+  prod_share_list s
+WHERE s.prod_id = #{prod_id}
+  AND s.enabled = '1'
+  </select>
+
+</mapper>

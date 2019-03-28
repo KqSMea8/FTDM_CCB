@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <!--&lt;!&ndash;0点自动跑对账等任务&ndash;&gt;-->
+    <!--<bean id="billchackConfig" class="com.sunyard.sunfintech.schedule.config.BillchackConfig"/>-->
+    <!--<bean id="billcheckBean" class="com.sunyard.sunfintech.schedule.bean.BillcheckBean"/>-->
+    <!--&lt;!&ndash;end&ndash;&gt;-->
+    <!--&lt;!&ndash;自动查询处理中的充值订单&ndash;&gt;-->
+    <!--<bean id="rechargeStatusConfig" class="com.sunyard.sunfintech.schedule.config.RechargeStatusConfig"/>-->
+    <!--<bean id="rechargeStatusBean" class="com.sunyard.sunfintech.schedule.bean.RechargeStatusBean"/>-->
+    <!--&lt;!&ndash;end&ndash;&gt;-->
+    <!--&lt;!&ndash;自动查询处理中的标的还款订单&ndash;&gt;-->
+    <!--<bean id="processProductRefundConfig" class="com.sunyard.sunfintech.schedule.config.ProcessProductRefundConfig"/>-->
+    <!--<bean id="processProductRefundBean" class="com.sunyard.sunfintech.schedule.bean.ProcessProductRefundBean"/>-->
+    <!--&lt;!&ndash;end&ndash;&gt;-->
+    <!--&lt;!&ndash;自动退款&ndash;&gt;-->
+    <!--<bean id="autoRefundConfig" class="com.sunyard.sunfintech.schedule.config.AutoRefundConfig"/>-->
+    <!--<bean id="autoRefundBean" class="com.sunyard.sunfintech.schedule.bean.AutoRefundBean"/>-->
+    <!--&lt;!&ndash;end&ndash;&gt;-->
+    <bean id="scheduleManagerFactory" class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
+          init-method="init">
+        <property name="zkConfig">
+            <map>
+                <entry key="zkConnectString" value="${tbs.zkConnectString}"/>
+                <entry key="rootPath" value="${tbs.rootPath}"/>
+                <entry key="zkSessionTimeout" value="${tbs.zkSessionTimeout}"/>
+                <entry key="userName" value="${tbs.userName}"/>
+                <entry key="password" value="${tbs.password}"/>
+                <entry key="isCheckParentPath" value="${tbs.isCheckParentPath}"/>
+            </map>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,107 @@
+{
+	"id": "1ba8b212-b23e-1d04-7ce8-800c4a3841ee",
+	"name": "标的成废",
+	"description": "",
+	"order": [
+		"6c799604-f07b-b39e-f41a-1bac61000f6a"
+	],
+	"folders": [],
+	"timestamp": 1495519578137,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "6c799604-f07b-b39e-f41a-1bac61000f6a",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/product/establish_or_abort",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "1ba8b212-b23e-1d04-7ce8-800c4a3841ee",
+			"data": [
+				{
+					"key": "version",
+					"value": "V1.0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "2017-5-4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "16:13:24",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "MALL-001-0001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "95270001",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "ORDER2017050416161234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "098f6bcd4621d373cade4e832627b4f6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "prod_id",
+					"value": "23",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "flag",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "funddata",
+					"value": "{\"payout_plat_type\":\"01\",\"payout_amt\":\"1313.12\"}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "subdata",
+					"value": "[\n    {\n        \"plat_cust\": \"20170001\",\n        \"amt\": \"1313.12\",\n        \"remark\": \"担保费\"\n    },\n    {\n        \"plat_cust\": \"20170102\",\n        \"amt\": \"1313.12\",\n        \"remark\": \"担保费\"\n    }\n]",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_plan_list",
+					"value": "[\n    {\n        \"repay_amt\": \"1000\",\n        \"repay_fee\": \"0\",\n        \"repay_num\": \"1\",\n        \"repay_date\": \"2015-07-09\"\n    },\n    {\n        \"repay_amt\": \"1000\",\n        \"repay_fee\": \"0\",\n        \"repay_num\": \"1\",\n        \"repay_date\": \"2015-07-09\"\n    }\n]",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "标的成废测试用例",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495519607496,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

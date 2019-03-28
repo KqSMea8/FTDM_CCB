@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GB18030" ?>
+<BEIS>
+	<app name='ZJCG' desc='ZJCG'>
+		<remote>
+			<ip>72.0.0.91</ip>
+			<port>21020</port>
+			<conntimeout>1000</conntimeout>
+			<timeout>60</timeout>
+			<buffsize>1000</buffsize>
+		</remote>
+	</app>
+</BEIS>

@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ClearResultSummaryMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ClearResultSummary">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="clear_date" jdbcType="DATE" property="clear_date" />
+    <result column="recharge_sum_inside" jdbcType="DECIMAL" property="recharge_sum_inside" />
+    <result column="recharge_sum_outside" jdbcType="DECIMAL" property="recharge_sum_outside" />
+    <result column="recharge_count_inside" jdbcType="INTEGER" property="recharge_count_inside" />
+    <result column="recharge_count_outside" jdbcType="INTEGER" property="recharge_count_outside" />
+    <result column="withdrawals_sum_inside" jdbcType="DECIMAL" property="withdrawals_sum_inside" />
+    <result column="withdrawals_sum_outside" jdbcType="DECIMAL" property="withdrawals_sum_outside" />
+    <result column="withdrawals_count_inside" jdbcType="INTEGER" property="withdrawals_count_inside" />
+    <result column="withdrawals_count_outside" jdbcType="INTEGER" property="withdrawals_count_outside" />
+    <result column="recharge_count_plat" jdbcType="INTEGER" property="recharge_count_plat" />
+    <result column="recharge_sum_plat" jdbcType="DECIMAL" property="recharge_sum_plat" />
+    <result column="withdrawals_count_plat" jdbcType="INTEGER" property="withdrawals_count_plat" />
+    <result column="withdrawals_sum_plat" jdbcType="DECIMAL" property="withdrawals_sum_plat" />
+    <result column="liquidation" jdbcType="CHAR" property="liquidation" />
+    <result column="liquidation_recordtime" jdbcType="VARCHAR" property="liquidation_recordtime" />
+    <result column="balance_sum" jdbcType="DECIMAL" property="balance_sum" />
+    <result column="balance_bank" jdbcType="DECIMAL" property="balance_bank" />
+    <result column="book_balance" jdbcType="DECIMAL" property="book_balance" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pid, plat_no, clear_date, recharge_sum_inside, recharge_sum_outside, recharge_count_inside, 
+    recharge_count_outside, withdrawals_sum_inside, withdrawals_sum_outside, withdrawals_count_inside, 
+    withdrawals_count_outside, recharge_count_plat, recharge_sum_plat, withdrawals_count_plat, 
+    withdrawals_sum_plat, liquidation, liquidation_recordtime, balance_sum, balance_bank, 
+    book_balance
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.ClearResultSummaryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from clear_result_summary
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clear_result_summary
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clear_result_summary
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.ClearResultSummaryExample">
+    delete from clear_result_summary
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ClearResultSummary">
+    insert into clear_result_summary (pid, plat_no, clear_date, 
+      recharge_sum_inside, recharge_sum_outside, 
+      recharge_count_inside, recharge_count_outside, 
+      withdrawals_sum_inside, withdrawals_sum_outside, 
+      withdrawals_count_inside, withdrawals_count_outside, 
+      recharge_count_plat, recharge_sum_plat, 
+      withdrawals_count_plat, withdrawals_sum_plat, 
+      liquidation, liquidation_recordtime, balance_sum, 
+      balance_bank, book_balance)
+    values (#{pid,jdbcType=INTEGER}, #{plat_no,jdbcType=VARCHAR}, #{clear_date,jdbcType=DATE}, 
+      #{recharge_sum_inside,jdbcType=DECIMAL}, #{recharge_sum_outside,jdbcType=DECIMAL}, 
+      #{recharge_count_inside,jdbcType=INTEGER}, #{recharge_count_outside,jdbcType=INTEGER}, 
+      #{withdrawals_sum_inside,jdbcType=DECIMAL}, #{withdrawals_sum_outside,jdbcType=DECIMAL}, 
+      #{withdrawals_count_inside,jdbcType=INTEGER}, #{withdrawals_count_outside,jdbcType=INTEGER}, 
+      #{recharge_count_plat,jdbcType=INTEGER}, #{recharge_sum_plat,jdbcType=DECIMAL}, 
+      #{withdrawals_count_plat,jdbcType=INTEGER}, #{withdrawals_sum_plat,jdbcType=DECIMAL}, 
+      #{liquidation,jdbcType=CHAR}, #{liquidation_recordtime,jdbcType=VARCHAR}, #{balance_sum,jdbcType=DECIMAL}, 
+      #{balance_bank,jdbcType=DECIMAL}, #{book_balance,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ClearResultSummary">
+    insert into clear_result_summary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="clear_date != null">
+        clear_date,
+      </if>
+      <if test="recharge_sum_inside != null">
+        recharge_sum_inside,
+      </if>
+      <if test="recharge_sum_outside != null">
+        recharge_sum_outside,
+      </if>
+      <if test="recharge_count_inside != null">
+        recharge_count_inside,
+      </if>
+      <if test="recharge_count_outside != null">
+        recharge_count_outside,
+      </if>
+      <if test="withdrawals_sum_inside != null">
+        withdrawals_sum_inside,
+      </if>
+      <if test="withdrawals_sum_outside != null">
+        withdrawals_sum_outside,
+      </if>
+      <if test="withdrawals_count_inside != null">
+        withdrawals_count_inside,
+      </if>
+      <if test="withdrawals_count_outside != null">
+        withdrawals_count_outside,
+      </if>
+      <if test="recharge_count_plat != null">
+        recharge_count_plat,
+      </if>
+      <if test="recharge_sum_plat != null">
+        recharge_sum_plat,
+      </if>
+      <if test="withdrawals_count_plat != null">
+        withdrawals_count_plat,
+      </if>
+      <if test="withdrawals_sum_plat != null">
+        withdrawals_sum_plat,
+      </if>
+      <if test="liquidation != null">
+        liquidation,
+      </if>
+      <if test="liquidation_recordtime != null">
+        liquidation_recordtime,
+      </if>
+      <if test="balance_sum != null">
+        balance_sum,
+      </if>
+      <if test="balance_bank != null">
+        balance_bank,
+      </if>
+      <if test="book_balance != null">
+        book_balance,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="clear_date != null">
+        #{clear_date,jdbcType=DATE},
+      </if>
+      <if test="recharge_sum_inside != null">
+        #{recharge_sum_inside,jdbcType=DECIMAL},
+      </if>
+      <if test="recharge_sum_outside != null">
+        #{recharge_sum_outside,jdbcType=DECIMAL},
+      </if>
+      <if test="recharge_count_inside != null">
+        #{recharge_count_inside,jdbcType=INTEGER},
+      </if>
+      <if test="recharge_count_outside != null">
+        #{recharge_count_outside,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawals_sum_inside != null">
+        #{withdrawals_sum_inside,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawals_sum_outside != null">
+        #{withdrawals_sum_outside,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawals_count_inside != null">
+        #{withdrawals_count_inside,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawals_count_outside != null">
+        #{withdrawals_count_outside,jdbcType=INTEGER},
+      </if>
+      <if test="recharge_count_plat != null">
+        #{recharge_count_plat,jdbcType=INTEGER},
+      </if>
+      <if test="recharge_sum_plat != null">
+        #{recharge_sum_plat,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawals_count_plat != null">
+        #{withdrawals_count_plat,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawals_sum_plat != null">
+        #{withdrawals_sum_plat,jdbcType=DECIMAL},
+      </if>
+      <if test="liquidation != null">
+        #{liquidation,jdbcType=CHAR},
+      </if>
+      <if test="liquidation_recordtime != null">
+        #{liquidation_recordtime,jdbcType=VARCHAR},
+      </if>
+      <if test="balance_sum != null">
+        #{balance_sum,jdbcType=DECIMAL},
+      </if>
+      <if test="balance_bank != null">
+        #{balance_bank,jdbcType=DECIMAL},
+      </if>
+      <if test="book_balance != null">
+        #{book_balance,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.ClearResultSummaryExample" resultType="java.lang.Integer">
+    select count(*) from clear_result_summary
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update clear_result_summary
+    <set>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clear_date != null">
+        clear_date = #{record.clear_date,jdbcType=DATE},
+      </if>
+      <if test="record.recharge_sum_inside != null">
+        recharge_sum_inside = #{record.recharge_sum_inside,jdbcType=DECIMAL},
+      </if>
+      <if test="record.recharge_sum_outside != null">
+        recharge_sum_outside = #{record.recharge_sum_outside,jdbcType=DECIMAL},
+      </if>
+      <if test="record.recharge_count_inside != null">
+        recharge_count_inside = #{record.recharge_count_inside,jdbcType=INTEGER},
+      </if>
+      <if test="record.recharge_count_outside != null">
+        recharge_count_outside = #{record.recharge_count_outside,jdbcType=INTEGER},
+      </if>
+      <if test="record.withdrawals_sum_inside != null">
+        withdrawals_sum_inside = #{record.withdrawals_sum_inside,jdbcType=DECIMAL},
+      </if>
+      <if test="record.withdrawals_sum_outside != null">
+        withdrawals_sum_outside = #{record.withdrawals_sum_outside,jdbcType=DECIMAL},
+      </if>
+      <if test="record.withdrawals_count_inside != null">
+        withdrawals_count_inside = #{record.withdrawals_count_inside,jdbcType=INTEGER},
+      </if>
+      <if test="record.withdrawals_count_outside != null">
+        withdrawals_count_outside = #{record.withdrawals_count_outside,jdbcType=INTEGER},
+      </if>
+      <if test="record.recharge_count_plat != null">
+        recharge_count_plat = #{record.recharge_count_plat,jdbcType=INTEGER},
+      </if>
+      <if test="record.recharge_sum_plat != null">
+        recharge_sum_plat = #{record.recharge_sum_plat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.withdrawals_count_plat != null">
+        withdrawals_count_plat = #{record.withdrawals_count_plat,jdbcType=INTEGER},
+      </if>
+      <if test="record.withdrawals_sum_plat != null">
+        withdrawals_sum_plat = #{record.withdrawals_sum_plat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.liquidation != null">
+        liquidation = #{record.liquidation,jdbcType=CHAR},
+      </if>
+      <if test="record.liquidation_recordtime != null">
+        liquidation_recordtime = #{record.liquidation_recordtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.balance_sum != null">
+        balance_sum = #{record.balance_sum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.balance_bank != null">
+        balance_bank = #{record.balance_bank,jdbcType=DECIMAL},
+      </if>
+      <if test="record.book_balance != null">
+        book_balance = #{record.book_balance,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update clear_result_summary
+    set pid = #{record.pid,jdbcType=INTEGER},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      clear_date = #{record.clear_date,jdbcType=DATE},
+      recharge_sum_inside = #{record.recharge_sum_inside,jdbcType=DECIMAL},
+      recharge_sum_outside = #{record.recharge_sum_outside,jdbcType=DECIMAL},
+      recharge_count_inside = #{record.recharge_count_inside,jdbcType=INTEGER},
+      recharge_count_outside = #{record.recharge_count_outside,jdbcType=INTEGER},
+      withdrawals_sum_inside = #{record.withdrawals_sum_inside,jdbcType=DECIMAL},
+      withdrawals_sum_outside = #{record.withdrawals_sum_outside,jdbcType=DECIMAL},
+      withdrawals_count_inside = #{record.withdrawals_count_inside,jdbcType=INTEGER},
+      withdrawals_count_outside = #{record.withdrawals_count_outside,jdbcType=INTEGER},
+      recharge_count_plat = #{record.recharge_count_plat,jdbcType=INTEGER},
+      recharge_sum_plat = #{record.recharge_sum_plat,jdbcType=DECIMAL},
+      withdrawals_count_plat = #{record.withdrawals_count_plat,jdbcType=INTEGER},
+      withdrawals_sum_plat = #{record.withdrawals_sum_plat,jdbcType=DECIMAL},
+      liquidation = #{record.liquidation,jdbcType=CHAR},
+      liquidation_recordtime = #{record.liquidation_recordtime,jdbcType=VARCHAR},
+      balance_sum = #{record.balance_sum,jdbcType=DECIMAL},
+      balance_bank = #{record.balance_bank,jdbcType=DECIMAL},
+      book_balance = #{record.book_balance,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.ClearResultSummary">
+    update clear_result_summary
+    <set>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="clear_date != null">
+        clear_date = #{clear_date,jdbcType=DATE},
+      </if>
+      <if test="recharge_sum_inside != null">
+        recharge_sum_inside = #{recharge_sum_inside,jdbcType=DECIMAL},
+      </if>
+      <if test="recharge_sum_outside != null">
+        recharge_sum_outside = #{recharge_sum_outside,jdbcType=DECIMAL},
+      </if>
+      <if test="recharge_count_inside != null">
+        recharge_count_inside = #{recharge_count_inside,jdbcType=INTEGER},
+      </if>
+      <if test="recharge_count_outside != null">
+        recharge_count_outside = #{recharge_count_outside,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawals_sum_inside != null">
+        withdrawals_sum_inside = #{withdrawals_sum_inside,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawals_sum_outside != null">
+        withdrawals_sum_outside = #{withdrawals_sum_outside,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawals_count_inside != null">
+        withdrawals_count_inside = #{withdrawals_count_inside,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawals_count_outside != null">
+        withdrawals_count_outside = #{withdrawals_count_outside,jdbcType=INTEGER},
+      </if>
+      <if test="recharge_count_plat != null">
+        recharge_count_plat = #{recharge_count_plat,jdbcType=INTEGER},
+      </if>
+      <if test="recharge_sum_plat != null">
+        recharge_sum_plat = #{recharge_sum_plat,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawals_count_plat != null">
+        withdrawals_count_plat = #{withdrawals_count_plat,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawals_sum_plat != null">
+        withdrawals_sum_plat = #{withdrawals_sum_plat,jdbcType=DECIMAL},
+      </if>
+      <if test="liquidation != null">
+        liquidation = #{liquidation,jdbcType=CHAR},
+      </if>
+      <if test="liquidation_recordtime != null">
+        liquidation_recordtime = #{liquidation_recordtime,jdbcType=VARCHAR},
+      </if>
+      <if test="balance_sum != null">
+        balance_sum = #{balance_sum,jdbcType=DECIMAL},
+      </if>
+      <if test="balance_bank != null">
+        balance_bank = #{balance_bank,jdbcType=DECIMAL},
+      </if>
+      <if test="book_balance != null">
+        book_balance = #{book_balance,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ClearResultSummary">
+    update clear_result_summary
+    set plat_no = #{plat_no,jdbcType=VARCHAR},
+      clear_date = #{clear_date,jdbcType=DATE},
+      recharge_sum_inside = #{recharge_sum_inside,jdbcType=DECIMAL},
+      recharge_sum_outside = #{recharge_sum_outside,jdbcType=DECIMAL},
+      recharge_count_inside = #{recharge_count_inside,jdbcType=INTEGER},
+      recharge_count_outside = #{recharge_count_outside,jdbcType=INTEGER},
+      withdrawals_sum_inside = #{withdrawals_sum_inside,jdbcType=DECIMAL},
+      withdrawals_sum_outside = #{withdrawals_sum_outside,jdbcType=DECIMAL},
+      withdrawals_count_inside = #{withdrawals_count_inside,jdbcType=INTEGER},
+      withdrawals_count_outside = #{withdrawals_count_outside,jdbcType=INTEGER},
+      recharge_count_plat = #{recharge_count_plat,jdbcType=INTEGER},
+      recharge_sum_plat = #{recharge_sum_plat,jdbcType=DECIMAL},
+      withdrawals_count_plat = #{withdrawals_count_plat,jdbcType=INTEGER},
+      withdrawals_sum_plat = #{withdrawals_sum_plat,jdbcType=DECIMAL},
+      liquidation = #{liquidation,jdbcType=CHAR},
+      liquidation_recordtime = #{liquidation_recordtime,jdbcType=VARCHAR},
+      balance_sum = #{balance_sum,jdbcType=DECIMAL},
+      balance_bank = #{balance_bank,jdbcType=DECIMAL},
+      book_balance = #{book_balance,jdbcType=DECIMAL}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

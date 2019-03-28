@@ -1,0 +1,312 @@
+{
+	"id": "14ae61e6-5a3c-cc4c-ddfb-8101ebc7458e",
+	"name": "借款人相关",
+	"description": "",
+	"order": [
+		"53b6f11a-5ba1-b030-efc9-428c248acbe4",
+		"a7281cdd-d52a-2301-d783-ebf9ecbc9810",
+		"467c4167-a75d-c083-5d71-c4d59c7ad387"
+	],
+	"folders": [],
+	"timestamp": 1493969835412,
+	"owner": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "467c4167-a75d-c083-5d71-c4d59c7ad387",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/borrower/compensate_repay",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "prod_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_amt",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "compensation_platcust",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1493971108873,
+			"name": "http://localhost:8080/ftdm-web/borrower/compensate_repay",
+			"description": "",
+			"collectionId": "14ae61e6-5a3c-cc4c-ddfb-8101ebc7458e",
+			"responses": []
+		},
+		{
+			"id": "53b6f11a-5ba1-b030-efc9-428c248acbe4",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/borrower/batch_repay",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "14ae61e6-5a3c-cc4c-ddfb-8101ebc7458e",
+			"data": [
+				{
+					"key": "data",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "[{\"remark\"",
+					"value": "\"4\",\"prod_id\":\"3\",\"platcust\":\"2\",\"detail_no\":\"1\",\"repay_date\":1493879209326,\"real_repay_date\":1493879209326,\"fee_amt\":0,\"trans_amt\":0,\"real_repay_amt\":0,\"repay_amt\":0,\"repay_num\":0},",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "{\"remark\"",
+					"value": "\"4\",\"prod_id\":\"3\",\"platcust\":\"2\",\"detail_no\":\"1\",\"repay_date\":1493879209326,\"real_repay_date\":1493879209326,\"fee_amt\":0,\"trans_amt\":0,\"real_repay_amt\":0,\"repay_amt\":0,\"repay_num\":0}]",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/borrower/batch_repay",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493969835412,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "a7281cdd-d52a-2301-d783-ebf9ecbc9810",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/ftdm-web/borrower/substitute_repay",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "14ae61e6-5a3c-cc4c-ddfb-8101ebc7458e",
+			"data": [
+				{
+					"key": "prod_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_num",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_amt",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "real_repay_date",
+					"value": "Thu May 04 15:13:04 CST 2017",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "real_repay_amt",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "platcust",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "compensation_platcust",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "trans_amt",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "fee_amt",
+					"value": "0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "repay_type",
+					"value": "true",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sign",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mall_no",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_time",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mer_no",
+					"value": "4",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "order_no",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "partner_trans_date",
+					"value": "6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "version",
+					"value": "7",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/ftdm-web/borrower/substitute_repay",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1493969924491,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

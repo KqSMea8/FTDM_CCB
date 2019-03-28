@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 查找最新的schemaLocation 访问 http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jms
+		http://www.springframework.org/schema/jms/spring-jms-4.1.xsd
+		http://activemq.apache.org/schema/core
+		http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
+
+    <amq:connectionFactory id="jmsConnectionFactory" brokerURL="tcp://72.0.253.82:61616" userName="" password="" trustAllPackages="true"/>
+    <bean id="jmsConnectionFactoryExtend" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="jmsConnectionFactory" />
+        <!--配置缓存的连接数-->
+        <property name="sessionCacheSize" value="100" />
+    </bean>
+    <!-- 消息处理器 -->
+    <bean id="jmsMessageConverter" class="org.springframework.jms.support.converter.SimpleMessageConverter" />
+
+    <!-- ====Producer side start==== -->
+    <!-- 定义JmsTemplate的Queue类型 -->
+    <bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="jmsConnectionFactoryExtend" />
+        <!-- 非pub/sub模型（发布/订阅），即队列模式 -->
+        <property name="pubSubDomain" value="false" />
+        <property name="messageConverter" ref="jmsMessageConverter" />
+    </bean>
+    <!-- 定义JmsTemplate的Topic类型 -->
+    <bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="jmsConnectionFactoryExtend" />
+        <!-- pub/sub模型（发布/订阅） -->
+        <property name="pubSubDomain" value="true" />
+        <property name="messageConverter" ref="jmsMessageConverter" />
+    </bean>
+
+    <!-- 消息监听适配器对应的监听容器 -->
+    <!--批量投标消费者配置-->
+    <bean id="batchInvestListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="batchInvestQueue"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchInvestQueueListener"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-30"/>
+    </bean>
+
+    <!--批量债转消费者设置-->
+    <bean id="batchProdListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="batchProdTransQueue"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchProdQueueListener"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-30"/>
+    </bean>
+
+    <!--批量还款（凤凰金融）消费者设置-->
+    <bean id="batchRefundListenerContainerForFengJR" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="batchRefundTransQueueForFengJR"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchRefundQueueListenerForFengJR"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-30"/>
+    </bean>
+
+
+    <!-- 批量投标队列 -->
+    <bean id="batchInvestQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchInvestQueue</value>
+        </constructor-arg>
+    </bean>
+
+    <!--批量债转队列-->
+    <bean id="batchProdTransQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchProdTransQueue</value>
+        </constructor-arg>
+    </bean>
+
+    <!--批量还款（凤凰金融）队列-->
+    <bean id="batchRefundTransQueueForFengJR" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchRefundQueueBOB-FENGJR-B-20170509</value>
+        </constructor-arg>
+    </bean>
+
+    <!-- responseQueue对应的监听器 -->
+    <bean id="batchInvestQueueListener" class="com.sunyard.sunfintech.prod.mq.BatchInvestConsumer"/>
+    <bean id="batchProdQueueListener" class="com.sunyard.sunfintech.prod.mq.BatchProdConsumer"/>
+    <bean id="batchRefundQueueListenerForFengJR" class="com.sunyard.sunfintech.prod.mq.BatchRefundConsumerForFengJR"/>
+
+</beans>

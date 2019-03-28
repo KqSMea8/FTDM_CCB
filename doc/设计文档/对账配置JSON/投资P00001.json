@@ -1,0 +1,28 @@
+[
+  {
+    "amt": {
+      "remark": "本金",
+      "subject_from": "01",
+      "to_subject": "18"
+    },
+    "fee": {
+      "remark": "手续费",
+      "subject_from": "01",
+      "to_subject": "11"
+    },
+    "gift": {
+      "remark": "红包",
+      "subject_from": "11",
+      "to_subject": "18"
+    },
+    "transCode": "P00001"
+  },
+  {
+    "log_type":"0",
+    "amt": "self_amt",
+    "fee": "fee",
+    "gift": "coupon_amt",
+    "interest": "rates_amt",
+    "transCode": "P00001"
+  }
+]

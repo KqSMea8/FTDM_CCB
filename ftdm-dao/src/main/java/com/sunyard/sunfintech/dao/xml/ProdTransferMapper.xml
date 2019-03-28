@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.dao.mapper.ProdTransferMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.ProdTransfer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="transfer_id" jdbcType="VARCHAR" property="transfer_id" />
+    <result column="plat_no" jdbcType="VARCHAR" property="plat_no" />
+    <result column="eacc_no" jdbcType="VARCHAR" property="eacc_no" />
+    <result column="prod_id" jdbcType="VARCHAR" property="prod_id" />
+    <result column="publish_date" jdbcType="TIMESTAMP" property="publish_date" />
+    <result column="transfer_vol" jdbcType="DECIMAL" property="transfer_vol" />
+    <result column="transfer_amt" jdbcType="DECIMAL" property="transfer_amt" />
+    <result column="transfer_fee" jdbcType="DECIMAL" property="transfer_fee" />
+    <result column="deal_eacc_no" jdbcType="VARCHAR" property="deal_eacc_no" />
+    <result column="deal_time" jdbcType="TIMESTAMP" property="deal_time" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, transfer_id, plat_no, eacc_no, prod_id, publish_date, transfer_vol, transfer_amt, 
+    transfer_fee, deal_eacc_no, deal_time
+  </sql>
+  <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransferExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from prod_transfer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransferKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from prod_transfer
+    where id = #{id,jdbcType=INTEGER}
+      and transfer_id = #{transfer_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransferKey">
+    delete from prod_transfer
+    where id = #{id,jdbcType=INTEGER}
+      and transfer_id = #{transfer_id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransferExample">
+    delete from prod_transfer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransfer">
+    insert into prod_transfer (id, transfer_id, plat_no, 
+      eacc_no, prod_id, publish_date, 
+      transfer_vol, transfer_amt, transfer_fee, 
+      deal_eacc_no, deal_time)
+    values (#{id,jdbcType=INTEGER}, #{transfer_id,jdbcType=VARCHAR}, #{plat_no,jdbcType=VARCHAR}, 
+      #{eacc_no,jdbcType=VARCHAR}, #{prod_id,jdbcType=VARCHAR}, #{publish_date,jdbcType=TIMESTAMP}, 
+      #{transfer_vol,jdbcType=DECIMAL}, #{transfer_amt,jdbcType=DECIMAL}, #{transfer_fee,jdbcType=DECIMAL}, 
+      #{deal_eacc_no,jdbcType=VARCHAR}, #{deal_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransfer">
+    insert into prod_transfer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="transfer_id != null">
+        transfer_id,
+      </if>
+      <if test="plat_no != null">
+        plat_no,
+      </if>
+      <if test="eacc_no != null">
+        eacc_no,
+      </if>
+      <if test="prod_id != null">
+        prod_id,
+      </if>
+      <if test="publish_date != null">
+        publish_date,
+      </if>
+      <if test="transfer_vol != null">
+        transfer_vol,
+      </if>
+      <if test="transfer_amt != null">
+        transfer_amt,
+      </if>
+      <if test="transfer_fee != null">
+        transfer_fee,
+      </if>
+      <if test="deal_eacc_no != null">
+        deal_eacc_no,
+      </if>
+      <if test="deal_time != null">
+        deal_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="transfer_id != null">
+        #{transfer_id,jdbcType=VARCHAR},
+      </if>
+      <if test="plat_no != null">
+        #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="eacc_no != null">
+        #{eacc_no,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_id != null">
+        #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="publish_date != null">
+        #{publish_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transfer_vol != null">
+        #{transfer_vol,jdbcType=DECIMAL},
+      </if>
+      <if test="transfer_amt != null">
+        #{transfer_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="transfer_fee != null">
+        #{transfer_fee,jdbcType=DECIMAL},
+      </if>
+      <if test="deal_eacc_no != null">
+        #{deal_eacc_no,jdbcType=VARCHAR},
+      </if>
+      <if test="deal_time != null">
+        #{deal_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransferExample" resultType="java.lang.Integer">
+    select count(*) from prod_transfer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update prod_transfer
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.transfer_id != null">
+        transfer_id = #{record.transfer_id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plat_no != null">
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eacc_no != null">
+        eacc_no = #{record.eacc_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prod_id != null">
+        prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publish_date != null">
+        publish_date = #{record.publish_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.transfer_vol != null">
+        transfer_vol = #{record.transfer_vol,jdbcType=DECIMAL},
+      </if>
+      <if test="record.transfer_amt != null">
+        transfer_amt = #{record.transfer_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.transfer_fee != null">
+        transfer_fee = #{record.transfer_fee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deal_eacc_no != null">
+        deal_eacc_no = #{record.deal_eacc_no,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deal_time != null">
+        deal_time = #{record.deal_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update prod_transfer
+    set id = #{record.id,jdbcType=INTEGER},
+      transfer_id = #{record.transfer_id,jdbcType=VARCHAR},
+      plat_no = #{record.plat_no,jdbcType=VARCHAR},
+      eacc_no = #{record.eacc_no,jdbcType=VARCHAR},
+      prod_id = #{record.prod_id,jdbcType=VARCHAR},
+      publish_date = #{record.publish_date,jdbcType=TIMESTAMP},
+      transfer_vol = #{record.transfer_vol,jdbcType=DECIMAL},
+      transfer_amt = #{record.transfer_amt,jdbcType=DECIMAL},
+      transfer_fee = #{record.transfer_fee,jdbcType=DECIMAL},
+      deal_eacc_no = #{record.deal_eacc_no,jdbcType=VARCHAR},
+      deal_time = #{record.deal_time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransfer">
+    update prod_transfer
+    <set>
+      <if test="plat_no != null">
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+      </if>
+      <if test="eacc_no != null">
+        eacc_no = #{eacc_no,jdbcType=VARCHAR},
+      </if>
+      <if test="prod_id != null">
+        prod_id = #{prod_id,jdbcType=VARCHAR},
+      </if>
+      <if test="publish_date != null">
+        publish_date = #{publish_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transfer_vol != null">
+        transfer_vol = #{transfer_vol,jdbcType=DECIMAL},
+      </if>
+      <if test="transfer_amt != null">
+        transfer_amt = #{transfer_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="transfer_fee != null">
+        transfer_fee = #{transfer_fee,jdbcType=DECIMAL},
+      </if>
+      <if test="deal_eacc_no != null">
+        deal_eacc_no = #{deal_eacc_no,jdbcType=VARCHAR},
+      </if>
+      <if test="deal_time != null">
+        deal_time = #{deal_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and transfer_id = #{transfer_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.ProdTransfer">
+    update prod_transfer
+    set plat_no = #{plat_no,jdbcType=VARCHAR},
+      eacc_no = #{eacc_no,jdbcType=VARCHAR},
+      prod_id = #{prod_id,jdbcType=VARCHAR},
+      publish_date = #{publish_date,jdbcType=TIMESTAMP},
+      transfer_vol = #{transfer_vol,jdbcType=DECIMAL},
+      transfer_amt = #{transfer_amt,jdbcType=DECIMAL},
+      transfer_fee = #{transfer_fee,jdbcType=DECIMAL},
+      deal_eacc_no = #{deal_eacc_no,jdbcType=VARCHAR},
+      deal_time = #{deal_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+      and transfer_id = #{transfer_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

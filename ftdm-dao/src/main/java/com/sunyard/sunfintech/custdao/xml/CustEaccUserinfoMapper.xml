@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustEaccUserinfoMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.EaccUserinfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mall_no" jdbcType="VARCHAR" property="mall_no" />
+    <result column="mallcust" jdbcType="VARCHAR" property="mallcust" />
+    <result column="eaccount_flg" jdbcType="VARCHAR" property="eaccount_flg" />
+    <result column="eaccount" jdbcType="VARCHAR" property="eaccount" />
+    <result column="cus_type" jdbcType="VARCHAR" property="cus_type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="id_type" jdbcType="VARCHAR" property="id_type" />
+    <result column="id_code" jdbcType="CHAR" property="id_code" />
+    <result column="mobile" jdbcType="CHAR" property="mobile" />
+    <result column="email" jdbcType="CHAR" property="email" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="trans_pwd" jdbcType="VARCHAR" property="trans_pwd" />
+    <result column="reg_time" jdbcType="TIMESTAMP" property="reg_time" />
+    <result column="is_card_bind" jdbcType="VARCHAR" property="is_card_bind" />
+    <result column="org_name" jdbcType="VARCHAR" property="org_name" />
+    <result column="bank_license" jdbcType="VARCHAR" property="bank_license" />
+    <result column="org_no" jdbcType="VARCHAR" property="org_no" />
+    <result column="business_license" jdbcType="VARCHAR" property="business_license" />
+    <result column="tax_no" jdbcType="VARCHAR" property="tax_no" />
+    <result column="enabled" jdbcType="CHAR" property="enabled" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mall_no, mallcust, eaccount_flg, eaccount, cus_type, name, id_type, id_code, 
+    mobile, email, sex, trans_pwd, reg_time, is_card_bind, org_name, bank_license, org_no, 
+    business_license, tax_no, enabled, remark, create_by, create_time, update_by, update_time
+  </sql>
+  
+  <select id="getByUnionKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eacc_userinfo
+    where mall_no=#{plat_no} and mallcust=#{platcust}
+  </select>
+
+  <update id="updateEaccUserInfoStatusById" parameterType="com.sunyard.sunfintech.dao.entity.EaccUserinfo">
+      update eacc_userinfo set enabled=#{enabled},default_mobile=#{default_mobile},default_card_no=#{default_card_no},update_by = #{update_by},update_time = #{update_time} where id=#{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="replace" parameterType="com.sunyard.sunfintech.dao.entity.EaccUserinfo">
+    replace into eacc_userinfo (id, mall_no, mallcust,
+    eaccount_flg, eaccount, cus_type,
+    name, id_type, id_code,
+    mobile, email, sex, trans_pwd,
+    reg_time, is_card_bind, org_name,
+    bank_license, org_no, business_license,
+    tax_no, default_card_no, default_mobile,
+    enabled, remark, create_by,
+    create_time, update_by, update_time,
+    invester, financier, advancer,
+    guarantor, ext_role1, ext_role2,
+    pwd_flg)
+    values (#{id,jdbcType=INTEGER}, #{mall_no,jdbcType=VARCHAR}, #{mallcust,jdbcType=VARCHAR},
+    #{eaccount_flg,jdbcType=VARCHAR}, #{eaccount,jdbcType=VARCHAR}, #{cus_type,jdbcType=VARCHAR},
+    #{name,jdbcType=VARCHAR}, #{id_type,jdbcType=VARCHAR}, #{id_code,jdbcType=CHAR},
+    #{mobile,jdbcType=CHAR}, #{email,jdbcType=CHAR}, #{sex,jdbcType=VARCHAR}, #{trans_pwd,jdbcType=VARCHAR},
+    #{reg_time,jdbcType=TIMESTAMP}, #{is_card_bind,jdbcType=VARCHAR}, #{org_name,jdbcType=VARCHAR},
+    #{bank_license,jdbcType=VARCHAR}, #{org_no,jdbcType=VARCHAR}, #{business_license,jdbcType=VARCHAR},
+    #{tax_no,jdbcType=VARCHAR}, #{default_card_no,jdbcType=VARCHAR}, #{default_mobile,jdbcType=VARCHAR},
+    #{enabled,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{create_by,jdbcType=VARCHAR},
+    #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, #{update_time,jdbcType=TIMESTAMP},
+    #{invester,jdbcType=TINYINT}, #{financier,jdbcType=TINYINT}, #{advancer,jdbcType=TINYINT},
+    #{guarantor,jdbcType=TINYINT}, #{ext_role1,jdbcType=TINYINT}, #{ext_role2,jdbcType=TINYINT},
+    #{pwd_flg,jdbcType=CHAR})
+  </insert>
+  <select id="userInFo" parameterType="Object" resultType="com.sunyard.sunfintech.dao.entity.EaccUserinfo">
+    select mallcust,enabled from eacc_userinfo WHERE name=#{name} AND id_code=#{id_code} AND mall_no=#{mall_no} AND enabled='1'
+  </select>
+</mapper>

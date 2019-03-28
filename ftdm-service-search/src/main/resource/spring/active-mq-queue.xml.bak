@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 查找最新的schemaLocation 访问 http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jms
+		http://www.springframework.org/schema/jms/spring-jms-4.1.xsd
+		http://activemq.apache.org/schema/core
+		http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
+
+    <!--引入mq配置文件-->
+    <import resource="active-mq-config.xml.bak"/>
+
+    <!-- =========================================短信发送消费队列=================================== -->
+    <bean id="msgSendListenerAdapterContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="adapterMsgSendQueue"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="sysaramsSMReceiver"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-10"/>
+    </bean>
+
+    <bean id="adapterMsgSendQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>TOPIC_SYS_PARAMS_MODIFIER</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="sysaramsSMReceiver" class="com.sunyard.sunfintech.thirdparty.mq.SysaramsSMReceiver"/>
+    <!-- ===============================================END==================================================== -->
+
+</beans>

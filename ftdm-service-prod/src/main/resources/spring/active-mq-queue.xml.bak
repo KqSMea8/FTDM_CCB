@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 查找最新的schemaLocation 访问 http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jms
+		http://www.springframework.org/schema/jms/spring-jms-4.1.xsd
+		http://activemq.apache.org/schema/core
+		http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
+
+    <!--引入mq配置文件-->
+    <import resource="active-mq-config.xml.bak"/>
+
+    <!-- =========================================异步流水消费队列=================================== -->
+    <!-- 消息监听适配器对应的监听容器 -->
+    <bean id="transTransreqFlowListener" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="transTransreqQueue"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="transTransreqQueueListener"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-10"/>
+    </bean>
+
+    <!-- 用于测试消息监听适配器的队列目的地 -->
+    <bean id="transTransreqQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>TransTransReqQueue</value>
+        </constructor-arg>
+    </bean>
+
+    <!-- responseQueue对应的监听器 -->
+    <bean id="transTransreqQueueListener" class="com.sunyard.sunfintech.prod.modulepublic.mq.TransTransreqConsumer"/>
+    <!-- ===============================================END==================================================== -->
+
+    <!-- 消息监听适配器对应的监听容器 -->
+    <!-- =========================================批量投标消费队列=================================== -->
+    <bean id="batchInvestListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="batchInvestQueue"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchInvestQueueListener"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-30"/>
+    </bean>
+
+    <!-- 批量投标队列 -->
+    <bean id="batchInvestQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchInvestQueue</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="batchInvestQueueListener" class="com.sunyard.sunfintech.prod.mq.BatchInvestConsumer"/>
+    <!-- ===============================================END==================================================== -->
+
+    <!-- =========================================批量债转消费队列=================================== -->
+    <bean id="batchProdListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="batchProdTransQueue"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchProdQueueListener"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-30"/>
+    </bean>
+
+    <!--批量债转队列-->
+    <bean id="batchProdTransQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchProdTransQueue</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="batchProdQueueListener" class="com.sunyard.sunfintech.prod.mq.BatchProdConsumer"/>
+    <!-- ===============================================END==================================================== -->
+
+    <!-- =========================================标的批量还款（凤凰金融）消费队列=================================== -->
+    <bean id="batchRefundListenerContainerForFengJR" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="batchRefundTransQueueForFengJR"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchRefundQueueListenerForFengJR"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-30"/>
+    </bean>
+
+    <!--批量还款（凤凰金融）队列-->
+    <bean id="batchRefundTransQueueForFengJR" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchRefundQueueBOB-FENGJR-B-20170509</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="batchRefundQueueListenerForFengJR" class="com.sunyard.sunfintech.prod.mq.BatchRefundConsumerForFengJR"/>
+    <!-- ===============================================END==================================================== -->
+
+    <!-- =========================================标的批量还款（51）消费队列=================================== -->
+    <bean id="batchRefundListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="BatchProdIdRefundQueueForU51"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchRefundQueueListenerForU51"/>
+        <!-- 设置并发数 -->
+        <property name="concurrentConsumers" value="20"/>
+        <!-- 设置并发范围 -->
+        <!--<property name="concurrency" value="5-30"/>-->
+    </bean>
+
+    <!--批量还款（51）队列-->
+    <bean id="BatchProdIdRefundQueueForU51" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchRefundQueueBOB-U51-B-20170821</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="batchRefundQueueListenerForU51" class="com.sunyard.sunfintech.prod.mq.BatchProdIdRefundQueue"/>
+    <!-- ===============================================END==================================================== -->
+
+    <!-- =========================================借款人批量还款（凤凰金融）消费队列=================================== -->
+    <bean id="batchBorrowListenerContainerForFengJR" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="BatchBorrowQueueForFengJR"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchBorrowQueueListenerForFengJR"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="10"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-30"/>
+    </bean>
+
+    <!--借款人批量还款（凤凰金融）队列-->
+    <bean id="BatchBorrowQueueForFengJR" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchBorrowQueue</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="batchBorrowQueueListenerForFengJR" class="com.sunyard.sunfintech.prod.mq.BatchBorrowConsumer"/>
+    <!-- ===============================================END==================================================== -->
+
+    <!--标的批量还款（泰然金融）消费者设置-->
+    <!-- =========================================标的批量还款（泰然金融）消费队列=================================== -->
+    <bean id="batchRefundListenerContainerForTR" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="BatchProdIdRefundQueueForTR"/>
+        <!-- 使用MessageListenerAdapter来作为消息监听器 -->
+        <property name="messageListener" ref="batchRefundQueueListenerForTR"/>
+        <!-- 设置并发数 -->
+        <!--<property name="concurrentConsumers" value="20"/>-->
+        <!-- 设置并发范围 -->
+        <property name="concurrency" value="5-30"/>
+    </bean>
+
+    <!--批量还款（泰然金融）队列-->
+    <bean id="BatchProdIdRefundQueueForTR" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>BatchRefundQueueBOB-TR-B-20170825</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="batchRefundQueueListenerForTR" class="com.sunyard.sunfintech.prod.mq.BatchProdIdRefundQueue"/>
+    <!-- ===============================================END==================================================== -->
+
+</beans>

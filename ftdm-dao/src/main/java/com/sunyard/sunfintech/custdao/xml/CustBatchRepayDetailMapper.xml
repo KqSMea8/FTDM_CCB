@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustBatchRepayDetailMapper">
+  <insert id="batchInsert"  parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty= "id" order= "AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into batch_repay_detail(trans_serial, occur_balance, summary, card_no, status)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (
+      #{item.trans_serial,jdbcType=VARCHAR},
+      #{item.occur_balance,jdbcType=DECIMAL},
+      #{item.summary,jdbcType=VARCHAR},
+      #{item.card_no,jdbcType=VARCHAR},
+      #{item.status,jdbcType=VARCHAR}
+      )
+    </foreach>
+  </insert>
+
+</mapper>

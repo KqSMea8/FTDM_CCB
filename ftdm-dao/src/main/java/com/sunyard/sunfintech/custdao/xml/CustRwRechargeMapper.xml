@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.sunfintech.custdao.mapper.CustRwRechargeMapper">
+    <resultMap id="BaseResultMap" type="com.sunyard.sunfintech.dao.entity.RwRecharge">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="trans_serial" jdbcType="VARCHAR" property="trans_serial"/>
+        <result column="order_no" jdbcType="VARCHAR" property="order_no"/>
+        <result column="plat_no" jdbcType="VARCHAR" property="plat_no"/>
+        <result column="platcust" jdbcType="VARCHAR" property="platcust"/>
+        <result column="trans_code" jdbcType="VARCHAR" property="trans_code"/>
+        <result column="trans_name" jdbcType="VARCHAR" property="trans_name"/>
+        <result column="trans_date" jdbcType="VARCHAR" property="trans_date"/>
+        <result column="trans_time" jdbcType="VARCHAR" property="trans_time"/>
+        <result column="trans_amt" jdbcType="DECIMAL" property="trans_amt"/>
+        <result column="pay_code" jdbcType="VARCHAR" property="pay_code"/>
+        <result column="fee_amt" jdbcType="DECIMAL" property="fee_amt"/>
+        <result column="charge_type" jdbcType="VARCHAR" property="charge_type"/>
+        <result column="client_property" jdbcType="VARCHAR" property="client_property"/>
+        <result column="self_bank_flag" jdbcType="VARCHAR" property="self_bank_flag"/>
+        <result column="hsepay_order_no" jdbcType="VARCHAR" property="hsepay_order_no"/>
+        <result column="host_req_serial_no" jdbcType="VARCHAR" property="host_req_serial_no"/>
+        <result column="reques_time" jdbcType="TIMESTAMP" property="reques_time"/>
+        <result column="confirm_time" jdbcType="TIMESTAMP" property="confirm_time"/>
+        <result column="last_time" jdbcType="TIMESTAMP" property="last_time"/>
+        <result column="return_msg" jdbcType="VARCHAR" property="return_msg"/>
+        <result column="notify_msg" jdbcType="VARCHAR" property="notify_msg"/>
+        <result column="return_url" jdbcType="VARCHAR" property="return_url"/>
+        <result column="notify_url" jdbcType="VARCHAR" property="notify_url"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="enabled" jdbcType="CHAR" property="enabled"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="create_by" jdbcType="VARCHAR" property="create_by"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="update_by" jdbcType="VARCHAR" property="update_by"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="update_time"/>
+        <result column="ext1" jdbcType="VARCHAR" property="ext1"/>
+        <result column="ext2" jdbcType="VARCHAR" property="ext2"/>
+        <result column="ext3" jdbcType="VARCHAR" property="ext3"/>
+        <result column="ext4" jdbcType="VARCHAR" property="ext4"/>
+        <result column="ext5" jdbcType="VARCHAR" property="ext5"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        id, trans_serial, order_no, plat_no, platcust, trans_code, trans_name, trans_date,
+        trans_time, trans_amt, pay_code, fee_amt, charge_type, client_property, self_bank_flag,
+        hsepay_order_no, host_req_serial_no, reques_time, confirm_time, last_time, return_msg,
+        notify_msg, return_url, notify_url, status, enabled, remark, create_by, create_time,
+        update_by, update_time, ext1, ext2, ext3, ext4, ext5
+    </sql>
+    <select id="selectByExample" parameterType="com.sunyard.sunfintech.dao.entity.RwRechargeExample"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from rw_recharge
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from rw_recharge
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from rw_recharge
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.sunyard.sunfintech.dao.entity.RwRechargeExample">
+        delete from rw_recharge
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.sunyard.sunfintech.dao.entity.RwRecharge">
+        insert into rw_recharge (id, trans_serial, order_no,
+        plat_no, platcust, trans_code,
+        trans_name, trans_date, trans_time,
+        trans_amt, pay_code, fee_amt,
+        charge_type, client_property, self_bank_flag,
+        hsepay_order_no, host_req_serial_no, reques_time,
+        confirm_time, last_time, return_msg,
+        notify_msg, return_url, notify_url,
+        status, enabled, remark,
+        create_by, create_time, update_by,
+        update_time, ext1, ext2,
+        ext3, ext4, ext5)
+        values (#{id,jdbcType=INTEGER}, #{trans_serial,jdbcType=VARCHAR}, #{order_no,jdbcType=VARCHAR},
+        #{plat_no,jdbcType=VARCHAR}, #{platcust,jdbcType=VARCHAR}, #{trans_code,jdbcType=VARCHAR},
+        #{trans_name,jdbcType=VARCHAR}, #{trans_date,jdbcType=VARCHAR}, #{trans_time,jdbcType=VARCHAR},
+        #{trans_amt,jdbcType=DECIMAL}, #{pay_code,jdbcType=VARCHAR}, #{fee_amt,jdbcType=DECIMAL},
+        #{charge_type,jdbcType=VARCHAR}, #{client_property,jdbcType=VARCHAR}, #{self_bank_flag,jdbcType=VARCHAR},
+        #{hsepay_order_no,jdbcType=VARCHAR}, #{host_req_serial_no,jdbcType=VARCHAR}, #{reques_time,jdbcType=TIMESTAMP},
+        #{confirm_time,jdbcType=TIMESTAMP}, #{last_time,jdbcType=TIMESTAMP}, #{return_msg,jdbcType=VARCHAR},
+        #{notify_msg,jdbcType=VARCHAR}, #{return_url,jdbcType=VARCHAR}, #{notify_url,jdbcType=VARCHAR},
+        #{status,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR},
+        #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR},
+        #{update_time,jdbcType=TIMESTAMP}, #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR},
+        #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.sunyard.sunfintech.dao.entity.RwRecharge">
+        insert into rw_recharge
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="trans_serial != null">
+                trans_serial,
+            </if>
+            <if test="order_no != null">
+                order_no,
+            </if>
+            <if test="plat_no != null">
+                plat_no,
+            </if>
+            <if test="platcust != null">
+                platcust,
+            </if>
+            <if test="trans_code != null">
+                trans_code,
+            </if>
+            <if test="trans_name != null">
+                trans_name,
+            </if>
+            <if test="trans_date != null">
+                trans_date,
+            </if>
+            <if test="trans_time != null">
+                trans_time,
+            </if>
+            <if test="trans_amt != null">
+                trans_amt,
+            </if>
+            <if test="pay_code != null">
+                pay_code,
+            </if>
+            <if test="fee_amt != null">
+                fee_amt,
+            </if>
+            <if test="charge_type != null">
+                charge_type,
+            </if>
+            <if test="client_property != null">
+                client_property,
+            </if>
+            <if test="self_bank_flag != null">
+                self_bank_flag,
+            </if>
+            <if test="hsepay_order_no != null">
+                hsepay_order_no,
+            </if>
+            <if test="host_req_serial_no != null">
+                host_req_serial_no,
+            </if>
+            <if test="reques_time != null">
+                reques_time,
+            </if>
+            <if test="confirm_time != null">
+                confirm_time,
+            </if>
+            <if test="last_time != null">
+                last_time,
+            </if>
+            <if test="return_msg != null">
+                return_msg,
+            </if>
+            <if test="notify_msg != null">
+                notify_msg,
+            </if>
+            <if test="return_url != null">
+                return_url,
+            </if>
+            <if test="notify_url != null">
+                notify_url,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="create_by != null">
+                create_by,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="update_by != null">
+                update_by,
+            </if>
+            <if test="update_time != null">
+                update_time,
+            </if>
+            <if test="ext1 != null">
+                ext1,
+            </if>
+            <if test="ext2 != null">
+                ext2,
+            </if>
+            <if test="ext3 != null">
+                ext3,
+            </if>
+            <if test="ext4 != null">
+                ext4,
+            </if>
+            <if test="ext5 != null">
+                ext5,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="trans_serial != null">
+                #{trans_serial,jdbcType=VARCHAR},
+            </if>
+            <if test="order_no != null">
+                #{order_no,jdbcType=VARCHAR},
+            </if>
+            <if test="plat_no != null">
+                #{plat_no,jdbcType=VARCHAR},
+            </if>
+            <if test="platcust != null">
+                #{platcust,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_code != null">
+                #{trans_code,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_name != null">
+                #{trans_name,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_date != null">
+                #{trans_date,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_time != null">
+                #{trans_time,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_amt != null">
+                #{trans_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="pay_code != null">
+                #{pay_code,jdbcType=VARCHAR},
+            </if>
+            <if test="fee_amt != null">
+                #{fee_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="charge_type != null">
+                #{charge_type,jdbcType=VARCHAR},
+            </if>
+            <if test="client_property != null">
+                #{client_property,jdbcType=VARCHAR},
+            </if>
+            <if test="self_bank_flag != null">
+                #{self_bank_flag,jdbcType=VARCHAR},
+            </if>
+            <if test="hsepay_order_no != null">
+                #{hsepay_order_no,jdbcType=VARCHAR},
+            </if>
+            <if test="host_req_serial_no != null">
+                #{host_req_serial_no,jdbcType=VARCHAR},
+            </if>
+            <if test="reques_time != null">
+                #{reques_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="confirm_time != null">
+                #{confirm_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="last_time != null">
+                #{last_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="return_msg != null">
+                #{return_msg,jdbcType=VARCHAR},
+            </if>
+            <if test="notify_msg != null">
+                #{notify_msg,jdbcType=VARCHAR},
+            </if>
+            <if test="return_url != null">
+                #{return_url,jdbcType=VARCHAR},
+            </if>
+            <if test="notify_url != null">
+                #{notify_url,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="create_by != null">
+                #{create_by,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_by != null">
+                #{update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ext1 != null">
+                #{ext1,jdbcType=VARCHAR},
+            </if>
+            <if test="ext2 != null">
+                #{ext2,jdbcType=VARCHAR},
+            </if>
+            <if test="ext3 != null">
+                #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                #{ext4,jdbcType=VARCHAR},
+            </if>
+            <if test="ext5 != null">
+                #{ext5,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.sunyard.sunfintech.dao.entity.RwRechargeExample"
+            resultType="java.lang.Integer">
+        select count(*) from rw_recharge
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update rw_recharge
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.trans_serial != null">
+                trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+            </if>
+            <if test="record.order_no != null">
+                order_no = #{record.order_no,jdbcType=VARCHAR},
+            </if>
+            <if test="record.plat_no != null">
+                plat_no = #{record.plat_no,jdbcType=VARCHAR},
+            </if>
+            <if test="record.platcust != null">
+                platcust = #{record.platcust,jdbcType=VARCHAR},
+            </if>
+            <if test="record.trans_code != null">
+                trans_code = #{record.trans_code,jdbcType=VARCHAR},
+            </if>
+            <if test="record.trans_name != null">
+                trans_name = #{record.trans_name,jdbcType=VARCHAR},
+            </if>
+            <if test="record.trans_date != null">
+                trans_date = #{record.trans_date,jdbcType=VARCHAR},
+            </if>
+            <if test="record.trans_time != null">
+                trans_time = #{record.trans_time,jdbcType=VARCHAR},
+            </if>
+            <if test="record.trans_amt != null">
+                trans_amt = #{record.trans_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="record.pay_code != null">
+                pay_code = #{record.pay_code,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fee_amt != null">
+                fee_amt = #{record.fee_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="record.charge_type != null">
+                charge_type = #{record.charge_type,jdbcType=VARCHAR},
+            </if>
+            <if test="record.client_property != null">
+                client_property = #{record.client_property,jdbcType=VARCHAR},
+            </if>
+            <if test="record.self_bank_flag != null">
+                self_bank_flag = #{record.self_bank_flag,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hsepay_order_no != null">
+                hsepay_order_no = #{record.hsepay_order_no,jdbcType=VARCHAR},
+            </if>
+            <if test="record.host_req_serial_no != null">
+                host_req_serial_no = #{record.host_req_serial_no,jdbcType=VARCHAR},
+            </if>
+            <if test="record.reques_time != null">
+                reques_time = #{record.reques_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.confirm_time != null">
+                confirm_time = #{record.confirm_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.last_time != null">
+                last_time = #{record.last_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.return_msg != null">
+                return_msg = #{record.return_msg,jdbcType=VARCHAR},
+            </if>
+            <if test="record.notify_msg != null">
+                notify_msg = #{record.notify_msg,jdbcType=VARCHAR},
+            </if>
+            <if test="record.return_url != null">
+                return_url = #{record.return_url,jdbcType=VARCHAR},
+            </if>
+            <if test="record.notify_url != null">
+                notify_url = #{record.notify_url,jdbcType=VARCHAR},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=VARCHAR},
+            </if>
+            <if test="record.enabled != null">
+                enabled = #{record.enabled,jdbcType=CHAR},
+            </if>
+            <if test="record.remark != null">
+                remark = #{record.remark,jdbcType=VARCHAR},
+            </if>
+            <if test="record.create_by != null">
+                create_by = #{record.create_by,jdbcType=VARCHAR},
+            </if>
+            <if test="record.create_time != null">
+                create_time = #{record.create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.update_by != null">
+                update_by = #{record.update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="record.update_time != null">
+                update_time = #{record.update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.ext1 != null">
+                ext1 = #{record.ext1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.ext2 != null">
+                ext2 = #{record.ext2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.ext3 != null">
+                ext3 = #{record.ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="record.ext4 != null">
+                ext4 = #{record.ext4,jdbcType=VARCHAR},
+            </if>
+            <if test="record.ext5 != null">
+                ext5 = #{record.ext5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update rw_recharge
+        set id = #{record.id,jdbcType=INTEGER},
+        trans_serial = #{record.trans_serial,jdbcType=VARCHAR},
+        order_no = #{record.order_no,jdbcType=VARCHAR},
+        plat_no = #{record.plat_no,jdbcType=VARCHAR},
+        platcust = #{record.platcust,jdbcType=VARCHAR},
+        trans_code = #{record.trans_code,jdbcType=VARCHAR},
+        trans_name = #{record.trans_name,jdbcType=VARCHAR},
+        trans_date = #{record.trans_date,jdbcType=VARCHAR},
+        trans_time = #{record.trans_time,jdbcType=VARCHAR},
+        trans_amt = #{record.trans_amt,jdbcType=DECIMAL},
+        pay_code = #{record.pay_code,jdbcType=VARCHAR},
+        fee_amt = #{record.fee_amt,jdbcType=DECIMAL},
+        charge_type = #{record.charge_type,jdbcType=VARCHAR},
+        client_property = #{record.client_property,jdbcType=VARCHAR},
+        self_bank_flag = #{record.self_bank_flag,jdbcType=VARCHAR},
+        hsepay_order_no = #{record.hsepay_order_no,jdbcType=VARCHAR},
+        host_req_serial_no = #{record.host_req_serial_no,jdbcType=VARCHAR},
+        reques_time = #{record.reques_time,jdbcType=TIMESTAMP},
+        confirm_time = #{record.confirm_time,jdbcType=TIMESTAMP},
+        last_time = #{record.last_time,jdbcType=TIMESTAMP},
+        return_msg = #{record.return_msg,jdbcType=VARCHAR},
+        notify_msg = #{record.notify_msg,jdbcType=VARCHAR},
+        return_url = #{record.return_url,jdbcType=VARCHAR},
+        notify_url = #{record.notify_url,jdbcType=VARCHAR},
+        status = #{record.status,jdbcType=VARCHAR},
+        enabled = #{record.enabled,jdbcType=CHAR},
+        remark = #{record.remark,jdbcType=VARCHAR},
+        create_by = #{record.create_by,jdbcType=VARCHAR},
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+        update_by = #{record.update_by,jdbcType=VARCHAR},
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+        ext1 = #{record.ext1,jdbcType=VARCHAR},
+        ext2 = #{record.ext2,jdbcType=VARCHAR},
+        ext3 = #{record.ext3,jdbcType=VARCHAR},
+        ext4 = #{record.ext4,jdbcType=VARCHAR},
+        ext5 = #{record.ext5,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.sunfintech.dao.entity.RwRecharge">
+        update rw_recharge
+        <set>
+            <if test="trans_serial != null">
+                trans_serial = #{trans_serial,jdbcType=VARCHAR},
+            </if>
+            <if test="order_no != null">
+                order_no = #{order_no,jdbcType=VARCHAR},
+            </if>
+            <if test="plat_no != null">
+                plat_no = #{plat_no,jdbcType=VARCHAR},
+            </if>
+            <if test="platcust != null">
+                platcust = #{platcust,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_code != null">
+                trans_code = #{trans_code,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_name != null">
+                trans_name = #{trans_name,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_date != null">
+                trans_date = #{trans_date,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_time != null">
+                trans_time = #{trans_time,jdbcType=VARCHAR},
+            </if>
+            <if test="trans_amt != null">
+                trans_amt = #{trans_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="pay_code != null">
+                pay_code = #{pay_code,jdbcType=VARCHAR},
+            </if>
+            <if test="fee_amt != null">
+                fee_amt = #{fee_amt,jdbcType=DECIMAL},
+            </if>
+            <if test="charge_type != null">
+                charge_type = #{charge_type,jdbcType=VARCHAR},
+            </if>
+            <if test="client_property != null">
+                client_property = #{client_property,jdbcType=VARCHAR},
+            </if>
+            <if test="self_bank_flag != null">
+                self_bank_flag = #{self_bank_flag,jdbcType=VARCHAR},
+            </if>
+            <if test="hsepay_order_no != null">
+                hsepay_order_no = #{hsepay_order_no,jdbcType=VARCHAR},
+            </if>
+            <if test="host_req_serial_no != null">
+                host_req_serial_no = #{host_req_serial_no,jdbcType=VARCHAR},
+            </if>
+            <if test="reques_time != null">
+                reques_time = #{reques_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="confirm_time != null">
+                confirm_time = #{confirm_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="last_time != null">
+                last_time = #{last_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="return_msg != null">
+                return_msg = #{return_msg,jdbcType=VARCHAR},
+            </if>
+            <if test="notify_msg != null">
+                notify_msg = #{notify_msg,jdbcType=VARCHAR},
+            </if>
+            <if test="return_url != null">
+                return_url = #{return_url,jdbcType=VARCHAR},
+            </if>
+            <if test="notify_url != null">
+                notify_url = #{notify_url,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="create_by != null">
+                create_by = #{create_by,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="update_by != null">
+                update_by = #{update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ext1 != null">
+                ext1 = #{ext1,jdbcType=VARCHAR},
+            </if>
+            <if test="ext2 != null">
+                ext2 = #{ext2,jdbcType=VARCHAR},
+            </if>
+            <if test="ext3 != null">
+                ext3 = #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                ext4 = #{ext4,jdbcType=VARCHAR},
+            </if>
+            <if test="ext5 != null">
+                ext5 = #{ext5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sunyard.sunfintech.dao.entity.RwRecharge">
+        update rw_recharge
+        set trans_serial = #{trans_serial,jdbcType=VARCHAR},
+        order_no = #{order_no,jdbcType=VARCHAR},
+        plat_no = #{plat_no,jdbcType=VARCHAR},
+        platcust = #{platcust,jdbcType=VARCHAR},
+        trans_code = #{trans_code,jdbcType=VARCHAR},
+        trans_name = #{trans_name,jdbcType=VARCHAR},
+        trans_date = #{trans_date,jdbcType=VARCHAR},
+        trans_time = #{trans_time,jdbcType=VARCHAR},
+        trans_amt = #{trans_amt,jdbcType=DECIMAL},
+        pay_code = #{pay_code,jdbcType=VARCHAR},
+        fee_amt = #{fee_amt,jdbcType=DECIMAL},
+        charge_type = #{charge_type,jdbcType=VARCHAR},
+        client_property = #{client_property,jdbcType=VARCHAR},
+        self_bank_flag = #{self_bank_flag,jdbcType=VARCHAR},
+        hsepay_order_no = #{hsepay_order_no,jdbcType=VARCHAR},
+        host_req_serial_no = #{host_req_serial_no,jdbcType=VARCHAR},
+        reques_time = #{reques_time,jdbcType=TIMESTAMP},
+        confirm_time = #{confirm_time,jdbcType=TIMESTAMP},
+        last_time = #{last_time,jdbcType=TIMESTAMP},
+        return_msg = #{return_msg,jdbcType=VARCHAR},
+        notify_msg = #{notify_msg,jdbcType=VARCHAR},
+        return_url = #{return_url,jdbcType=VARCHAR},
+        notify_url = #{notify_url,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        enabled = #{enabled,jdbcType=CHAR},
+        remark = #{remark,jdbcType=VARCHAR},
+        create_by = #{create_by,jdbcType=VARCHAR},
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+        update_by = #{update_by,jdbcType=VARCHAR},
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+        ext1 = #{ext1,jdbcType=VARCHAR},
+        ext2 = #{ext2,jdbcType=VARCHAR},
+        ext3 = #{ext3,jdbcType=VARCHAR},
+        ext4 = #{ext4,jdbcType=VARCHAR},
+        ext5 = #{ext5,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <insert id="insertBatch" parameterType="java.util.List">
+        insert into rw_recharge (id, trans_serial, order_no,
+        plat_no, platcust, trans_code,
+        trans_name, trans_date, trans_time,
+        trans_amt, pay_code, fee_amt,
+        client_property, host_req_serial_no, reques_time,
+        confirm_time, last_time, return_code,
+        return_msg, notify_msg, return_url,
+        notify_url, status, enabled,
+        remark, create_by, create_time,
+        update_by, update_time, ext1,
+        ext2, ext3, ext4, ext5,
+        charge_type, hsepay_order_no, self_bank_flag,
+        card_no, mobile, payment_date)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=INTEGER}, #{item.trans_serial,jdbcType=VARCHAR}, #{item.order_no,jdbcType=VARCHAR},
+            #{item.plat_no,jdbcType=VARCHAR}, #{item.platcust,jdbcType=VARCHAR}, #{item.trans_code,jdbcType=VARCHAR},
+            #{item.trans_name,jdbcType=VARCHAR}, #{item.trans_date,jdbcType=VARCHAR}, #{item.trans_time,jdbcType=VARCHAR},
+            #{item.trans_amt,jdbcType=DECIMAL}, #{item.pay_code,jdbcType=VARCHAR}, #{item.fee_amt,jdbcType=DECIMAL},
+            #{item.client_property,jdbcType=VARCHAR}, #{item.host_req_serial_no,jdbcType=VARCHAR}, #{item.reques_time,jdbcType=TIMESTAMP},
+            #{item.confirm_time,jdbcType=TIMESTAMP}, #{item.last_time,jdbcType=TIMESTAMP}, #{item.return_code,jdbcType=VARCHAR},
+            #{item.return_msg,jdbcType=VARCHAR}, #{item.notify_msg,jdbcType=VARCHAR}, #{item.return_url,jdbcType=VARCHAR},
+            #{item.notify_url,jdbcType=VARCHAR}, #{item.status,jdbcType=VARCHAR}, #{item.enabled,jdbcType=CHAR},
+            #{item.remark,jdbcType=VARCHAR}, #{item.create_by,jdbcType=VARCHAR}, #{item.create_time,jdbcType=TIMESTAMP},
+            #{item.update_by,jdbcType=VARCHAR}, #{item.update_time,jdbcType=TIMESTAMP}, #{item.ext1,jdbcType=VARCHAR},
+            #{item.ext2,jdbcType=VARCHAR}, #{item.ext3,jdbcType=VARCHAR}, #{item.ext4,jdbcType=VARCHAR}, #{item.ext5,jdbcType=VARCHAR},
+            #{item.charge_type,jdbcType=VARCHAR}, #{item.hsepay_order_no,jdbcType=VARCHAR}, #{item.self_bank_flag,jdbcType=VARCHAR},
+            #{item.card_no,jdbcType=VARCHAR}, #{item.mobile,jdbcType=VARCHAR}, #{item.payment_date,jdbcType=CHAR})
+        </foreach>
+    </insert>
+
+    <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+        update rw_recharge
+        <foreach collection="list" item="item" index="index" separator=",">
+            <set>
+                <if test="item.trans_serial != null">
+                    trans_serial = #{item.trans_serial,jdbcType=VARCHAR},
+                </if>
+                <if test="item.order_no != null">
+                    order_no = #{item.order_no,jdbcType=VARCHAR},
+                </if>
+                <if test="item.plat_no != null">
+                    plat_no = #{item.plat_no,jdbcType=VARCHAR},
+                </if>
+                <if test="item.platcust != null">
+                    platcust = #{item.platcust,jdbcType=VARCHAR},
+                </if>
+                <if test="item.trans_code != null">
+                    trans_code = #{item.trans_code,jdbcType=VARCHAR},
+                </if>
+                <if test="item.trans_name != null">
+                    trans_name = #{item.trans_name,jdbcType=VARCHAR},
+                </if>
+                <if test="item.trans_date != null">
+                    trans_date = #{item.trans_date,jdbcType=VARCHAR},
+                </if>
+                <if test="item.trans_time != null">
+                    trans_time = #{item.trans_time,jdbcType=VARCHAR},
+                </if>
+                <if test="item.trans_amt != null">
+                    trans_amt = #{item.trans_amt,jdbcType=DECIMAL},
+                </if>
+                <if test="item.pay_code != null">
+                    pay_code = #{item.pay_code,jdbcType=VARCHAR},
+                </if>
+                <if test="item.fee_amt != null">
+                    fee_amt = #{item.fee_amt,jdbcType=DECIMAL},
+                </if>
+                <if test="item.charge_type != null">
+                    charge_type = #{item.charge_type,jdbcType=VARCHAR},
+                </if>
+                <if test="item.client_property != null">
+                    client_property = #{item.client_property,jdbcType=VARCHAR},
+                </if>
+                <if test="item.self_bank_flag != null">
+                    self_bank_flag = #{item.self_bank_flag,jdbcType=VARCHAR},
+                </if>
+                <if test="item.hsepay_order_no != null">
+                    hsepay_order_no = #{item.hsepay_order_no,jdbcType=VARCHAR},
+                </if>
+                <if test="item.host_req_serial_no != null">
+                    host_req_serial_no = #{item.host_req_serial_no,jdbcType=VARCHAR},
+                </if>
+                <if test="item.reques_time != null">
+                    reques_time = #{item.reques_time,jdbcType=TIMESTAMP},
+                </if>
+                <if test="item.confirm_time != null">
+                    confirm_time = #{item.confirm_time,jdbcType=TIMESTAMP},
+                </if>
+                <if test="item.last_time != null">
+                    last_time = #{item.last_time,jdbcType=TIMESTAMP},
+                </if>
+                <if test="item.return_msg != null">
+                    return_msg = #{item.return_msg,jdbcType=VARCHAR},
+                </if>
+                <if test="item.notify_msg != null">
+                    notify_msg = #{item.notify_msg,jdbcType=VARCHAR},
+                </if>
+                <if test="item.return_url != null">
+                    return_url = #{item.return_url,jdbcType=VARCHAR},
+                </if>
+                <if test="item.notify_url != null">
+                    notify_url = #{item.notify_url,jdbcType=VARCHAR},
+                </if>
+                <if test="item.status != null">
+                    status = #{item.status,jdbcType=VARCHAR},
+                </if>
+                <if test="item.enabled != null">
+                    enabled = #{item.enabled,jdbcType=CHAR},
+                </if>
+                <if test="item.remark != null">
+                    remark = #{item.remark,jdbcType=VARCHAR},
+                </if>
+                <if test="item.create_by != null">
+                    create_by = #{item.create_by,jdbcType=VARCHAR},
+                </if>
+                <if test="item.create_time != null">
+                    create_time = #{item.create_time,jdbcType=TIMESTAMP},
+                </if>
+                <if test="item.update_by != null">
+                    update_by = #{item.update_by,jdbcType=VARCHAR},
+                </if>
+                <if test="item.update_time != null">
+                    update_time = #{item.update_time,jdbcType=TIMESTAMP},
+                </if>
+                <if test="item.ext1 != null">
+                    ext1 = #{item.ext1,jdbcType=VARCHAR},
+                </if>
+                <if test="item.ext2 != null">
+                    ext2 = #{item.ext2,jdbcType=VARCHAR},
+                </if>
+                <if test="item.ext3 != null">
+                    ext3 = #{item.ext3,jdbcType=VARCHAR},
+                </if>
+                <if test="item.ext4 != null">
+                    ext4 = #{item.ext4,jdbcType=VARCHAR},
+                </if>
+                <if test="item.ext5 != null">
+                    ext5 = #{item.ext5,jdbcType=VARCHAR},
+                </if>
+            </set>
+        </foreach>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectPayOffOnRecharge" parameterType="map" resultMap="BaseResultMap">
+        select * from rw_recharge where trans_code = #{code} and enabled = '1' and status = '0' group by trans_serial,plat_no
+    </select>
+
+    <select id="selectNotSelfBank" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+	      *
+        FROM eacc_accountamtlist e
+        LEFT JOIN rw_recharge r
+        ON e.trans_serial = r.trans_serial
+        WHERE
+            r.trans_code IN (
+                'C00001',
+                'C00002',
+                'C00003',
+                'C00011',
+                'CK0001',
+                'C00005'
+            )
+        AND DATE_FORMAT(e.account_date, '%Y%m%d') = #{clear_date}
+        AND (
+            r.self_bank_flag != '0'
+            OR r.self_bank_flag IS NULL
+        )
+        AND r.plat_no = #{plat_no}
+        AND r.pay_code = #{pay_code}
+        AND r.status = #{status}
+    </select>
+
+    <update id="updateByTransSerialSelective" parameterType="com.sunyard.sunfintech.dao.entity.RwRecharge">
+        update rw_recharge
+        <set>
+            <if test="host_req_serial_no != null">
+                host_req_serial_no = #{host_req_serial_no,jdbcType=VARCHAR},
+            </if>
+            <if test="confirm_time != null">
+                confirm_time = #{confirm_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="last_time != null">
+                last_time = #{last_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="return_code != null">
+                return_code = #{return_code,jdbcType=VARCHAR},
+            </if>
+            <if test="return_msg != null">
+                return_msg = #{return_msg,jdbcType=VARCHAR},
+            </if>
+            <if test="notify_msg != null">
+                notify_msg = #{notify_msg,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="update_by != null">
+                update_by = #{update_by,jdbcType=VARCHAR},
+            </if>
+            <if test="update_time != null">
+                update_time = #{update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ext1 != null">
+                ext1 = #{ext1,jdbcType=VARCHAR},
+            </if>
+            <if test="ext2 != null">
+                ext2 = #{ext2,jdbcType=VARCHAR},
+            </if>
+            <if test="ext3 != null">
+                ext3 = #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                ext4 = #{ext4,jdbcType=VARCHAR},
+            </if>
+            <if test="ext5 != null">
+                ext5 = #{ext5,jdbcType=VARCHAR},
+            </if>
+            <if test="hsepay_order_no != null">
+                hsepay_order_no = #{hsepay_order_no,jdbcType=VARCHAR},
+            </if>
+            <if test="self_bank_flag != null">
+                self_bank_flag = #{self_bank_flag,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where trans_serial = #{trans_serial,jdbcType=VARCHAR}
+        AND status <![CDATA[ <> ]]> "1"
+    </update>
+
+    <select id="queryProcessingRecharge" parameterType="map" resultMap="BaseResultMap">
+        SELECT * FROM rw_recharge
+        WHERE status = '0'
+        AND create_time BETWEEN date_sub(now(),interval #{queryStartTime} day)
+        AND date_sub(now(), interval #{queryEndTime} minute)
+        AND trans_code IN
+        <foreach collection="trans_codes" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        limit #{limit}
+    </select>
+
+</mapper>
